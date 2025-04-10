@@ -1,0 +1,20 @@
+# Script "muptest2.mup:
+echo "Start of Test"
+version -m                  # Mupfel-Version ausgeben
+echo "Part 1 of Test"
+set -- -h -v # Setze Parameter $1, $2, etc.
+echo "vor  getopt():" $*
+set -- `getopt "hv" $*`
+echo "nach getopt():" $*
+echo "Part 2 of Test"
+set --       # Setze Parameter $1, $2, etc. auf Nichts!
+echo "vor  getopt():" $*
+set -- `getopt "hv" $* ""` # dieses "" ist ein workaround !
+echo "nach getopt():" $*
+echo "Part 3 of Test"
+set --       # Setze Parameter $1, $2, etc. auf Nichts!
+echo "vor  getopt():" $*
+set -- `getopt "hv" $*` # sollte eigentlich funktionieren !
+echo "nach getopt():" $*
+echo "End of Test"
+

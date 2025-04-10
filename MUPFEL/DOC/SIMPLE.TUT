@@ -1,0 +1,119 @@
+#!mupfel
+#
+# @(#) mupfel\doc\simple.tut
+# @(#) Stefan Eissing, 18. April 1992
+#
+# Teil 1 des Tutorials
+# einfache Kommandos
+#
+#
+
+cat <<ENDE
+
+  In der Mupfel gibt es immer ein aktuelles Laufwerk, auf dem man sich
+  befindet. Und auf diesem Laufwerk arbeitet man immer gerade in einem
+  bestimmten Verzeichnis oder auch Ordner.
+  Beides zusammen wird oft auch als das aktuelle Verzeichnis bezeichnet.
+  Wir befinden uns z.B. jetzt gerade in:
+
+    $PWD
+
+  Wenn Sie wissen wollen, was sich alles darin befindet, k”nnen Sie den
+  Befehl ls benutzen. Dieser LiStet Ihnen alle Dateien im aktuelle
+  Verzeichnis.
+  
+ENDE
+
+AskForString "ls"
+echo "Das bewirkt der Befehl ls:"
+echo
+ls
+echo
+
+cat <<ENDE
+  Es werden also die Namen aller Dateien und Ordner ausgegeben, die sich
+  in $PWD befinden.
+  Das ist ja sehr interessant, werden Sie sagen, aber man kann ja gar nicht
+  erkennen, ob etwas eine Datei oder ein Ordner ist.
+
+  Nun, das ist natrlich auch m”glich. Geben Sie einmal den Befehl >ls -l<
+  ein.
+
+ENDE
+
+AskForString "ls -l"
+echo
+ls -l
+echo
+
+cat <<ENDE
+  Jetzt haben Sie eine lange Liste mit den Dateien und Ordnern erhalten.
+  Jede Datei ist auf einer eigenen Zeile aufgelistet. Am Anfang stehen
+  die Attribute einer Datei. Handelt es sich um einen Ordner, so steht
+  dort z.B. ein "d" fr "directory", was soviel wie "Verzeichnis" bedeutet.
+
+  Jetzt haben Sie schon etwas von dem Kommando "ls" mitbekommen. Wie Sie
+  mittlerweile bemerkt haben, l„uft alles in der Mupfel ber Befehle. Am
+  Anfang eines Kommandos steht immer ein Befehl. 
+
+  Doch was ist dann das "-l" im Kommando "ls -l"? So etwas wird als Option
+  eines Kommandos bezeichnet. Mittels Optionen k”nnen Sie dem Befehl 
+  genauer sagen, was er eigentlich tun soll. In unserem Fall wollten wir
+  statt dem normalen Listing, das "ls" produziert, ein langes Listing
+  haben, was etwas ausfhrlicher ist. Deshalb haben wir dem Befehl die
+  Option "l" wie "long" mitgegeben.
+
+ENDE
+press_return
+
+cat <<ENDE
+
+  Optionen werden durch ein voranstehendes "-" eingeleitet. Somit wird die
+  Option "l" nicht mit "ls l", sondern mit "ls -l" bergeben.
+
+  Das hat seinen guten Grund: nur so k”nnen Optionen von PARAMETERN
+  unterschieden werden. Doch was ist ein Parameter? Probieren wie es
+  doch einfach mal aus!
+
+ENDE
+
+AskForString "ls c:\"
+echo
+ls c:\
+
+cat <<ENDE
+
+  Wie Sie sehen, gibt das Kommando "ls c:\" den Inhalt von c:\ aus, und
+  nicht den Inhalt von $PWD, was ja das aktuelle
+  Verzeichnis ist.
+
+  "c:\" ist in diesem Fall ein Parameter fr den Befehl "ls". Ein Parameter
+  sagt dem Befehl immer, auf was man ihn anwenden will. "ls" weiž also, daž
+  es das Verzeichnis c:\ listen soll. Nun ist "ls" ganz clever und denkt
+  sich, daž Sie im Normalfall das aktuelle Verzeichnis sehen wollen. Daher
+  k”nnen Sie "ls" ohne Parameter aufrufen, um den Inhalt von
+  $PWD zu bekommen.
+
+ENDE
+press_return
+
+cat <<'ENDE'
+
+  Wahrscheinlich haben Sie den Dreh ja schon raus, aber nur zur
+  Vollst„ndigkeit: Wenn Sie ein langes Listing von einem Verzeichnis
+  von c:\ haben wollen, geben Sie "ls -l c:\" ein.
+
+  Somit haben Sie schon das Grundpinzip der Mupfel gelernt. Sie geben
+  eine Zeile mit Befehlen ein und die Mupfel fhrt diese aus. Ein
+  Befehl sieht dabei wie folgt aus:
+
+    Kommando  [ Optionen ]  [ Parameter ]
+
+  Wofr stehen dort die eckigen Klammern? Die eckigen Klammern
+  besagen, daž Sie diese Sachen nicht unbedingt angeben mssen. Wie
+  Sie sehen, stehen um das Kommando keine eckigen Klammern. Ein
+  Kommando muž also angegeben werden.
+
+ENDE
+press_return
+

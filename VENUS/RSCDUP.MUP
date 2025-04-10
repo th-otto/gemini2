@@ -1,0 +1,8 @@
+#!mupfel
+#
+#cd d:\tc\gemini2\venus
+#echo $PWD
+rscsplit -v venus.h
+rsccrc -v venus.rsc -o rscvers.h
+cp -v venus.rsc ..\gemini.rsc
+echo done.

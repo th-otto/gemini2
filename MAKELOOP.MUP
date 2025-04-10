@@ -1,0 +1,7 @@
+ln -s c:\tmp u:\test1
+ln -s u:\test1 u:\test2
+ln -s u:\test2 u:\test3
+ln -s u:\test3 u:\test4
+ln -s u:\test4 u:\test5
+ln -s u:\test5 u:\test6
+ln -s u:\test6 u:\test7

@@ -1,0 +1,17 @@
+#!mupfel
+
+if [ $# -ne 1 ]
+then
+	echo usage: $0 datei.prj >&2
+	exit 1
+fi
+while read file depend
+do
+	case $file in
+		*.c|*.C)
+		echo $file
+		;;
+		*)
+		;;
+	esac
+done < $1

@@ -1,0 +1,6 @@
+#!mupfel
+#
+
+getcfile mupfel.prj | ..\nls\nlscat - | nlscomp - mupfel.msg
+..\nls\nls2c mupfel.msg >mupfnls.c
+cp -v mupfel.msg ..

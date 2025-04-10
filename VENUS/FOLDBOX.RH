@@ -1,0 +1,7 @@
+#define FOLDBOX          12  /* Formular/Dialog */
+#define FONAME           4   /* FTEXT in Baum FOLDBOX */
+#define FONAME2          5   /* FTEXT in Baum FOLDBOX */
+#define FOCANCEL         6   /* BUTTON in Baum FOLDBOX */
+#define FOFILE           7   /* BUTTON in Baum FOLDBOX */
+#define FOFOLDER         8   /* BUTTON in Baum FOLDBOX */
+

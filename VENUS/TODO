@@ -1,0 +1,39 @@
+#MS388414ea
+-A61942@B
+    Zeiger: (Frage: A23833@MS)
+    Gruppe: Maus.Computer.Atari.Gemini
+Verteilung: MausNet
+    OrigID: 200001180021.a61942@b.maus.de
+       Ref: 199912311410.a23833@ms.maus.de
+       Von: Martin Christoph @ B
+     Wegen: GEMINI lebt!
+      Zeit: Dienstag, 18. Januar 2000, 00:21
+:>
+:>_Hallo Julian Reschke @ MS!_
+:>
+:>JR>Dazu msstest schon etwas genauer erkl„ren, was hier genau das Problem
+:>JR>ist,...
+:>Wenn ich im Accessory ST-GUIDE (vom 12.5.1997) bei "Pattern suchen" ein 
+:>Suchmuster eingebe, und auf [In allen Seiten] klicke, wird HYPFIND.TTP in 
+:>der MUPFEL gestartet um die Suche durchzufhren. Dabei zeigt HYPFIND.TTP 
+:>das Suchmuster an, wobei aus zum Beispiel Testtext nun Testtext' geworden 
+:>ist, wodurch HYPFIND.TTP natrlich nichts findet. Irgendwas hat hier also 
+:>einfach ein Apostroph (ASCII 39 $27) angeh„ngt.
+:>JR>...und was genau Gemini damit zu tun haben soll.
+:>Ganz einfach: GEMINI ist ein AV-Server und wickelt die Kommunikation mit 
+:>dem Accessory ab, startet HYPFIND.TTP (das als TTP natrlich im Consolen-
+:>Fenster l„uft), und bergibt diesem das Such-Pattern. Also muž GEMINI das 
+:>Apostroph anh„ngen. THING ist auch ein AV-Server (leider ohne integrierte 
+:>MUPFEL) und mit diesem klappt es wie es soll; HYPFIND.TTP bekommt das 
+:>unverf„lschte Suchmuster (also zum Beispiel Testtext) und findet auch das 
+:>gwenschte.
+:>
+:>Ach ja, vielen Dank an alle fr die vielen Meldungen. Ich dachte schon 
+:>ich w„re hier ganz alleine (das liest sich so langweilig). Also lažt es 
+:>uns wie "Stefan Hter @ nirgendwo" machen und kr„ftig weitern”hlen!
+:>
+:>
+:>Mit freundlichen Gržen
+:>                            Martin Christoph @ B
+:>
+

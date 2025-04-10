@@ -1,0 +1,910 @@
+
+
+                        Gemini (Venus) Genesis
+                        
+Ver.    Datum   
+0.0     -7.12.88
+1.2     27.11.90
+                   Ist in der Datei VENUS12.GEN nachzulesen.
+
+1.21    05.11.90   Bug bei Shortcutauswahl in "Laufwerks-Icons..." ausge-
+                   baut.
+                   Kopieren/L”schen mit Ordnern und Dateien, die gleich
+                   dem Label eines Laufwerkes sind, sollte tun.
+                   Datei- und Ordnernamen wie ".tst" lassen sich jetzt
+                   l”schen!! Wow, nur ein dusseliger Ami hat's gemerkt.
+                   
+        13.11.90   Beim Umbennen mit Control-Verschieben in einem Fenster
+                   wird jetzt nicht mehr die Biene angelassen.
+                   Clipping wird beim Blockmarkieren im Console-Fenster
+                   richtig gestzt.
+                   Es sollte kein Error mehr doppelt ausgegeben werden.
+                   Beim Umbennen von Objekten wird jetzt auch das Icon auf
+                   dem Hintergrund entsprechend ge„ndert.
+                   Die Sekunden beim Dateidatum sind jetzt korrekt.
+                   Der Formatier-Dialog wird nur dann verlassen, wenn kein
+                   Fehler aufgetreten ist (und bei Abbruch natrlich).
+                   
+1.22    26.11.90   Dateien bleiben beim Scrollen selektiert.                   
+
+        01.12.90   Doppelklick auf ".." ”ffnet immer den Ordner darber.
+                   Logik bei angemeldeten Applikationen ge„ndert.
+                   "Fenster schlieen" wurde zu "L„uft im Console-Fenster".
+                   Bug gekillt, der dazu fhrte, da Dateifenster
+                   nach Schlieen des Console-Fensters nicht neu gezeichnet
+                   wurden.
+                   Flicker-Flacker-Fehler beim Ziehen von Icons ber das
+                   Console-Fenster beseitigt.
+                   
+        02.12.90   Wenn eine belegte Funktionstaste gedrckt wird, so wird
+                   immer das Console-Fenster ge”ffnet.
+                   
+        11.12.90   Control-A fr "Alles selektieren" eingebaut. Nur in 
+                   welches Men soll das????
+                   
+        13.11.90   "Alles ausw„hlen" ins Datei-Men gepackt.
+        
+        17.12.90   Beim Programmstart werden jetzt keine Acc-Fenster mehr
+                   geschlossen. Das gab Probleme bei Accessories, die ihre
+                   Fenster ohne AC_OPEN wieder ”ffnen. Fr das Schlieen
+                   ist also immer der Startende verantwortlich.
+                   
+        29.12.90   Die vt52 Routinen k”nnen nun auch Strings ausgeben, die
+                   l„nger als 32 KB sind (dauert nur etwas).
+        
+        03.01.91   Frohes neues Jahr!
+                   Und gleich ein h„licher Bug gefixt. Das ".."-Objekt
+                   wird jetzt beim Draggen immer deselektiert. Also kann
+                   man beim L”schen nicht mehr alle Ordner darber auch
+                   l”schen.
+                   
+       10.01.91    Beim Draggen werden nun auch halb verdeckte Icons
+                   beachtet.
+                   Environment-Variable $TOPWIND eingefhrt. In ihr steht
+                   immer der aktuelle Pfad des obersten GEMINI-
+                   Dateifensters. Ist kein Dateifenster offen, ist der
+                   Wert undefiniert :-)
+                   
+       12.01.91    Bug bei der H”he von Textobjekten im Dateifenster
+                   gefixt. Nach dem Aufruf von "Darstellung" erscheinen
+                   die Dateien wieder in derselben H”he.
+                   
+       14.01.91    Mit dem Einbau von Native Language Support angefangen.
+                   Die Datei GEMINI.MSG wird ben”tigt!
+                   
+       19.01.91    Statt graf_mkstate() wird jetzt evnt_event() beim 
+                   Abfragen der Maus verwendet. Das hat zur Folge, da kein
+                   Buttonevent beim Draggen in das Console-Fenster kleben
+                   bleibt.
+                   Wird bei einem Doppelklick auf einen Ornder/eine Datei
+                   selbige nicht gefunden, kann nun das Objekt gesucht 
+                   oder entfernt werden.
+                   
+       23.01.91    Bug in der Anzeige der selektierten Filegr”en gefixt.
+       
+       28.01.91    Init, Label und Format werden jetzt direkt aufgerufen.
+                   Daher sollte in VENUS ' und " in Filenamen nicht mehr
+                   st”ren. Verhalten von "N„chstes Fenster..." etwas
+                   verbessert, es kommt aber immer noch zu H„ngern in
+                   Verbindung mit TreeView.
+                   
+       29.01.91    Information ber mehrere selektierte Objekte eingebaut.
+                   
+       07.02.91    Bug in vt52-Emulator (Cleol) gekillt. Gnome l„t jetzt
+                   keine Zeichen am Ende einer Zeile mehr stehen.
+                   
+       11.02.91    Bug beim Redraw vom Console-Fenster behoben. Gab es ein
+                   Gemini.Mup, so wurde es zweimal redrawt.
+                   
+       15.02.91    Kleinen Timeout nach Lesen von GEMINI.INF eingebaut. Es
+                   wird den Accessories jetzt etwas Zeit gelassen, damit
+                   sie ihre Fenster ”ffnen k”nnen. Jetzt sollten die Fenster
+                   von Gemini immer oben sein. Das ist zwar auch nicht
+                   optimal, aber immer noch besser als fher.
+
+       04.03.91    Endlich mal wieder ein Eintrag hier!
+                   Die File-Completion (Tab) tuts jetzt wieder richtig.
+                   Es gab Probleme, wenn man zwischendurch Programme 
+                   startete; Mupfel befand sich dann in einem anderen Ordner.
+                   
+       06.03.91    Der Abbruch-Button ist aus den Gesamt-Informationen
+                   verschwunden. Ebenso sollten dort jetzt IO-Errors besser
+                   abgefangen werden. Der Ordner ".." wird nicht mehr
+                   mitgez„hlt.
+                   Der Info-String bei selektierten Objekten wurd ge„ndert.
+                   
+       09.03.91    Bug bei der Auswahl des Zeichens fr einen Ordner gefixt.
+                   MUP-Dateien werden von VENUS nicht mehr als Overlay
+                   gestartet.
+                   
+       17.03.91    Labels mit Endungen werden jetzt richtig behandelt. Es kam
+                   zu Problemen, wenn diese umbenannt wurden; Icons hatten
+                   dann noch das alte Label.
+                   Kleiner Bug beseitigt, der nur auftrat, wenn ohne 
+                   GEMINI.INF, aber mit VA-Protokoll-Accessory-Fenster ein
+                   VENUS-Fenster ge”ffnet wurde. Dieses hatte dann 0 Breite
+                   und H”he...
+                   Control-X wird jetzt an die Mupfel durchgelassen (Wird
+                   vom Zeileneditor benutzt). 
+                   Wird zum Ausfhren eines Programmes das Console-Fenster
+                   nach vorn geholt, blieb es bisher dort. Nun wird das alte
+                   oberste Fenster wieder nach vorn geholt. Dies stellt
+                   zwar die alte Reihenfolge nicht wieder her, ist aber
+                   ein guter Kompromi.
+                   Venus benutzt jetzt Keytbl(), um die Alternate-Shortcuts
+                   umzusetzen. Sollte jetzt also auch mit AZERTY-Tastaturen
+                   funktionieren.
+                   Vor dem Starten eines Programms oder ™ffnen eines Ordners
+                   ber ein Icon auf dem Hintergrund wird jetzt wieder das
+                   Label des Laufwerkes berprft. Erst dann wird geguckt,
+                   ob das Objekt auch wirklich vorhanden ist.
+                   
+       19.03.91    Auch nach dem L”schen/Formatieren einer Diskette und dem
+                   Entfernen von Ordnern in der Mupfel stellt Venus nun den
+                   Inhalt in den Fenstern richtig dar. Pfade werden verkrzt,
+                   bis sie wieder existieren.
+                   
+       03.04.91    Probleme mit `Smart-Redraw' von KAOS sollten nicht mehr
+                   auftreten. Es werden jetzt auch unn”tige Redraws beim
+                   Verkleinern von Fenstern vermieden.
+                   Kleiner Sch”nheitsfehler in der Media-Change-Routine
+                   beseitigt (lieferte fr (fast) alle Laufwerke TRUE).
+                   
+       07.04.91    Den Begrungs-Dialog mit einem Fenster versehen. Wenn
+                   vorher andere Fenster berdeckt wurden, kam das nicht so
+                   gut, aber irgendwie gef„llt mir das alles noch nicht.
+                   
+       11.04.91    Dummy fr neue Message im VA-Protokoll eingebaut, die
+                   zum Kopieren von Objekten dient.
+                   
+       17.04.91    Bug gekillt, der zuschlug, wenn ein Fenster mit langem
+                   Pfad offen ist, und ein Programm gestartet wird. Es
+                   wurden globale Daten berschrieben, weil ein Puffer zu
+                   klein war. Kann nun nicht mehr vorkommen. (ganz b”se,
+                   war schon immer drin!)
+                  
+       17.05.91    Bug in der Anzeige der Laufwerks-Informationen behoben.
+                   Es wurden auf MiNT-Laufwerken -2 Bytes frei angezeigt.
+                   
+       20.05.91    Vor dem Anlegen eines Ordners wird jetzt vorher geprft,
+                   ob schon eine Datei/Ordner selben Namens existiert. Ist
+                   auf TOS 1.02 unbedingt notwendig!
+                   Dabei bleibt jetzt auch der Button selektiert, bis die
+                   Funktion abgeschlossen ist.
+
+       21.05.91    Beim Kopieren wird jetzt auch auf leere Dateinamen
+                   berprft. Zudem wurde die Logik bei vorhandenen Objekten
+                   verbessert. Konnte ein Ordner nicht angelegt werden, weil
+                   das Laufwerk voll ist, so kommt jetzt eine entsprechende
+                   Meldung.
+                   Die Abfrage der Maske beim Finden eines Icons wieder
+                   ausgebaut. Jetzt wird (z.B. beim `Draggen') ein Icon
+                   dann selektiert, wenn sich der Mauszeiger entweder auf
+                   dem Text- oder dem Bildbereich bedindet. Dabei wird das
+                   ganze Bild und nicht nur die sichtbaren Punkte genommen.
+                   
+       22.05.91    Venus konnte schon immer MiNT-MINIX-Dateisysteme lesen
+                   und darstellen, kommt aber jetzt auch mit einem Ordner
+                   ".." im Root-Directory klar.
+                   Auerdem wurde eine unn”tige Wandlung in Grobuchstaben
+                   entfernt, die dazu fhrte, da tieferliegende Ordner
+                   (Wow! tolles Wort) nicht erkannt wurden.
+                   
+       10.06.91    Erkennen eines Icons wird wieder ber die Maske gemacht.
+       
+       09.07.91    Das Clipping wird beim Redraw eines Dateifensters jetzt
+                   nicht immer wieder gesetzt.
+                   
+       12.07.91    Es sollte nun definitiv keine Redraw-Fehler mehr um
+                   Zusammenhand mit der Console geben, da alle Redraw-
+                   Nachrichten abgearbeitet und keine mehr verworfen wird.
+                   Doppelte Redraw gibt es aber auch nicht mehr.:-)
+                   Beim Draggen von Dateien auf ein Acc oder Console-Fenster
+                   werden jetzt auch die Namen von nichtsichtbaren, aber
+                   selektierten Objekten mitgeschickt.
+       
+       13.07.91 - 14.07.91
+                   Interne Aufr„umaktionen.
+       
+       15.07.91    Auf dem TT l„t sich jetzt mit Alternate F1 - F5 auf
+                   die jeweilige Aufl”sung umschalten, wenn Gemini vom
+                   TT-Desktop gestartet wurde. Es wird noch nach einem Weg
+                   gesucht, wie Gemini danach wieder gestartet wird.
+       
+       16.07.91    ScrollFehler im Console-Fenster behoben, der auftrat,
+                   wenn es teils verdeckt war.
+                   Die Dateifenster scrollen jetzt auch korrekt, wenn sie
+                   teilweise verdeckt werden.
+       
+       17.07.91    L”schen von Dateien umgestellt. Ist jetzt genauso
+                   schnell wie der TT-Desktop.
+       
+       18.-19.07.91
+                   Kopieren/Verschieben von Dateien umgestellt. Die Arbeit
+                   wird jetzt ohne die Mupfel gemacht und ist bei groen
+                   Directories mit vielen Dateien mebar schneller als der
+                   Desktop. So!
+                   Kleiner Nebeneffekt: Wenn Dateien von Disk A auf Disk B
+                   kopiert werden, braucht nur einmal die Diskette
+                   gewechselt zu werden, wenn alle Dateien in den Speicher
+                   passen.
+       
+       19.07.91    Wird die Alternate-Taste gedrckt gehalten, dann wird
+                   vor jeder Kopieraktion nach einem neuen Namen fr das
+                   Objekt gefragt.
+       
+       20.07.91    Text-Routinen des Console-Fenster etwas beschleunigt:
+                   unn”tige Attribut-Einstellungen entfernt und es werden
+                   nur noch 2 statt 3 Workstations ben”tigt.
+       
+       21.07.91 - 29.07.91
+                   Starke interne Umstellungen. Gemini wieder ein wenig
+                   kleiner geworden (aber auch nur ein wenig).
+                   Neuerung: In Dateifenster kann jetzt bei allen Sortier-
+                   Modi mit den Buchstabentasten selektiert werden. Dabei
+                   werden bei mehrmaligem Drcken eines Buchstabens 
+                   nacheinander alle solche Dateien/Ordner selektiert.
+                   Nach der Selektion im Console-Fenster gibt es jetzt
+                   auch die M”glichkeit, das selektierte auszufhren.
+
+       30.07.91    Bug in der Fensterverwaltung behoben. Die Positionen
+                   werden wieder richtig gespeichert. 
+       
+       31.07.91    Statt "Neuer Ordner..." gibt es jetzt den Menpunkt
+                   "Neu...", mit dem man auch Dateien anlegen kann.
+                   Im Dialog "Gespr„chigkeit" wurd die Logik fr 
+                   šberschreiben umgedreht (der šbersicht halber).
+                   Die Titel im Men "Extras" haben sich leicht ge„ndert.
+                   Das Ein-/Ausschalten von Meneintr„gen sollte jetzt
+                   immer zu dem obersten Fenster passen. Ausnahme: Fenster
+                   von Accessories, die kein VA-Protokoll machen.
+                   Bei "Anwendungen" und "Dateien/Ordner" werden die
+                   Dialoge nicht mehr gestapelt.
+                   Beim Kopieren sollte nun auch auf TOS < 1.4 wieder das
+                   Datum beibehalten werden.
+       
+       02.08.91    TOPWIND wird wieder richtig gesetzt.
+                   Dateien, die nicht vollst„ndig kopiert werden k”nnen,
+                   werden gel”scht.
+                   bell_hook wird jetzt von den vt52-Routinen benutzt.
+       
+1.6    03.08.91    Diw INF-Datei wurde aufgesplittet. Es gibt jetzt
+                   zus„tzlich zu GEMINI.INF noch Dateien mit der Endung
+                   GIN. Diese k”nnen auch durch einen Doppelklick oder
+                   ™ffnen neu geladen werden. In den GIN-Dateien stehen
+                   jetzt die aufl”sungsabh„ngigen Informationen wie
+                   Fenster, Zeichens„tze, Anzeigetyp und Hintergrund-Icons.
+                   Beim Overlay-Start wird eine Datei namens TEMP.GIN
+                   angelegt. D.h., da alle anderen Informationen nicht
+                   mehr tempor„r gespeichert werden.
+
+       04.08.91    Gemini versucht jetzt zuerst die Datei XY.GIN mit der
+                   aktuellen Aufl”sung als Namen (06400400.GIN in der hohen
+                   ST-Aufl”sung) zu lesen. Wird diese nicht gefunden, so
+                   versucht Gemini GEMINI.GIN zu lesen. Beim "Status 
+                   sichern" wird der zuletzt benutzte Name angeboten.
+       
+       06.08.91    Gemini setzt jetzt beim Kopieren auch das Archiv-Bit
+                   der Datei und fragt beim Verschieben einer vorhandenen
+                   Datei nicht mehr zweimal nach.
+       
+       07.08.91    Wildcard-Dialog ge„ndert. Leichter bedienbar!
+                   Mittels Shift-Doppelklick auf eine Dateikann man jetzt 
+                   die angemeldeten Applikationen umgehen. Ist ein "*"-
+                   Regel angemeldet, so wird diese genommen. Ansonsten
+                   erh„lt man das gewohnte "Ansehen, Drucken, Abbruch".
+                   Bug beim Undo von Fenstergr”en behoben.
+       
+       09.08.91    Slider wird bei neuem Font wieder angepat.
+                   Draggen auf ".." funktioniert wieder richtig, wenn
+                   ".." vorher selektiert war.
+                   Die Strings, die an Accessories geschickt werden, k”nnen
+                   jetzt "beliebig" lang werden. Fr jedes Acc ist ein
+                   eigener Buffer vorhanden. Xacc-Nachrichten werden nur
+                   noch an Accs verschickt, die auch Xacc k”nnen.
+                   Wer so ein Ding hat, m”chte das bitte prfen.
+       
+      12.08.91     Scrollen in Dateifenstern ist inzwischen wieder 
+                   schneller als in der 1.2.
+      
+      15.08.91     Es lassen sich im Wildcard-Dialog wieder alle Zeichen
+                   eingeben.
+                   Beim Aulassen von Dateien beim Kopieren wird die Zahl
+                   der verbleibenden Dateien richtig angezeigt.
+      
+      17.08.91     0-Zeichen werden im Console-Fenster nicht mehr 
+                   ausgegeben.
+                   Das Starten von Accessories, die als Anwendung 
+                   angemeldet sind, funktioniert wieder.
+                   
+1.7   18.08.91     Beim Wechseln des Datei-Fonts werden nur dann die Fenster
+                   neu gezeichnet, wenn auch die Textanzeige aktiv ist.
+                   Jetzt k”nnen auch Objekte auf Programme in Dateifenstern
+                   gezogen werden.
+                   Unter "Gespr„chigkeit" kann nun eingestellt werden, ob
+                   man vor dem Einlesen einer GIN-Datei nochmals gefragt
+                   werden will.
+      
+      28.08.91     Ordnersymbole stehen bei groen Schriften weiter
+                   auseinander. Das Sichern der GIN-Datei kann abgestellt
+                   werden. Sortieren nach Icons ist rausgeflogen. Die Icons
+                   in den Fenstern werden jetzt selbst gezeichnet.
+
+      29.08.91     Alle Icons werden jetzt mit einer eigenen Routine
+                   gezeichnet.
+      
+      01.09.91     Die kleinen Icons werden mit dem Text rechts daneben
+                   gezeichnet. Die Icons in Geminiic.rsc wurden 
+                   berarbeitet. Icons k”nnen jetzt auch ganz an den Rand
+                   des Desktops geschoben werden.
+
+      02.09.91     Aufr„umen des Desktop-Hintergrunds komplett berarbeitet.
+                   Man kann jetzt keinen Snap mehr unter "Diverses..."
+                   einstellen. Auch das Einstellen des Blitter-Status 
+                   in diesem Dialog ist rausgeflogen. Das neue Kontrollfeld
+                   gibt es ja jetzt fr jeden Rechner.
+      
+      03.09.91     Kollisionen bei AV_GETSTATUS beseitigt, die auftraten,
+                   wenn im Chameleon nacheinander 2 Accs waren, die diese
+                   Nachricht benutzt haben.
+                   In den "Info..."-Dialogen taucht jetzt auch immer das
+                   Icon des Objektes auf.
+      
+      04.09.91     Bei den Farbeinstellungen sind jetzt auch in der Popup-
+                   Box die wirklichen Farben zu sehen. Nur mit dem "Cyclen"
+                   gibt es noch Probleme (-> Julian).
+                   Busy-Bee-Fehler beim Umbenennen behoben (die Box zieht
+                   sowas anscheinend an).
+      
+      05.09.91     Beim Suchen von Desktop-Icons (wenn der Pfad nicht mehr
+                   gltig war) wird jetzt auch das Label des Laufwerks
+                   neu eingetragen.
+      
+      07.09.91     Wenn das L”schen abgebrochen wurde, werden die Fenster-
+                   inhalte wiederhergestellt.
+      
+      09.09.91     Beim Wechseln von Icons in Regeln werde auch die Hinter-
+                   grundobjekte richtig eingestellt.
+                   Clipping beim Draggen von Icons funktioniert wieder.
+                   Das Klemmbrett wird jetzt noch mehr untersttzt. Cut,
+                   Copy & Paste in Gemini eingebaut. Der Zustand des
+                   Klemmbretts wird jetzt auch beim Wechseln von Acc-
+                   Fenstern auf dem Laufenden gebracht.
+
+      11.09.91     Das Setzen von TOPWIND sollte nun wieder richtig sein.
+      
+      16.09.91     Die Zeichens„tze nach Neuladen einer GIN-Datei sind
+                   wieder richtig gesetzt.
+                   
+      30.12.91     Sliderberechnung ist nun korrekt (Rundungsfehler an
+                   einer Stelle entfernt).
+                   Bei "alles selektieren" gibt es nun in einem leeren
+                   Fenstern keinen Absturz mehr.
+                   Bei "Laufwerke" wird nun das Icon eines bereits 
+                   vorhandenen Laufwerks nicht mehr verschoben.
+                   Beim Verschieben werden jetzt die angemeldeten
+                   Applikationen und Icons auf dem Hintergrund besser
+                   auf dem Laufenden gehalten.
+                   Formatieren und Initialisieren von Disketten
+                   eingebaut.
+       
+      04.01.92     Die Laufwerke werden jetzt nach Befehlen in der
+                   Mupfel entsprechend neu eingelesen.
+      
+      11.01.92     Fehler in den Console-Ausgabe-Routinen behoben. Es
+                   werden nun alle Register gerettet. Die Ausgabe
+                   unter MiNT funktioniert wieder.
+      
+      13.01.92     Der Aufl”sungswechsel auf dem TT mittels ALT-F1-5
+                   funktioniert wieder.
+                   Overlays k”nnen wieder gestartet werden.
+      
+      22.01.92     Es kann wieder in das Console-Fenster eingefgt
+                   werden.
+      
+      31.01.92     Es sollte direkt nach dem Schlieen der Console
+                   nicht mehr auf den Bildschirm geschrieben werden.
+                   GEMINI.MUP wird jetzt in $HOME gesucht (so gesetzt)
+                   und mit $HOME als aktuellem Verzeichnis gestartet.
+                   Bei v_opnwk() wird jetzt die magische Formel fr
+                   work_in[0] verwendet (Schauder!).
+                   Bei Alternate-Doppelklick in das Console-Fenster wird
+                   nun ein Gemini-Fenster mit dem aktuellen Pfad der
+                   Mupfel ge”ffnet.
+      
+1.82  04.02.92     Wenn das Fenster usr\adimens\ mit Klick auf ".." zu
+                   usr\ geworden war, dann hat ein Klick auf die Close-Box
+                   nur auf die Ebene ber usr gefhrt, aber das Fenster
+                   nicht geschlossen. Fixed!
+      
+      09.02.92     Bei einem GIN-Namen krzer als 8 Zeichen taucht
+                   nun nicht mehr ein Newline am Ende auf.
+      
+1.83  22.02.92     Bei Icons wird jetzt WHITEBAK bercksichtigt und
+                   die Reihenfolge, in der die Elemente gemalt werden,
+                   ist wieder "kompatibler".
+                   Redraw in Dateifenstern wieder auf den Bild-
+                   schirm beschr„nkt. Ebenso der Ghost beim Draggen.
+      
+      25.02.92     tmpmalloc rausgeworfen, dadurch im Normalfall weniger
+                   Speicherplatzbedarf (~16-32KB).
+                   Das Initialisieren von Disketten mit Parametern tut von
+                   Gemini aus wieder.
+                   Scrollfehler im Console-Fenster behoben, wenn es 
+                   teilweise verdeckt wird.
+      
+      28.02.92     Die Meldungen, wenn Zeichens„tze nicht installiert werden
+                   konnten, kommen nun immer nur einmal und mit richtiger
+                   Begrndung.
+                   Leere Namen fr Desktopicons werden jetzt richtig
+                   abgespeichert und eingelesen.
+                   Bei einem Programm, das nicht im Console-Fenster l„uft,
+                   stimmen die Werte fr ROWS, LINES und COLUMNS wieder.
+
+      02.03.92     Beim Scollen mit Buchstaben werden jetzt auch Ordner
+                   bercksichtigt, wenn keine SHIFT-Taste gedrckt wird.
+                   Es wird dafr gesorgt, da das selektierte Objekt immer
+                   ganz zu sehen ist.
+                   Die Fehlerausgaben der Mupfel werden nur noch beim
+                   Starten von GEM-Programmen in Alerts gesetzt.
+      
+      04.03.92     Man kann wieder in Gemini den Label eines Laufwerks
+                   setzen.
+                   Ein TT oder ST blinzelt jetzt wieder beim Start.
+      
+      29.03.92     nderung beim VA-Protokoll:
+                   Bei VA_PROGSTART wird jetzt der Rckgabewert des 
+                   Programms und eine Kennung aus AV_STARTPROG 
+                   zurckgeliefert.
+      
+      31.03.92     Ahhhh! Fehler gefunden und gefixt, der manchmal beim
+                   Verschieben von Dateien Bomben warf! Das geschah immer
+                   dann, wenn man ein Icon vom Desktop entfernt hatte und
+                   danach eine Datei verschob. Hatte auer dem Absturz
+                   keine weiteren Folgen!
+      
+      09.04.92     Gemini benutzt jetzt nicht mehr Drvmap().
+      
+      18.04.92     Anzeige im Textmodus leicht berarbeitet.
+      
+1.85  19.04.92     Die Textanzeige wird jetzt auch mit proportionalen
+                   Zeichens„tzen richtig dargestellt.
+                   Gemini (nicht die Mupfel) kann unter MagiX parallel
+                   GEM-Programme starten.
+      
+      21.04.92     Erkennung von Textobjekten wieder gelockert; es mu
+                   nicht mehr auf den _sichtbaren_ Text geklickt werden.
+      
+      25.04.92     Nicht installierte Accessories werden jetzt wie Daten
+                   behandelt. Man kann also ein Programm auf ACC anmelden.
+                   Die Startparameter von Accs k”nnen nicht mehr 
+                   eingestellt werden, da unn”tig.
+                   Im Textmodus: Der Abstand zwischen Text und Icon betr„gt
+                   immer die halbe Breite eines Zeichens. Der Abstand vom
+                   linken Fensterrand wurde etwas vergr”ert.
+      
+      30.04.92     Fehler bei Textdarstellung mit proportionalen Fonts
+                   behoben: selektierte Box war machmal zu breit.
+      
+      02.05.92     Textdarstellung ist wieder (fast) wie vor der
+                   Umstellung; die neue Darstellung gibts jetzt unter
+                   kleine Icons. 
+      
+      05.05.92     Absturz beim Draggen von Objekten auf unbekannte
+                   Fenster behoben.
+
+      10.05.92     Bei langen Wildcards im Fenster tuts der Undo
+                   frs ™ffnen jetzt richtig.
+      
+      19.05.92     Dekstop-Redraw unter MultiTOS tuts wieder.
+      20.05.92     Bei Textdarstellung ist ein Objekt wieder minimal
+                   hoch.
+
+      22.05.92     Unter MultiTOS wird menu_register benutzt.
+                   Die ID des Systemfonts wird von den Flydials
+                   bernommen.
+1.87  24.05.92     Bei nderungen des Console-Fensters und Start von
+                   Programmen durch Gemini in dem Fenster wird danach
+                   der Prompt der Mupfel neu ausgegeben.      
+1.88  31.05.92     Der Desktop-Hintergrund kann jetzt eingestellt
+                   werden. (Wer suchet, der findet)
+                   Die Selektionsbox bei Icons f„ngt wieder 1 Pixel
+                   weiter links an.
+      07.06.92     Als Shortcuts k”nnen nun auch die Funktionstasten
+                   vergeben werden. Diese haben Vorrang vor evtl.
+                   Definitionen in der Mupfel.
+      13.06.92     Bug bei Funktionstasten als Shortcuts und beim Anlegen
+                   von Ordnern (gltige Namen taten nicht) behoben.
+      15.06.92     Beim Laden von Bildern werden jetzt wenn m”glich nur
+                   die "hintersten" Farben verstellt.
+      16.06.92     Das Umbenennen von "profile.mup" in "profile " klappt
+                   in Gemini wieder. Ist beim Umbenennen w„hrend des
+                   Kopierens kein Speicher zum Sichern des Dialog-
+                   hintergrunds da, sollte der "normale" Dialog wieder
+                   richtig neu gezeichnet werden.
+                   Bei einer Breite von mehr als 128 Zeichen werden volle
+                   Zeilen nun wieder richtig ausgegeben.
+      17.06.92     Bilder werden jetzt auch unter NVDI auf der Crazy
+                   Dots richtig angezeigt. Die Farbe Schwarz wird bei
+                   Bildern mit weniger Planes als der Bildschirm richtig
+                   eingestellt.
+      18.06.92     Alle vro_cpyfm zum Zeichen gefllter Fl„chen durch
+                   v_bar ersetzt. Sollte auf TrueColor-Karten nun tun.
+                   Dem AES wird bzgl. der Anzahl der Planes nicht mehr
+                   geglaubt.
+      20.06.92     Bug beim Verschieben von Icons auf dem Desktop behoben,
+                   der neue Name wurde nicht eingetragen.
+      23.06.92     Die alte Gr”e des Console-Fensters wurde beim Fullen
+                   manchmal vergessen. Des Hintergrund wird neu gemalt, wenn
+                   das Muster ge„ndert wurde.
+      25.06.92     Das Men wird jetzt schon frher dem obersten Fenster
+                   angepat.
+      26.06.92     Die Sliderposition ist beim Undo eine geschlossenen
+                   Fensters wieder korrekt. Icons k”nnen ganz an den 
+                   rechten und unteren Rand geschoben werden. Das Selektieren
+                   kleiner Icons ber die Maske funktioniert nun richtig.
+                   Das Hintergrundraster kann nun manuell eingestellt werden.
+      28.06.92     Der Dialog zum Formatieren wurde vereinfacht. Die zuletzt
+                   benutzten Parameter werden gespeichert.
+      29.06.92     Bildladeroutine berarbeitet; sollte unter True-Color
+                   nicht mehr abstrzen. L™schen ist jetzt auch per
+                   Tastatur m”glich. Neue Dateifenster k”nnen mit
+                   Shift+Alternate+Laufwerksbuchstabe ge”ffnet werden.
+                   Statt Control-O kann auch RETURN benutzt werden.
+      30.06.92     Gemini l„uft wieder unter dem neuen MultiTOS; die
+                   Schuldfrage ist noch nicht gekl„rt...
+      11.07.92     War natrlich meine Schuld; die Routine wurde erst seit dieser
+                   MiNT-Version angesprochen...
+                   Das Installieren der Bilder sollte mit 32K Farben
+                   besser funktionieren; Die Farben des Bildes werden nach
+                   dem Ende eines Programms wieder eingestellt.
+                   Ahh! Der Volkmar-Wieners-ich-kann-ihn-nicht-repro-
+                   duzieren-Bug ist gefunden. Selektierte Icontexte 
+                   sind wieder schwarz hinterlegt.
+      16.07.92     ".." wird nun auch vorm L”schen per Tastatur deselektiert.
+                   "Ersetzen" ist beim Kopieren einer Datei auf sich selbst
+                   nicht mehr anw„hlbar.
+      25.07.92     Die Einstellungen fr das oberste Fenster sollten wieder
+                   funktionieren. Der Papierkorb wird auf Wunsch am Programm-
+                   ende wieder gel”scht.
+                   Umbenennen beim Kopieren wirkt nur noch auf der "obersten"
+                   Ebene. Man kann nun Ordner beim Kopieren umbenennen, ohne
+                   allen Objekten in dem Ordner einen neuen Namen geben
+                   zu mssen.
+      01.08.92     Aktueller Pfad war falsch, nachdem ein Programm in der
+                   Console gelaufen war. OK-Button bleibt nach nderung
+                   eines Laufwerks-Labels nicht mehr selektiert.
+                   Beim ™ffnen eines Fensters mit Alt-Buchstabe gibt es
+                   eine Busybee!
+      02.08.92     Bei geschlossenem Console-Fenster landen keine Ausgaben
+                   mehr auf dem Bildschirm. Klicks auf den unteren Slider
+                   selektieren keine Objekte mehr. Smart-Redraw sollte
+                   nun immer funktionieren. Kopieren nun wieder etwas
+                   schneller. Versteht ein Programm die VA-START-Meldung
+                   des VA_Protokolls, dann kann dies nun unter "Anwendungen"
+                   eingetragen werden.
+      11.08.92     "Alles selektieren" nur noch anw„hlbar, wenn das Fenster
+                   dies erlaubt. Probleme mit ACC-Fenstern und Topwindow-
+                   Erkennung behoben.
+      13.08.92     Alt-L steht nun fr Laufwerke, Alt-D fr Anzeige nach
+                   Datum.
+      20.08.92     Interne Arbeiten. Gemini blinzelt jetzt auch mit
+                   Book- und Falcon-Symbol.
+      30.08.92     Kleine Bugfixes und es k”nnen jetzt Aliase auf
+                   Programme angelegt werden.
+      13.09.92     Ein Klick auf die Schliebox eines Fensters l„t 
+                   dieses sofort verschwinden.
+      05.10.92     nderungen in der Laderoutine fr Bilder von Guido
+                   bertragen. Bilden sollten nun auch in True- und
+                   Hicolor ladbar sein (nicht getestet!).
+      12.10.92     Bug bei der Parameterbergabe unter MagiX gefixt; CAT
+                   (beta) l„uft nun auch von Gemini aus unter MagiX.
+1.89 -24.10.92     Kleinere Bugs behoben. Farbige Icons nach dem Atari-
+                   Standard eingebaut. Bildladen in TrueColor nochmals
+                   (von Guido) ge„ndert. Die weien Icons auf weiem Grund
+                   sollten nun weg sein. 
+      02.11.92     Letzte(?!) nderungen am Bildladen.
+      11.11.92     Zeichensatz und Anzeigedaten k”nnen jetzt fr Text
+                   und kleine Icons getrennt eingestellt werden.
+                   Das Laufwerk kann nun mit Shift+Control+Buchstabe in
+                   einem Fenster gewechselt werden.
+      24.11.92     Bugs bei Umschaltung der Anzeige behoben. Undo gefixt.
+      10.12.92     Erweiterungen des VA-Protokolls eingebaut und getestet.
+      22.12.92     Buchstabenselektion in Dateifenstern nun etwas anders.
+                   (Die Leertaste l”scht die Eingabe.)
+      26.12.92     Jetzt wahlweise m”glich, Icons immer zu snappen (Siehe
+                   Diverse)!
+      27.12.92     Beim Draggen wird nur noch der Workbereich des Fensters
+                   beachtet. Beim Zurckkehren in einen zuvor ge”ffneten
+                   Ordner wird versucht, die alte Sliderposition wieder
+                   herzustellen.
+                   Gemini ist ein bichen laxer mit der Gro-/Klein-
+                   schreibung von Objekten geworden. Die Namen z.B. in
+                   $THRASHDIR werden unver„ndert bernommen.
+      29.12.92     Fehler bei der Namensver„nderung des Reiwolfs behoben.
+                   Default fr den Namen der GIN-Datei eingefhrt.
+      02.01.93     Laufwerklabels k”nnen wieder ver„ndert werden.
+      09.01.93     Der Hintergrund kann nun abh„ngig von der Planezahl
+                   des Grafikmodus gesetzt werden.
+      10.01.93     Die Verkrzung des Mens in LowRes funktioniert nun.
+                   Die Liste der Wildcards wurde verl„ngert.
+      18.01.93     Bei der Selektion von Farbicons wird jetzt die richtige
+                   Maske bercksichtigt.
+                   Kopieren und L”schen zur Vorbereitung auf Kobold etc.
+                   umgestellt. 
+      19.01.93     Support fr Kobold eingebaut. Parameter unter
+                   "Gespr„chigkeit..." einstellbar.
+      21.01.93     Bug im MouseControl-Handling gefixt.
+      22.01.93     Jetzt auch Redraws, etc. w„hrend Koboldaktionen
+                   m”glich. Wildcard-Dialog hat nun den "*" vorne.
+                   Beim Selektieren per Tastatur gehen keine Zeichen mehr
+                   verlogen.
+      23.01.93     Bug mit der Dragbox sollte behoben sein.
+      27.01.93     Speicherschutz unter MiNT umgestellt. Allozierter
+                   Speicher ist nur noch readable.
+      28.01.93     AP_TERM und SH_WDRAW eingebaut.
+      31.01.93     Beim draggen werden keine Timerevents mehr gemacht.
+                   Gemini l„uft jetzt teilweise in der MiNT-Domain, d.h.
+                   der grafische Teil benutzt weiterhin die 8+3-Namen,
+                   aber Mupfel kann lange Dateinamen. Getestet auf u:\
+                   und mit dem MinixFs. Bei der šbergabe von Namen von
+                   Gemini in die Mupfel kann es daher zu Problemen kommen.
+      06.02.93     Super() soweit es geht durch Supexec() ersetzt.
+                   Fatalen Bug gekillt, der beim Kopieren auf das Wurzel-
+                   verzeichnis eines Laufwerks dazu fhren konnte, da
+                   stattdessen das aktuelle Verzeichnis benutzt wurde.
+                   Das Zielverzeichnis wird auch bei Abbruch des Kopierens
+                   wieder neu eingelesen.
+                   appl_getinfo wird benutzt, um unter MultiTOS die
+                   richtigen Fonts zu bekommen.
+      07.02.93     Nach einem Doppelklick wird erst auf das Loslassen
+                   der Taste gewartet.
+                   Anzeige beim Kopieren bei langen Namen leicht ver„ndert.
+                   Mit Alias k”nnen nun auch symbolische Links anlegen.
+      08.02.93     Das doppelte Anmelden von Acc-Fenstern wird nun gecheckt.
+                   Imploid Version 1.1 macht das leider.
+      14.02.93     Bug in VA-StartProgram behoben.
+                   Alle Koboldaktionen finden nun in Fenstern statt und
+                   das sollte damit auch unter MultiTOS funktionieren.
+                   Neuen Runner gemacht. Heit jetzt RUNNER2.APP und kann
+                   TOS-Programme im richtigen Pfad mit dem richtigen
+                   Environment starten. MUP-Dateien kann er noch nicht.
+      16.02.93     Bug beim Verschieben von Icons auf dem Hintergrund
+                   behoben. Der Redraw stimmte nicht immer.
+      17.02.93     Klemmbrett und Papierkorb k”nnen wieder gel”scht
+                   werden.
+      25.02.93     Gemini ignoriert nun auch Labels, bei denen Archiv-
+                   oder sonstige Bits gesetzt sind.
+                   Das Raster beim Aufr„umen hat eine minimale Gr”e
+                   von 8x8.
+1.92  27.02.93     Beim Overlaystart wird wieder eine GEMINI.TMP geschrieben.
+                   Die Menleiste wird nach Starten von GEM-Programmen
+                   ohne Fenster-Schlieen wiederhergestellt.
+                   Bei Kobold-Jobs werden am Ende die Laufwerke wieder
+                   freigegeben.
+                   Das Starten von Programmaliasen funktioniert wieder.
+                   Der Bildschirm wird dabei nicht mehr 2mal neu gezeichnet.
+      28.02.93     Koordinaten in INF- und GIN-Dateien von Promille auf
+                   Pro32767tel umgestellt. Alte Dateien werden richtig
+                   eingelesen.
+                   Der Iconzeichensatz wird nun auch unter MultiTOS auf
+                   eine kleine Gr”e eingestellt und berall korrekt benutzt.
+                   Gemini l„uft wieder in der MiNT-Domain. Dies ist leider
+                   notwendig, damit lange Dateinamen nicht zu Kaos fhren.
+      01.03.93     Symbolische Links werden kursiv angezeigt.
+                   Lange Dateinamen werden auch im Fenster angezeigt, es
+                   gibt aber noch Probleme mit den Dialogen.
+      02.03.93     Probleme beim Wechsel von leeren auf volle Fenster gefixt.
+                   (Bug erst gestern eingebaut!)
+      03.03.93     Bug in xrsrc.c gefixt, der erratisch fr Speicherschieer
+                   am Programmende sorgte. Dateifont wird nach Verlassen
+                   des Dialoges wieder korrekt eingestellt.
+      05.03.93     Sind Objekte selektiert, so werden nur diese aufger„umt.
+                   Kobold wird nun im Fehlerfall ein leerer Job geschickt,
+                   der (ohne da Kobold sich beendet) dafr sorgen soll,
+                   da die Laufwerke wieder freigegeben werden.
+      07.03.93     Starten im Single-Modus unter MagiX funktioniert. Gemini
+                   tr„gt sich als Shell ein.
+      09.03.93     Natrlich wieder mal den Redraw nach Kobold-Aktionen
+                   verbockt; ist jetzt behoben.
+                   Drag&Drop unter MultiTOS eingebaut.
+      11.03.93     Es gibt jetzt die Environmentvariablen GEMINI_INF und
+                   GEMINI_GIN, die den vollen Pfad auf die Dateien enthalten
+                   sollen, die statt Gemini.inf und Gemini.gin gelesen
+                   _und_ geschrieben werden sollen. Diese k”nnen in Profile.mup
+                   gesetzt werden.
+                   Zudem wird jetzt in $HOME (falls gesetzt) nach Gemini.inf 
+                   gesucht und in $HOME\GIN nach der GIN-Datei. Ist HOME
+                   nicht gesetzt, so wird in StartVerzeichnis\GIN nach der
+                   GIN-Datei gesucht. Dies zur besseren šbersicht.
+                   Tastaturselektion ist in case-sensitiven Verzeichnissen
+                   jetzt selbst case-sensitiv.
+      17.03.93     Ein normales Verlassen von Gemini ist unter MagiX wieder
+                   m”glich. Icons ohne Text haben einen vernnftigen Rahmen
+                   beim Verschieben.
+      21.03.93     Ist die Environmentvariable GEMINI_TERMINAL vorhanden, so
+                   werden unter MiNT TOS-Programme in einem Terminalfenster
+                   gestartet. Das ganze ist noch ziemlich buggy, deswegen
+                   ist es nicht der Default.
+      06.04.93     COLUMNS hat nach dem Start von GEM-Programmen wieder den
+                   richtigen Wert. 
+      08.04.93     Beim Reinziehen von Dateien in die Console wird wieder
+                   ein Space angeh„ngt.
+      09.04.93     Sind frs L”schen oder Kopieren genug Objekte fr den 
+                   Kobold vorhanden und ist dieser installiert, so wird
+                   das Zusammensuchen weiterer Objekte unterlassen.
+                   Die ExecJob-Library von Hansi eingebunden, damit endlich
+                   (hoffentlich) alles klappt. Erste Tests sahen gut aus.
+      12.04.93     AV_ASK_OBJECT funktioniert wieder.
+      23.04.93     Im Xacc-Protokoll wird nun bei ACC_ACC-Nachrichten die
+                   Menu-Id des Accessories richtig durchgereicht.
+      01.05.93     Nachfragen bei Koboldbenutzung jetzt richtig. Nach
+                   Kopieraktion bleiben selektierte Objekte angew„hlt.
+      30.05.93     Im Formatierdialog jetzt auch M”glichkeiten fr ED-
+                   Disketten.
+      02.06.93     Beim Direktstart von Kobold werden die Dialoge nicht 
+                   mehr in Fenster gelegt. Fr den Direktstart mu der
+                   Pfad von Kobold in der Environmentvariable KOBOLD_PATH
+                   angegeben werden.
+                   Applikations- und Iconregeldialoge sollten trotz 
+                   Verschieben der Dialogbox nun immer wieder die Listen
+                   an der richtigen Stelle malen.
+                   Die Einstellungen fr das Console-Fenster sind nur noch
+                   ber "Darstellung" erreichbar und nur noch, wenn das
+                   Fenster auch oben ist. 
+                   Nach einem Fehler beim Verschieben wird gefragt, ob
+                   alle bereits kopierten (aber noch nicht gel”schten)
+                   Dateien auch gel”scht werden sollen.
+      08.06.93     Format-Dialogbox jetzt auch mit neuen Optionen richtig
+                   bedienbar. 
+      26.06.93     Unter MiNT werden nun Pointer auf fremden Speicher beim
+                   VA-Protkoll auf Lesbarkeit berprft.
+      04.07.93     Label ver„ndern tuts wieder. Das Update der Fenster
+                   beim L”schen von Ordnern sollte nun auch wieder richtig
+                   sein.
+                   Das L”schen/Kopieren/Verschieben in Gemini sollte nun 
+                   auch mit langen Dateinamen funktionieren. 
+                   MinixFS-Freaks: bitte testen!
+      14.07.93     Info ber Desktop-Icons kann jetzt wieder 2mal hinter-
+                   einander aufgerufen werden.
+      16.08.93     Laufwerksicons k”nnen jetzt etwas komfortabler
+                   angemeldet werden.
+      21.08.93     Neue Nachricht AV_EXIT zum Abmelden von VA-Kunden.
+                   Der Name von GEMINI_GIN wird nun im Dialog angezeigt,
+                   so gesetzt.
+      22.08.93     Bug beim Speicher in GIN-Datei gefixt. (Statt Laufwerken
+                   wurden Icons doppelt gesichert).
+                   Unter MagiX werden TOS-Programme, die per Doppelclick
+                   gestartet wurden, an VT52 bergeben.
+      03.09.93     Die Positionen der Laufwerkicons werden wieder richtig
+                   gesichert.
+      04.09.93     Bei allen Wechselplattenbesitzern, deren Treiber XHDI
+                   untersttzt sollten nun bei herausgenommenem Cartridge
+                   die Laufwerksicon "verschwinden" k”nnen.
+      28.09.93     Verbesserung der Laufwerkicons. Es wird nun regelm„ig
+                   gecheckt und nach dem L”schen eines Icons taucht dieses
+                   auch nicht wieder auf.
+      29.09.93     Das Schlieen von Accessory-Fenstern mit ^U funktioniert
+                   nun wieder sauber, d.h. Gemini entzieht dem Acc nicht
+                   mehr einfach das Fenster.
+                   Neue Font-Auswahl von Julian eingebaut - hat noch
+                   Probleme bei Speedo-Fonts.
+                   Leere Laufwerksicon-Namen (dolles Wort) werden nun
+                   wieder korrekt eingelesen.
+      30.09.93     Ordner schlieen nun Selectric-konform mit Control+
+                   Backspace. Backspace l”scht nun ein Zeichen bei Tastatur-
+                   selektion.
+                   Sichere Erkennung von Kopierrekursion, etc. eingebaut,
+                   so da ein Kopieren von D:\TEST nach D:\TEST2 m”glich
+                   ist.
+                   Verschieden groe Icons fr volles/leeres Klemmbrett/
+                   Papierkorb werden nun richtig dargestellt.
+                   Dateiregeln sind jetzt nicht mehr automatisch in
+                   Grobuchstaben.
+1.93  01.10.93     Beim Ziehen vom Objekten auf Ordner auf dem Desktop
+                   wird nun auch auf Vorhandensein des Ordners geachtet.
+                   Beim Speichern kann nun nicht mehr mit "." ein leerer
+                   Dateiname erzeugt werden.
+      05.10.93     Es k”nnen nun auch MUP-Dateien in VT52 und ber 
+                   TOSRUN gestartet werden. Das Console-Fenster wird
+                   nicht mehr berflssigerweise nach vorne geholt.
+                   Meldet man fr ein TOS-Programm in OPT_PGMNAME_EXT
+                   das W:Y an, so wird es nicht in VT52 oder TOSRUN
+                   gestartet.
+      07.10.93     Drag&Drop jetzt auch unter MagiX!
+                   Gummiband und Draggen tuts auch unter MagiX wieder,
+                   wenn Gemini nicht das oberste Fenster hat.
+      18.10.93     In der Applikationsliste kann nun auch kopiert werden.
+                   Somit ist es leicht m”glich, eine Applikation mehrmals
+                   auf die verschiedensten Dateitypen anzumelden.
+      23.10.93     Accs sollten in Ihrer VA-Statuszeile keine 
+                   berflssigen Newlines mehr bekommen.
+                   Bei Kobold-Kopieraktionen wird jetzt immer OPEN_FOLDER
+                   ("vorher Ordner ”ffnen") eingeschaltet.
+                   Drag&Drop-Dateinamen werden nur noch gequoted (in '
+                   gesetzt), wenn ein ' oder ein Leerzeichen im Dateinamen
+                   vorkommt.
+                   Unter Multitasking wird bei ESCAPE im Laufwerksfenster
+                   nur bei festgehaltener SHIFT-Taste einen Medienwechsel
+                   erzwungen. Ansonsten wird nur neu eingelesen.
+                   Bei mehreren selektierten Objekten kann jetzt auch
+                   die Info ber die einzelnen abgerufen werden.
+      18.12.93     Die Icons in den Iconregeln (Liste) wurden nicht
+                   immer richtig gemalt. Falsches Clipping behoben.
+                   Beim Einlesen von Laufwerksinformationen wird nun
+                   geprft, ob das Icon existiert. Wenn nicht, wird
+                   das Defaulticon (6) genommen.
+                   Wird beim Bet„tigen der Shortcuts fr Auswahlpoppups
+                   (Tastaturkrzel, Farben) eine Shift-Taste festgehalten,
+                   so wird die n„chste Wahl genommen.
+                   Poppups werfen jetzt einen schmaleren Schatten.
+      20.12.93     Fehler beim Suchen von Desktop-Icons per Datei-
+                   auswahl behoben.
+      27.12.93     Bei Dateigr”enangaben stehen jetzt Trennpunkte.
+                   Dateinamen von nicht case-sensitiven Dateisystemen
+                   k”nnen auch in Kleinbuchstaben benutzt werden 
+                   (Extras -> Diverses).
+1.99  30.12.93     Nicht mehr vorhandene Laufwerke verschwinden auch
+                   wieder vom Desktop. Der berflssige Return nach
+                   dem ersten ™ffnen der Console ist wech.
+                   Eine schmale Console (3 Zeilen) stellt beim Startup
+                   kein Problem mehr dar; der Cursor ist sichtbar.
+                   Bei leerem Suchstring schliet Backspace wieder das
+                   Fenster. Die Leertaste entfernt den Wildcard eines
+                   Suchstrings, so da man einen Namen genau matchen
+                   kann.
+                   Wird das L”schen mit Kobold abgebrochen, werden 
+                   keine Icons mehr vom Desktop entfernt.
+1.999 08.02.94     Viele Bugfixes. Tastaturkrzel und Namen, die fr
+                   Laufwerke unter "Informationen..." ge„ndert wurden,
+                   werden jetzt mitgesichert.
+                   Belegter Platz auf Laufwerken wird jetzt unter MagiX
+                   und neuerem GEMDOS richtig berechnet.
+      14.03.94     CASE Cookie wird nun untersttzt.                   
+      10.04.94     Bei appl_find (suchen nach Applikationen) wird jetzt
+                   auch der Name in Grobuchstaben probiert.
+                   Das Warten auf Tastendruck beim Start von Programmen
+                   in der Console ist wieder m”glich - man sieht die
+                   Ausgabe wieder.
+                   In Gemini k”nnen nun auch von der Mupfel aus per 
+                   VA-Protokoll Parameter an ein installiertes 
+                   Accessory bergeben werden.
+                   Alle INF/GIN Dateinamen, Ordner und Endungen werden
+                   jetzt kleingeschrieben.
+       30.07.94    Die Leertaste deselektiert jetzt auch im Desktopfenster.
+                   Selektion von kleinen Icons ist wieder richtig.
+       07.08.94    Dateifenster haben jetzt eine sinnvolle Minimalgr”e.
+       20.08.94    Klemmbrett wird jetzt auch bei Groschrift in 
+                   Dateianzeige richtig kopiert.
+                   Case Cookie fr 520er funktioniert auch.
+       04.10.94    AV_DRAG_ON_WINDOW tut's jetzt mit Starten von
+                   Programmen.
+       31.10.94    VA-Protkoll mal wieder erweitert. Alternate-Doppel-
+                   klick auf Dateien ”ffnet das Fenster der zust„ndigen
+                   Applikation.
+       01.11.94    Existiert in $HOME kein Gemini.mup, so wird wieder
+                   im Gemini Verzeichnis nach einer solchen Datei gesucht.
+       12.11.94    Doppelklicks mit der Maus bei festgehaltener Shift
+                   Taste fhren jetzt immer zum Aufruf der auf "*"
+                   angemeldeten Applikatioin (unabh„ngig von ALT, etc.)
+       13.11.94    Das VA-Protokoll kann nun optional Dateinamen quoten.
+       20.11.94    Nach abgebrochenem Verschieben wird jetzt immer gefragt,
+                   ob die bereits verschobenen Quelldateien gel”scht 
+                   werden sollen.
+       17.12.94    Sortieren im Dateifenster nach Namen beachtet nun
+                   Zahlen statt nur Ziffern.
+       18.12.94    Neue Environmentvariable PARSUFFIX fr Programme, die
+                   mit Parametern versorgt werden wollen.
+                   Byteanzeige in der Infozeile nun mit Punkten.
+       20.12.94    TAB vervollst„ndigt nun das Suchen in Dateifenstern.
+                   ESC l”scht die gemachten Eingaben.
+       28.01.95    Bei Tastatureingaben in Dateifenstern stehen wieder
+                   die normalen Tastaturkrzel zur Verfgung.
+                   Alle externen info, etc. Dateien sollten nun in
+                   Kleinschrift gesucht und geschrieben werden.
+       25.02.95    Sortierfunktionen auf long umgestellt, damit numerische
+                   Vergleiche besser funktionieren.
+       26.05.95    Bug bei unsortierter Dateianzeige behoben.
+       28.05.95    SC_CHANGED macht auch redraw von Fenstern.
+
+ciao   Stefan Eissing

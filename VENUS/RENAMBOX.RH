@@ -1,0 +1,8 @@
+#define RENAMBOX         8   /* Formular/Dialog */
+#define ROLDNAM1         4   /* FTEXT in Baum RENAMBOX */
+#define ROLDNAM2         5   /* FTEXT in Baum RENAMBOX */
+#define RNEWNAM1         7   /* FTEXT in Baum RENAMBOX */
+#define RNEWNAM2         8   /* FTEXT in Baum RENAMBOX */
+#define RENCANC          9   /* BUTTON in Baum RENAMBOX */
+#define RENOK            10  /* BUTTON in Baum RENAMBOX */
+

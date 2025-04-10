@@ -1,0 +1,16 @@
+#define FONTBOX          26  /* Formular/Dialog */
+#define FTFONT           3   /* BOX in Baum FONTBOX */
+#define FTBGBOX          4   /* BOX in Baum FONTBOX */
+#define FTBOX            5   /* BOX in Baum FONTBOX */
+#define FTSTB            8   /* BOX in Baum FONTBOX */
+#define FTST             9   /* BOX in Baum FONTBOX */
+#define FTPBGBOX         12  /* BOX in Baum FONTBOX */
+#define FTPBOX           13  /* BOX in Baum FONTBOX */
+#define FTROWS           16  /* FTEXT in Baum FONTBOX */
+#define FTCOLS           17  /* FTEXT in Baum FONTBOX */
+#define FTINV            19  /* BUTTON in Baum FONTBOX */
+#define FTBOLD           20  /* BUTTON in Baum FONTBOX */
+#define FTUNDER          21  /* BUTTON in Baum FONTBOX */
+#define FTCANCEL         22  /* BUTTON in Baum FONTBOX */
+#define FTOK             23  /* BUTTON in Baum FONTBOX */
+

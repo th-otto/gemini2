@@ -1,0 +1,16 @@
+..\runner2.app
+.C[-P- -G]
+.L[-S=16000]
+=
+pcstart.o
+..\mupfel\mainargv.c
+
+runner2.c	(..\common\alloc.h, ..\common\fileutil.h, 
+			..\common\toserr.h)
+
+..\common\common.prj
+mint\mintbind.o
+
+pcstdlib.lib
+pctoslib.lib
+pcgemlib.lib

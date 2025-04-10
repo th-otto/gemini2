@@ -1,0 +1,9 @@
+#!mupfel
+#
+# zoo all parse files
+#
+
+zoo ahunP mupfel2.zoo *.[chs] *.prj *.mup doc\* ..\common\*.[chs] %
+..\common\common.prj ..\runner2\*.[chs] ..\runner2\runner2.prj
+
+cp -vd mupfel2.zoo $ARCHIV

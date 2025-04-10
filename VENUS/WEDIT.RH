@@ -1,0 +1,5 @@
+#define WEDIT            27  /* Formular/Dialog */
+#define WEDITTXT         3   /* FTEXT in Baum WEDIT */
+#define WEDITCAN         4   /* BUTTON in Baum WEDIT */
+#define WEDITOK          5   /* BUTTON in Baum WEDIT */
+

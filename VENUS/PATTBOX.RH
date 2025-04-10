@@ -1,0 +1,10 @@
+#define PATTBOX          39  /* Formular/Dialog */
+#define PAT0             2   /* BOX in Baum PATTBOX */
+#define PAT1             3   /* BOX in Baum PATTBOX */
+#define PAT2             4   /* BOX in Baum PATTBOX */
+#define PAT3             5   /* BOX in Baum PATTBOX */
+#define PAT4             6   /* BOX in Baum PATTBOX */
+#define PAT5             7   /* BOX in Baum PATTBOX */
+#define PAT6             8   /* BOX in Baum PATTBOX */
+#define PAT7             9   /* BOX in Baum PATTBOX */
+

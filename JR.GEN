@@ -1,0 +1,193 @@
+Sonntag, 27. November 1994, 20.41 Uhr MEZ
+fkey.c: 'fkey 1' geht wieder auf F1 anstelle F2.
+
+Sonntag, 27. November 1994, 20.53 Uhr MEZ
+chario.c: Bei interaktiven Abfragen tun's Eingaben == '\0' nicht mehr (strchr
+findet die, daher der Fehler).
+
+Sonntag, 27. November 1994, 20.59 Uhr MEZ
+ls.c: Es werden auch dann alle Argumente bearbeitet, wenn zwischendurch
+ein Fehler aufgetreten ist.
+
+Montag,  2. Januar 1995, 21.00 Uhr MEZ
+cookie.c: kennt die neuen Werte fÅr _VDO und _MCH und MNAM.
+mvwindow.c: TERMCAP korrigiert.
+fileutil.c, copymove.c: geben (teilweise) per StrError aus. 
+init.c, label.c: teilweise auf StrError umgestiegen.
+
+Dienstag,  3. Januar 1995, 20.19 Uhr MEZ
+FileInfo hat jetzt die DateilÑnge als unsigned long, damit werden bei
+defekten CD wenigstens keine negativen DateilÑngen mehr ausgegeben.
+
+Samstag,  7. Januar 1995, 16.26 Uhr MEZ
+rm.c: NlsStr um OPT_rm fehlte mehrfach.
+
+Samstag,  1. April 1995, 21.52 Uhr MSZ
+files.c: meinen Datumsanzeigefehler beseitigt (ein TOS-Datum ist dann ungÅltig,
+wenn die date-Komponente Null ist).
+
+Samstag,  1. April 1995, 22.34 Uhr MSZ
+common/fncase: neue Routinen, die bei strlwr etc den Atari-Zeichensatz
+richtig behandeln.
+
+Samstag,  1. April 1995, 23.36 Uhr MSZ
+copymove: strnicmp durch strcmp ersetzt.
+
+Sonntag,  2. April 1995, 09.52 Uhr MSZ
+mglobal: fehlendes NlsStr
+
+Sonntag,  2. April 1995, 18.27 Uhr MSZ
+pexec: nach ReInitBIOS werden ROWS etc wieder auf Autoset gestellt.
+mglobal: auskommentierten shel_write zum Lîschen des Buffers wieder eingebaut.
+
+Sonntag,  2. April 1995, 22.22 Uhr MSZ
+drives, fileutil: XHDI-Abfrage auf gÅltige Partitionen repariert (zumindest
+damit begonnen).
+
+Montag,  3. April 1995, 22.08 Uhr MSZ
+smallcmd: getopt tut jetzt auch ohne aktuelle Parameter.
+
+Dienstag, 11. April 1995, 22.10 Uhr MSZ
+rmdir: Fehlerbearbeitung verbessert.
+
+Freitag, 14. April 1995, 14.44 Uhr MSZ
+getinfo.c: Fehlerbearbeitung verbessert. Information von Dpathconf Åber
+gÅltige Dateiattribute wird ausgewertet.
+
+Freitag, 14. April 1995, 15.24 Uhr MSZ
+venuserr: sysErr entfernt (geht nun Åber common).
+
+Freitag, 14. April 1995, 15.29 Uhr MSZ
+venus\toserror.h: entfernt.
+
+Samstag, 22. April 1995, 13.29 Uhr MSZ
+exec.c: Fehlerbehandlung
+init, redirect: dito
+consel.c: Dependency fehlte (Terminal-Struktur).
+
+Sonntag, 23. April 1995, 15.34 Uhr MSZ
+erase.c: setjmp entfernt; Fehlermeldungen Åberarbeitet.
+
+Mittwoch,  3. Mai 1995, 23.24 Uhr MSZ
+message.c: Testweise shutdown eingebaut.
+version.c: XHDI-Treibername wird angezeigt.
+
+Montag, 15. Mai 1995, 18.57 Uhr MSZ
+ls: Symlink-Problem beseitigt (zumindest etwas ertrÑglicher gemacht). Neue
+Option -L.
+
+Dienstag, 16. Mai 1995, 19.45 Uhr MSZ
+runner: die Titelzeile wird per Objc_draw ausgegeben und hat dadurch die
+richtige Schrifthîhe. Da keine virt. Workstation mehr gebraucht wird, ist
+es auch gleich um 1K kÅrzer.
+
+Freitag, 19. Mai 1995, 07.58 Uhr MSZ
+message.c: Shutdown: temp. Workaround fÅr MagiC, optische Verbesserungen,
+Reset
+
+Sonntag, 11. Juni 1995, 13.15 Uhr MSZ
+rename.c: rename geht jetzt (wieder?) mit leeren Extensions.
+
+Samstag, 23. September 1995, 19.19 Uhr MSZ, julian@Kim
+format.c: gibt Errorcodes aus.
+
+Samstag, 7. Oktober 1995, 11.21 Uhr MEZ, julian@Kim
+message.c: AV_XWIND mit Topping-Bit îffnet ein neues Fenster, wenn
+kein passendes gefunden wurde.
+
+Sonntag, 22. Oktober 1995, 11.07 Uhr MEZ, julian@Kim
+einige kleine Patches fÅr MacMiNT (keine Systemvariablen)
+
+Sonntag, 22. Oktober 1995, 13.59 Uhr MEZ, julian@Kim
+test: unÑren Operator -l entfernt, weil er den Parser ins Schleudern
+brachte und ohnehin keine POSIX-Option ist (kann ersetzt werden durch
+${#varname}).
+
+Sonntag, 22. Oktober 1995, 14.51 Uhr MEZ, julian@Kim
+init: Fehlermeldungen korrigiert, -s wird nun richtig evaluiert.
+
+Montag, 23. Oktober 1995, 20.40 Uhr MEZ, julian@Kim
+icondrag.c: bei Klick auf Hintergrund wird die Gemini-MenÅleiste 
+aktiviert (erfordert MagiC 3.5)
+version.c: weiterer Absturzgrund fÅr MacMiNT entfernt.
+
+Samstag, 28. Oktober 1995, 17.43 Uhr MEZ, julian@Kim
+terminal.c: MagiC-Abfrage fÅr Taskmanager korrigiert.
+
+Sonntag, 29. Oktober 1995, 14.15 Uhr MEZ, julian@Kim
+message.c: vor Ausschalten/Reboot wird gesynct.
+
+Montag, 13. November 1995, 07.21 Uhr MEZ, julian@Kim
+getinf.c: Fehler bei ReadLabel wird vernÅnftig behandelt. Wenn das ZÑhlen
+der Dateien abgebrochen wird, kann man zumindest noch die restlichen
+Informationen ansehen.
+
+Sonntag, 10. Dezember 1995, 12.45 Uhr MEZ, julian@Kim
+free -l: Ausgabebreite gefixt.
+
+Samstag, 18. Mai 1996, 12.51 Uhr MSZ, julian@Kim
+ls: Filetypes. -i -c -u
+test: use mod date on -nt...
+version: weiû von MagiC.
+
+Sonntag, 26. Mai 1996, 17.04 Uhr MSZ, julian@Kim
+mupfel.c: version check for NLS file.
+
+Montag, 27. Mai 1996, 14.00 Uhr MSZ, julian@Kim
+rm.c: aufgerÑumt.
+
+Dienstag, 28. Mai 1996, 20.56 Uhr MSZ, julian@Kim
+ls.c: Ausgabebreite fÅr inodes gesetzt.
+
+Mittwoch, 29. Mai 1996, 23.44 Uhr MSZ, julian@Kim
+ls.c: umfangreiche énderungen fÅr Datumsausgabeformat.
+
+Donnerstag, 30. Mai 1996, 08.35 Uhr MSZ, julian@Kim
+walkdir.c: nlinks == 2 wenn FA_SUBDIR.
+
+Donnerstag, 30. Mai 1996, 22.20 Uhr MSZ, julian@Kim
+loctime.c. auskommentiert, und bei der Promptausgabe durch simplere 
+Routinen ersetzt.
+
+Sonntag, 23. Juni 1996, 12.43 Uhr MSZ, julian@Kim
+shelfork.c: workaround fÅr MagiC 5.
+
+Montag, 24. Juni 1996, 21.45 Uhr MSZ, julian@Kim
+alloc.c: Guards eingebaut
+alias.c: in unalias fehlte optinit().
+
+Dienstag, 25. Juni 1996, 18.08 Uhr MSZ, julian@Kim
+names.c: Speicherschiesser beim Aktualisieren von Auto-Variablen behoben.
+
+Donnerstag, 27. Juni 1996, 21.09 Uhr MSZ, julian@Kim
+mupfel.c: sccsid eingefÅgt.
+
+Donnerstag, 27. Juni 1996, 22.40 Uhr MSZ, julian@Kim
+Versionsnummern zwischen Mupfel und Gemini synchronisiert (kommt jetzt immer
+aus mupfel/mglob.h).
+
+Samstag, 29. Juni 1996, 21.51 Uhr MSZ, julian@Kim
+ls.c: Benutzer- und Gruppennamen.
+
+Samstag, 29. Juni 1996, 22.33 Uhr MSZ, julian@Kim
+showPrompt: ruft Pwait() auf. Besserer Platz?
+
+Sonntag, 30. Juni 1996, 13.43 Uhr MSZ, julian@Kim
+ls.c: L.digits wird richtig initialisiert.
+
+Mittwoch, 3. Juli 1996, 21.41 Uhr MSZ, julian@Kim
+ls.c: bei extract_from_.. werden die Directories nicht mehr aus der Dateiliste
+gelîscht, wenn nicht -M benutzt wurde (damit sie bei ls -lR auch mit angezeigt
+werden).
+
+Mittwoch, 3. Juli 1996, 22.02 Uhr MSZ, julian@Kim
+lineedit.c: wordChar ist jetzt alles, was nicht ' ' ist.
+
+Sonntag, 7. Juli 1996, 22.23 Uhr MSZ, julian@Kim
+label.c: aufgerÑumt.
+
+Samstag, 28. September 1996, 14.53 Uhr MSZ, julian@Kim
+names.c: LINES und COLUMNS werden wieder vom Aufrufer Åbernommen.
+
+Sonntag, 29. Dezember 1996, 22.24 Uhr MEZ, julian@Kim
+ls.c, fileutil, walkdir: Support fÅr Mac-type und -creator-infos.

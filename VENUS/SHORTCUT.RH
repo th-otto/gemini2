@@ -1,0 +1,23 @@
+#define SHORTCUT         33  /* Formular/Dialog */
+#define SHORTNO          2   /* STRING in Baum SHORTCUT */
+#define SHORT0           3   /* STRING in Baum SHORTCUT */
+#define SHF1             4   /* STRING in Baum SHORTCUT */
+#define SHORT1           5   /* STRING in Baum SHORTCUT */
+#define SHF2             6   /* STRING in Baum SHORTCUT */
+#define SHORT2           7   /* STRING in Baum SHORTCUT */
+#define SHF3             8   /* STRING in Baum SHORTCUT */
+#define SHORT3           9   /* STRING in Baum SHORTCUT */
+#define SHF4             10  /* STRING in Baum SHORTCUT */
+#define SHORT4           11  /* STRING in Baum SHORTCUT */
+#define SHF5             12  /* STRING in Baum SHORTCUT */
+#define SHORT5           13  /* STRING in Baum SHORTCUT */
+#define SHF6             14  /* STRING in Baum SHORTCUT */
+#define SHORT6           15  /* STRING in Baum SHORTCUT */
+#define SHF7             16  /* STRING in Baum SHORTCUT */
+#define SHORT7           17  /* STRING in Baum SHORTCUT */
+#define SHF8             18  /* STRING in Baum SHORTCUT */
+#define SHORT8           19  /* STRING in Baum SHORTCUT */
+#define SHF9             20  /* STRING in Baum SHORTCUT */
+#define SHORT9           21  /* STRING in Baum SHORTCUT */
+#define SHF10            22  /* STRING in Baum SHORTCUT */
+

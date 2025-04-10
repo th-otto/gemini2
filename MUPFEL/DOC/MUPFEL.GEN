@@ -1,0 +1,711 @@
+
+                        MParse Genesis
+                        eine neue Mupfel wird geboren
+                        
+Ver.    Datum   
+0.0     -10.02.91  erste AnfÑnge mit dem Parser
+
+        10.04.91   MParse kann inzwischen sehr viel. Der Parser ist
+                   bis auf Bugs komplett. IO-Redirection ist schon bis
+                   auf die haken des TOS eingebaut. Es wird momentan
+                   zum Testen eine Kommandozeile fÅr system() 
+                   zusammengebaut. Wildcard-Expansion ist auch schon
+                   drin. Expandierte Sachen werden alphabetisch sortiert.
+                   Das GrundgerÅst des Environments steht.
+
+                   Heute noch den IFS bei der Substitution eingebaut. 
+                   Dabei Fehler beim Quoten von substituierten Variablen
+                   ausgebaut. $host wird nun gesplittet, "$host" nicht
+                   mehr. 
+                   
+        12.04.91   Das Zeichen "^" ist nun nicht mehr gleichbedeutend
+                   mit dem Pipe-Zeichen "|". Soo kompatibel wollen wir
+                   dann auch nicht sein.
+                   
+        13.04.91   Die Shell-Variablen $0 ... $9 $* $@ $# $- tuns jetzt.
+                   Ebenso werden beim Aufruf die Optionen gesetzt. Das
+                   Setzen dieser Variablen tuts auch fÅr Shell-Funktionen.
+                   
+        17.04.91   Fehler im Lexer ausgebaut, der verhinderte, das das
+                   Programm 8-Bit-fest war (unsigned char).
+                   
+        20.04.91   Kommandozeile wird jetzt richtig interpretiert.
+                   -c wird erkannt. Steht ein File in der Inputzeile,
+                   werden von dort Kommandos gelesen.
+                   Wenn fÅr Redirection Dateien angelegt werden, wird
+                   zuerst ein ^Z hineingeschrieben und dann wieder
+                   zum Dateianfang gegangen.
+                   
+        22.04.91   Die Belegung der Standard-Handles wird jetzt aus der 
+                   Basepage dreckigerweise ermittelt. Anders ist es 
+                   momentan nicht zu machen.
+                   
+        23.04.91   Scripts kînnen jetzt mit ^C abgebrochen werden und
+                   werden beim ersten Syntax-Fehler terminiert. Dabei
+                   wird die Zeilennummer ausgegeben.
+                   chario von der Mupfel "portiert", damit es mit unserer
+                   Redirection klar kommt.
+                   Fehler bei Slashconv beseitigt.
+                   
+        24.-30.04.91
+                   Kommandos werden schon gefunden, aber noch nicht richtig
+                   gestartet. Folgende interne Kommandos sind schon
+                   implementiert: set, basename, dirname, true, false, ls,
+                   cd, getopt. Mupfel wird reentrant gemacht, damit selbst
+                   in einem Multi-Tasking-System keine Probleme auftauchen
+                   kînnen.
+                   
+        -08.05.91  Lange keine Eintragung mehr, obwohl sehr viel passiert
+                   ist. noclobber eingebaut (Shell Flag -C). Externe TOS-
+                   Programme kînnen gestartet werden. Das Starten von
+                   GEM-Programmen wurde bisher nicht getestet. 
+                   Die Variablen, die die Optionen fÅr Programme beinhalten,
+                   lauten jetzt OPT_NAME_EXT. Programme, die keine Endung
+                   haben, kînnen auch gestartet werden. Sie haben dann nur
+                   OPT_NAME als Variablennamen (Daher auch das OPT_ davor,
+                   um Verwechlungen zu vermeiden). Nebeneffekt: Die Optionen
+                   stehen jetzt an einer Stelle im Environment.
+                   Folgende Kommandos sind implementiert:
+                   break, cat, continue, echo, exit, export, eval, help,
+                   mkdir, read, readonly, return, shift, test, unset, [,
+                   :, '.'.
+                   Here-Dokumenten ("<<word") werden jetzt korrekt eingelesen,
+                   wenn word nicht gequoted war.
+                   Mit dem Shell-Flag "-G" wird angegeben, daû vom GEM
+                   *keinerlei* Gebrauch gemacht wird. Momentan wird es
+                   automatisch gesetzt. In Zukunft wird es unter folgenden
+                   UmstÑnden gesetzt sein: explizite Angabe und im 
+                   AUTO-Ordner. 
+                   
+        09.05.91   Bei "nicht gequoteten" Here-Dokumenten und bei "<< word"
+                   findet bei den eingelesenen Zeilen, bzw. word jetzt auch
+                   Kommando-Substitution statt.
+                   Die eingebauten Kommandos geben jetzt bei falschen
+                   Optionen eine Usage. Allerdings werden die Long-Options
+                   nicht mehr mit ausgegeben.
+                   Die Kommandos "date" und "touch" wurden eingebaut.
+                   Die Kommandso "dirs", "pushd" und "popd" wurden einge...
+                   Bei externen Kommandos mit Variablenzuweisung werden
+                   die Variablenwerte korrekt nur an das gestartete Programm
+                   vererbt.
+                   Bug beim Suchen nach Kommandos im aktuellen Verzeichnis
+                   gekillt.
+                   
+        10.05.91   subst.c ausfÅhrlich kommentiert (damit man es auch in
+                   einer Woche noch versteht). Dabei einen Bug entfernt,
+                   der dazu fÅhrte, daû bei "echo `echo test`ds" das "ds"
+                   vergaû.
+                   read kann nun richtig aus einer Datei lesen, auch wenn
+                   von Tastatur noch kein Edieren der Zeile mîglich ist.
+                   
+        13.05.91   Neue Shell-Level eingebaut. Jetzt kînnen auch Scripts
+                   abgearbeitet werden. FÅr jeden Level wird eine "neue"
+                   Speicherverwaltung geîffnet, so daû wirklich aller 
+                   Speicher, der von einem Level/Script verbraucht wird,
+                   auch wieder an das System zurÅckgegeben wird.
+                   (Wichtig fÅr system ()!)
+        
+        14.05.91   rmdir eingebaut.
+                   Mit rm angefangen.
+        
+        15.05.91   `rm' funktioniert jetzt richtig. Die Optionen -f und
+                   -i schlieûen sich gegenseitig aus. Die Option -i geht
+                   jetzt auch bei -r rekursiv durch die Verzeichnisse.
+                   Bug gefixt, der dazu fÅhrte, daû die Shell-Flags nicht
+                   an eine SubShell vererbt wurden.
+                   
+        17.05.91   rm kann jetzt wieder beliebig lange Pfadnamen.
+                   `runopts' und `chmod' eingebaut.
+                   $PWD und $OLDPWD eingebaut.
+                   
+        18.05.91 -- 27.05.91
+                   `cp' und `mv' eingebaut und inzwischen ziemlich debuggt.
+                   `backup' und `rename' eingebaut.
+                   
+        01.06.91   Weiter am Zeileneditor gebastelt. Kann jetzt schon
+                   ein biûchen und gebraucht kein VDI!
+        
+        04.06.91   Fehler in der Substitution gefixt. ${test:-abc}
+                   vergaû bei nicht gesetztem test das c.
+                   History eingebaut. Funktioniert noch nicht ganz so, wie
+                   in der alten Mupfel, aber mal sehen...
+                   
+        05.06.91   History funktioniert jetzt.
+                   Filename-Completion eingebaut.
+                   Fehler bei der Anzeige von cp und mv gefixt (doppelter
+                   Beckslash).
+                   parstest -c commands verhÑlt sich jetzt richtig. 
+                   Commands ist ein String, von dem Kommandos gelesen
+                   werden, alse parstest -c "ls | wc"!
+                   
+        06.06.91   Completion fÅr Variablennamen eingebaut.
+        
+        08.06.91   Zu stark verschachtelte Funktionen (oder endlos 
+                   rekursive) werden jetzt auf dem 50. Level abgebrochen.
+                   ROWS und COLUMNS werden, sofern nicht vorhanden, gesetzt.
+                   STDERR wird, sofern nicht vorhanden, gesetzt und Kanal
+                   2 wird auf Kanal 1 umgelenkt. Das Kommando errorfile
+                   kann es nicht geben!
+                   Beim Start wird jetzt $HOME\profile.mup oder, wenn dies
+                   nicht vorhanden ist, .\profile.mup eingelesen.
+                   Bug bei read gekillt. Zeilen kînnen jetzt mit %newline
+                   fortgesetzt werden.
+                   Funktionstasten kînnen jetzt auch belegt werden.
+        
+        10.06.91   touch liefert jetzt als Returnwert die Anzahl der
+                   berÅhrten Dateien zurÅck.
+                   runopts meckert jetzt, wenn schreibgeschÅtzte Dateien
+                   verÑndert werden sollen.
+        
+        13.06.91   Bug in ls gefixt. Directories '\' und 'c:\' werden jetzt
+                   wieder gelistet.
+                   (bevor ichs vergesse: bei cp/mv kînnen jetzt bei '-r'
+                   auch mehrere Ordner angegeben werden.
+                   
+        14.06.91   Das Kommando trap eingebaut. Bisher sind nur zwei
+                   Signal sinnvoll belegt: 0 - Verlassen der Shell
+                   3 - Interrupt durch Control-C auf Keyboard.
+                   3 wird in einer interactiven Shell ignoriert.
+                   Hashing eingebaut. Die Option -d ist gestorben, da sie
+                   mit der Reihenfolge in PATH kollidieren kann. Statt
+                   dessen gibt es wie in sh die Mîglichkeit einzelne
+                   Kommandos mit "hash cmd" zu hashen.
+
+        17.06.91   Kommando "cookie" eingebaut. Es wird aber kein eigener
+                   cookie installiert.
+                   Eigene Routine fÅr strtok geschrieben, die jetzt keine
+                   globalen Daten mehr benutzt. 
+                   Kommando "alias" eingebaut.
+                   Eingabezeilen (von stdin) haben jetzt kein internes
+                   Limit in der LÑnge mehr.
+                   Filename-Completion funktioniert jetzt auch direkt
+                   nach einer Redirection.
+                   
+        18.06.91   Kommando "setenv" eingebaut.
+                   Die Completion benutzt jetzt zum Trennen der einzelnen
+                   Worte dieselben Zeichen, wie der Lexer.
+                   Die Environment-Variable "xArg" wird nicht importiert
+                   und nach dem Start eines Programmes gelîscht.
+        
+        21.06.91   Kommando "type" eingebaut.
+                   Fehlertest bei Fopen/Fcreate auf Test >= 0 umgestellt.
+                   Fehler beim Allozieren des aktuellen Verzeichnisses
+                   beseitigt.
+
+        23.06.91   Die neue Mupfel hÑngt nun auch im Shell-Pointer (shell_p).
+                   Der Aufruf Åber shell_p sollte jetzt reentrant sein
+                   und sich besser auf das aktuelle Programm beziehen, als
+                   das bisher der Fall war (Redirection, PWD, etc.).
+                   
+        24.06.91   Internes Kommando "pause" eingebaut.
+                   Internes Kommando "version" eingebaut.
+        
+1.7     25.06.91   Bug in alias gefixt. "alias ll 'ls -l' mit 
+                   "alias l ll" funktioniert jetzt.
+                   Kommando "pause" wieder ausgebaut, da es besser
+                   mittels "echo" und "read" implementiert werden kann.
+                   Beim DrÅcken der HELP-Taste bekommt man jetzt eine Liste
+                   der Mîglichen Eingaben (Meta-Completion) angezeigt.
+                   Funktioniert fÅr Filenamen und Variablenamen.
+                   Bug in alias gefixt, der dazu fÅhrte, daû statt der
+                   benîtigten 8 KB stattdessen 70 KB an Speicher belegt
+                   wurden. (MiNT und x:\ sei Dank)
+         
+        26.06.91   "read" legt das Eingelesene jetzt in REPLY und nicht
+                   in reply ab, wenn kein Variablenname angegeben war.
+        
+        27. - 29.06.91
+                   Command-Completion eingebaut. Beim DrÅcken der TAB-
+                   Taste wird jetzt versucht, das Kommando zu vervoll-
+                   stÑndigen, soweit das mîglich ist. Mit der HELP-Taste
+                   werden alle Mîglichkeiten der Komplettierung angezeigt.
+                   Somit kann man mit HELP in einer leeren Zeile eine Liste
+                   aller Kommandos bekommen.
+                   Internes Kommando "free" eingebaut.
+                   Internes Kommando "label" eingebaut.
+                   Internes Kommando "times" eingebaut.
+
+        30.06.91   Option-Completion eingebaut. Die Optionen fÅr ein
+                   Kommando "cmd" werden in der Textdatei "cmd.opt" entlang
+                   der in OPTIONPATH enthaltenen Pfade gesucht. Pfade in
+                   OPTIONPATH werden durch ";," getrennt, wie es auch in
+                   PATH Åblich ist.
+        
+        02.07.91   Bug in system() gefixt. Adresse des Kommando wurde von
+                   einer falschen Stelle geholt.
+                   
+        03.07.91   "set" ohne Argumente gibt jetzt die Belegung aller
+                   Variablen (inkl. Funktionen) aus.
+                   "cookie" kennt den _FDC-Cookie (wenn er denn kommt).
+        
+        04.07.91   "rm" kommt jetzt auch mit Ordnern, denen ein "\"
+                   anhÑngt, klar.
+                   
+        05.07.91   Fehler in der Kommando-Substitution gefixt, der dazu
+                   fÅhrte, daû das EinfÅgen eines Space zwischen den Token
+                   manchmal vergessen wurde.
+                   Bei "sh datei" wird jetzt $0 auf "datei" gesetzt.
+                   Mit Hilfe von _StkLim wird jetzt beim AusfÅhren von
+                   Kommandos ÅberprÅft, ob der Stack ÅberlÑuft. 
+        
+        06.07.91   Fremde Scripts kînnen jetzt gestartet werden. Dazu muû
+                   die erste Zeile des Scripts mit #! beginnen, gefolgt
+                   von dem Namen des auszufÅhrenden Programms. Beispiel:
+                   data.ksh enthÑlt "#!ksh" als erste Zeile, der Befehl
+                   ist:
+                   
+                   c:\tmp> data.ksh 1 2 3
+                   
+                   dann wird (wenn ksh im Suchpfad ist) folgendes gemacht
+                   
+                   ksh c:\tmp\data.ksh 1 2 3
+                   
+                   Toll, ne? (Verdeckte) Rekursion wird abgefangen, 
+                   allerdings spielt dann der Hitcount beim Hashing
+                   verrÅckt.
+
+        07.07.91   Internes Kommando "init" eingebaut.
+                   Der Returnwert wird jetzt auch von Traps aus richtig
+                   zurÅckgeliefert. Zuvor wurde er mit dem Returnwert
+                   des unterbrochenen Kommandos Åberschrieben.
+
+        08.07.91   $$ liefert jetzt einen sinnvolleren Wert.
+                   Fehler in cookie behoben.
+                   Der Parser versucht jetzt bei Syntax-Fehler einige mehr
+                   oder weniger nichtssagende Hinweise auf den Fehler zu
+                   geben.
+
+        09.07.91   Bug im Parser gefixt, der dazu fÅhrte, daû bei
+                   "<murks" ein Token zuviel gelesen wurde. Man muûte also
+                   2mal Return drÅcken.
+                   Internes Kommando "format" eingebaut. Bei einer schreib-
+                   geschÅtzten Diskette kommt jetzt eine entsprechende
+                   Meldung.
+
+1.8     11.07.91   Command-Completion funktioniert jetzt auch, wenn vor
+                   dem Kommando nur Leerzeichen stehen.
+                   Neue interne Kommandos "enable" und "disable" eingebaut,
+                   die interne Kommandos ein- und ausschalten kînnen.
+        
+        12.07.91   Interne Kommandos "builtin" und "command" eingebaut.
+        
+        19.07.91   Stack-Check funktioniert jetzt auch bei system()-
+                   Aufrufen.
+        
+        02.08.91   Parser/Lexer geben jetzt sinnvollere Fehlermeldungen,
+                   wenn das Ende der Datei unerwartet kommt. So z.B. bei
+                   fehlenden ' oder ".
+        
+        06.08.91   Neue Version des Cookie-Kommandos eingebaut.
+                   cp setzt bei der Kopie einer Datei das Archiv-Bit.
+        
+        09.08.91   format und init ÅberprÅfen jetzt, ob das Laufwerk
+                   auch wirklich vorhanden ist.
+        
+        03.09.91   Falsche Ausgabe bei `cookie' beseitigt. Es wird nicht
+                   die Anzahl der freien EintrÑge, sondern die Anzahl
+                   der PlÑtze ausgegeben.
+                   Handling von Control-C verbessert. Man konnte die Shell
+                   beim GedrÅckthalten von Control-C terminieren.
+                   
+        06.09.91   PATH wird wenn vorhanden, auf "." gesetzt.
+                   Das Suchen von Kommandos entlang PATH kann jetzt
+                   mit Control-C abgebrochen werden.
+        
+        10.09.91   "mupfel +G" verbessert. ROWS und COLUMNS werden in einer
+                   GEM-Mupfel nun richtig intialisiert. Am Ende wird
+                   ein shel_write gemacht, der das Starten von Namen im
+                   Shell-Buffer verhindert.
+        
+        13.09.91   Mupfel kann jetzt wieder Programme via Shelwrite
+                   nachstarten.
+                   Bei "2:\*.*" wird nicht mehr versucht, dieses zu
+                   expandieren.
+                   Nichtexpandierte Wildcards werden bei cp, mv, rm, mkdir,
+                   rmdir und touch abgefangen.
+        
+        16.09.91   Mupfel ist jetzt wieder eine GEM-Applikation. Sie
+                   erkennt aber automatisch, wenn sie im AUTO-Ordner
+                   gestartet wird und lÑuft dort. FÅr MiNT-Anwender:
+                   Sie sollten Mupfel immer mit der Option -G aufrufen,
+                   so werden GEM-Aufrufe verhindert.
+                   list="$list test" funktioniert wieder, wenn list
+                   leer ist.
+                   
+        03.11.91   [!...] funktioniert jetzt genauso wie [^....]     
+        
+        30.12.91   Pipes werden nicht mehr abgebrochen, wenn ein Element
+                   der Pipe einen Returnwert != 0 liefert.
+        
+        04.01.92   date beachtet jetzt LANG wieder richtig. Es wurde das
+                   falsche Environment benutzt.
+                   GEMDOS-Fehlermeldungen bei Pexec werden jetzt wieder
+                   ausgegeben.
+        
+        18.01.92   Kommando-Substitution mittels $( command ) eingebaut.
+                   Funktioniert wie in POSIX beschrieben.
+                   IFS wird jetzt richtig bei "$*" zum trennen der ersetzten
+                   Parameter benutzt.
+                   ${#parameter} gibt die LÑnge von $parameter zurÅck.
+                   ~\ wird teilweise schon durch $HOME ersetzt.
+        
+        22.01.92   Bei nicht gefundenen, bzw. nicht ausfÅhrbaren Programmen
+                   wird nun 127, bzw. 126 zurÅckgeliefert (POSIX).
+                   Wird mit TAB komplettiert und kommt dabei nichts
+                   heraus, dann wird beim nÑchsten TAB die Liste der
+                   mîglichen VervollstÑndigungen gezeigt.
+        
+        24.01.92   Kommandos weiter an POSIX angepaût. Mit '>|' statt
+                   '>!' kann jetzt bei IO-Redirection eine Datei
+                   Åberschrieben werden (trotz Option -C noclobber).
+                   
+        29.01.92   Mupfel kann jetzt auch die Emacs-Control-Codes
+                   (^A, ^E, ^K, ^P, ^N) im Zeileneditor.
+                   Das Scollen in der History fÑngt nach Eingabe eines
+                   Zeichens wieder neu an.
+                   Nur Gemini hÑngt sich unter MiNT in den _shell_p.
+        
+        31.01.92   Bei Shellscripts wird jetzt der aktuelle Pfad (und
+                   damit auch $PWD) an den aktuellen GEMDOS-Pfad angepaût,
+                   damit auch bei Scripts, die von Gemini aus gestartet
+                   werden, dies stimmt.
+        
+        01.02.92   Speicherblîcke werden jetzt immer freigegeben, wenn es
+                   mîglich ist. Dies sollte eigentlich schon lange der
+                   Fall sein.
+        
+        09.02.92   Mupfel kann nun auch Scripts, die nicht mit einem
+                   Newline aufhîren. Man kann also wieder mit 7UP Scripts
+                   schreiben.
+                   Beim Puffern von Tasten (ist unter TOS leider notwendig)
+                   werden jetzt auch Tasten, die nur einen Scancode haben
+                   (Funktionstasten) richtig gemerkt.
+                   Kommando setscrap ist in Gemini wieder da!
+        
+        25.02.92   "$(echo test)" funktioniert jetzt und stÅrzt nicht
+                   mehr ab.
+        
+        26.02.92   Die Zeilennummer bei Fehlermeldungen in Scripts stimmt
+                   jetzt.
+        
+        27.02.92   Ist HOME gesetzt und befindet sich dort ein profile.mup,
+                   so wird dies jetzt auch wirklich gelesen. (Man mache mal
+                   einen shel_find mit absolutem Namen und wundere sich).
+        
+        28.02.92   Environmentvariable LINES wird gesetzt (POSIX).
+                   Ist SHELL beim Start im Environment gesetzt, dann
+                   wird PROFILE.MUP nicht mehr geladen. Statt dessen
+                   wird dann (so vorhanden) MUPFEL.MUP ausgefÅhrt. 
+                   Sinn: In PROFILE.MUP sollen Einstellungen,
+                   die nur _einmal_ (nÑmlich beim Start) ausgefÅhrt werden
+                   sollen (z.B. calendar aufrufen).
+                   In MUPFEL.MUP sollen die Sachen hinein, die jede Shell
+                   braucht. Dazu gehîren z.B. Aliase, Funktionen, etc.
+                   Insbesondere brauchen Environmentvariablen nur im Profile
+                   gesetzt zu werden. Also, nochmal ganz langsam:
+
+                   SHELL nicht gesetzt -> PROFILE.MUP da -> ausfÅhren
+                   ansonsten:
+                   MUPFEL.MUP da -> ausfÅhren
+                   
+                   Man will natÅrlich nicht Einstellungen in PROFILE.MUP
+                   und MUPFEL.MUP doppelt haben. Daher schreibe man in sein
+                   PROFILE.MUP ans Ende:
+                   
+                   if [ -r $HOME\MUPFEL.MUP ]
+                   then
+                     . $HOME\MUPFEL.MUP
+                   fi
+                   
+                   Dann wird MUPFEL.MUP von PROFILE.MUP mitbenutzt.
+        
+        07.04.92   Bei Alerts von der Mupfel wird nun nicht immer das
+                   letzte Zeichen abgeschnitten.
+                   RUNNER.APP wird jetzt beim Start des Programms lokalisiert,
+                   sollte sich also im gleichen Verzeichnis wie Mupfel und
+                   Gemini befinden. Dann sollten keine Probleme mehr auftreten.
+
+        12.04.92   Mupfel und Gemini laufen soweit wieder mit Memory-
+                   Protection. Das VA-Protokoll tuts trotz global nicht.
+        
+        14.04.92   Nach der RÅckkehr eines TOS-Programms wird nicht mehr
+                   nach einem nachzustartenden Programm geguckt.
+                   Bei Benutzung von ARGV wird nicht mehr gewarnt.
+                   ParameterÅbergabe mittels xArg wird nicht mehr
+                   unterstÅtzt.
+        
+        17.04.92   Endlich funktionieren die Startparameter auch tief
+                   verschachtelt richtig. Man kann jetzt wieder GEM-Programme
+                   aus Shell-Scripts starten, die selber nicht im Fenster
+                   laufen, zwischendurch TOS-Programme aufrufen, etc.
+                   FÅr TOS-Programme hat sich eine énderung ergeben:
+                   - Ist der Parameter W:Y fÅr ein Programm gesetzt, so
+                   lÑuft es jetzt _immer_ im Console-Fenster!
+
+1.85    20.04.92   shrink ist wieder da!
+                   Die Logik zur Erkennung, ob es sich bei der Mupfel
+                   um ein TTP- oder Pseudo-GEM-Programm handelt hat sich
+                   umgedreht: TTP ist der normale Fall; wird sie mit der
+                   Option +G gestartet oder endet argv[0] mit APP oder
+                   mit GTP, dann benutzt sie auch das GEM.
+                   Zur ParameterÅbergabe mit ARGV:
+                   - wird benutzt, wenn zu viele Argumente und 
+                     Option "X:" nicht gesetzt
+                   - immer benutzt, wenn "X:Y" gesetzt ist
+                   - nie benutzt, wenn "X:N" gesetzt ist.
+                   Ist kein "X:" gesetzt, so spricht man auch von der
+                   "egal"-Einstellung!
+       
+       21.04.92    Bei Scripts werden die Shell-Parameter jetzt geleert,
+                   wenn es ohne Parameter gestartet wurde.
+                   Das Kommando "." sucht entlang PATH nach einem Script.
+                   
+       25.04.92    Unter MiNT kînnen jetzt Programme im Hintergrund
+                   gestartet werden. Es werden echte Pipes benutzt.
+                   Job control ist noch _nicht_ drin. Unter MultiTOS mit
+                   Memory-Protection (7.8) gibts noch einige MerkwÅrdig-
+                   keiten, mal sehen.
+       
+       29.04.92    Bei mehrstufigen Pipes gibt es noch Probleme, wenn
+                   diese abgebrochen werden. Fix ist in Arbeit.
+       
+       30.04.92    Mehrstufige Pipes funktionieren jetzt richtig!
+                   UngÅltige Variablennamen werden jetzt abgefangen.
+                   Der String bei der Parametersubstitution war manchmal
+                   nicht 0-terminiert -- gefixt.
+       
+       05.05.92    Bei Starten von Programmen im Wurzelverzeichnis wird
+                   der Pfad jetzt richig gesetzt.
+       
+       09.05.92    type gibt 127 zurÅck, wenn das Kommando nicht gefunden
+                   werden konnte.
+                   Externe Kommandos im Hintergrund werden jetzt unter
+                   MiNT mit Pexec(200,...) gestartet.
+                   runopts ist aus den internen Kommandos entfernt worden.
+                   (2 Kilobytes gewonnen!). times zeigt unter MiNT nun
+                   auch die User- und Systemzeit an.
+                   Mupfel terminiert nun bei SIGHUP wunderpar.
+
+       10.05.92    "Maus-Wiederbelebung" nach Schweineprogs wieder wie
+                   im alten Gemini (Patrick: testen!)
+
+       13.05.92    Mupfel kann nun auch Pipes der Form:
+                   (ls | cat ) | more
+                   Tat's wegen eines merkwÅrdigen Verhaltens von MiNT
+                   nicht.
+       
+       23.05.92    Weiterer Fehler mit Memory Violation nach Start von
+                   externem Programm behoben.
+       25.05.92    Ein biûchen am Zeileneditor gefeilt. Handling von langen
+                   Eingabezeilen besser. Bei énderungen der Fenstergrîûe
+                   wird die Eingabezeile bei Eingabe des nÑchsten Zeichens
+                   neu ausgegeben.
+       31.05.92    Auch bei Kommandos mit Pfadangaben wird jetzt notfalls
+                   SUFFIX ausgewertet.
+                   Bei export, setenv, set, readonly werden jetzt extrem
+                   lange Variablen richtig ausgegeben.
+       07.06.92    Bei illegalen Parametern wird eine Usage ausgegeben.
+                   Es kînnen nun mehrere Optionen getrennt eingestellt
+                   werden. Die Kommandos in der Mupfel haben jetzt lange
+                   Optionen, die mit -- eingeleitet werden statt wie frÅher
+                   mit +.
+       08.06.92    ValidFileName() war zu kritisch, deshalb tats "ls -d ."
+                   nicht mehr.
+       11.06.92    Wenn cd Åber CDPATH sucht, wird nur noch in einer
+                   interaktiven Shell der Pfad ausgegeben.
+       17.06.92    IFS wird jetzt defaultmÑûig nicht mehr exportiert.
+       18.06.92    "test" kommt jetzt auch relativen Pfaden klar.
+       30.06.92    Mupfel vertrÑgt es wieder, daû ein Pfad nicht existiert.
+                   (ls a: mit kaputter Disk, zB.)
+       06.07.92     "." in CDPATH funktioniert nun wieder.
+       25.07.92    Speicher fÅr ARGV wird nur bei mehr als 3 Argumenten
+                   alloziert.
+       01.08.92    ". datei" stÅrzt nicht mehr ab, wenn datei nicht
+                   gefunden werden konnte.
+       02.08.92    Filenamecompletion von "m tes" funktioniert wieder.
+       13.08.92    Der shell_p funktioniert wieder. Das Nachstarten mit
+                   shel_write von anderen Programmen auch.
+                   export und readonly verstehen auûer "-p" nun auch
+                   "--print". unset versteht "-v" (--variable) und "-f"
+                   (--function) zur Bestimmung, was gelîscht werden soll.
+       20.08.92    unset kann nun nicht mehr readonly-Variablen lîschen.
+                   cp, mv, rm und Konsorten kommen jetzt besser mit doppelten
+                   Backslash im Dateinamen klar.
+       28.08.92    Dlock wird bei format und init unter MiNT benutzt.
+       13.09.92    Das RÅckgÑngigmachen von Ausgabeumlenkung in
+                   Hintergrundprozessen funktioniert nun.
+       27.09.92    Bug beim Beheben des letzten Bugs behoben.
+                   $SHELL wird jetzt vor profile.mup gesetzt.
+       04.10.92    Starten von Programmen unter MagiX und MultiTOS
+                   verbessert. Es kînnen jetzt auch von der Console
+                   aus GEM-Programme gestartet werden.
+       06.10.92    Bei GEM-Programmen bleibt unter MiNT nun die Console
+                   immer (îfter?) im Raw-Modus.
+       02.11.92    cp -ai fragt nur noch bei Dateien, die das Archiv-
+                   Bit gesetzt haben.
+       21.11.92    Kommandosubstitution mit $() in Here-Dokumenten
+                   funktioniert jetzt.
+       02.12.92    malloc gibt jetzt eher Blîcke wieder an das System
+                   zurÅck.
+       05.12.92    Fehler im falsch optimierten Wildcardtester entfernt.
+       02.01.93    Quoten mit % funktioniert nun. MerkwÅrdig lange unentdeckt!
+       10.01.93    Ob profile.mup oder nur mupfel.mup beim Start eingelesen
+                   wird, hÑngt nun nicht mehr von $SHELL ab, sondern wird
+                   durch das Vorhandensein, bzw. die Abwesenheit der Variablen
+                   MUPFEL_PROFILE_READ bestimmt. Diese Variable wird automatisch
+                   auch von Gemini/Mupfel gesetzt. Niemand braucht also etwas
+                   zu Ñndern.
+       20.01.93    Unter MultiTOS werden GEM-Programme jetzt mit richtigem
+                   (eingestelltem) Pfad und Environment gestartet.
+       24.01.93    Die LÑnderkennung des TOS wird nun auf plausible Werte
+                   geprÅft.
+       27.01.93    Die Wildcards bei case-Konstrukten sind jetzt Case-
+                   sensitiv geworden.
+                   Neues Kommando umask (funktioniert nur unter MiNT).
+1.89   31.01.93    Bug bei der Kommandosubstitution von case gefixt.
+                   Mupfel lÑuft jetzt in der MiNT-Domain.
+       06.02.93    Super weitestgehend durch Supexec ersetzt. Probleme
+                   bei x: und Groûschreibung vermindert.
+                   OPT_PRGNAME_EXT wird nicht mehr case-sensitiv gesucht. 
+       10.02.93    rm -r rÑumt nun auch wieder die Ordner weg.
+       24.02.93    Bei Commmandcompletion tuts jetzt die Slashkonvertierung.
+       27.02.93    Alias-Expansion funktioniert nun richtig mehrstufig.
+                   alias t echo und alias hallo "t hallo" geht.
+       20.03.93    Auch bei GEM-Programmen wird ggfs. auf einen Tastendruck
+                   gewartet.
+       08.04.93    Existiert ein Verzeichnis in PATH nicht, so wird jetzt
+                   trotzdem weitergesucht. 
+       09.04.93    Bei Leerzeichen in Dateinamen wird nicht mehr gemeckert.
+                   Escape bricht nicht mehr das Laden von profile.mup ab.
+       12.04.93    history wird nun mit der Options "-n" auf no-histdouble
+                   geschaltet, bzw. bei "-a" werden alle neuen Zeilen
+                   aufgenommen.
+                   Options werden nun nicht nur in den "normalen" Dateien
+                   gesucht, sondern auch in default.opt. Diese Datei kann
+                   mit den mitgelieferten MUP-Dateien angelegt und verÑndert
+                   werden.
+       13.04.93    mv versteht nun -f (--force) und gibt dann keine banalen
+                   Fehlermeldungen mehr aus.
+       16.04.93    cp -r dir1 dir2 gefixt. Es wurden nur Dateien aus einem
+                   Ordner kopiert und dann kommentarlos abgebrochen.
+                   cp file l: mit nichtexistentem Laufwerk l: gibt nun eine
+                   sinnvolle Fehlermeldung.
+       20.05.93    label kann jetzt unter MiNT auch einen Pfad erhalten,
+                   bei dem er dann das entsprechende Laufwerk anspricht.
+                   "label ." bezieht sich dann immer auf das aktuelle
+                   Laufwerk (funktioniert leider nicht unter TOS (Nein, ist
+                   nur ein Scherz, funktioniert natÅrlich auch unter TOS!)).
+       30.05.93    Fehler bei der Pfadauswertung von label gefixt. format
+                   und init sollten jetzt auch evtl. mit ED-Diskette 
+                   klarkommen. Wer sowas hat, bitte testen!
+       08.06.93    Bei OPT_PRGNAME_EXT kann nun auch der Singlestart unter
+                   MagiX eingestellt werden. Also I:Y fÅr Programme, die
+                   im Singlemodus gestartet werden sollen ('S' war leider
+                   nicht mehr frei).
+       14.06.93    touch liefert im fehlerfreien Fall 0 zurÅck.
+       26.06.93    ENAMETOOLONG wird beim Lesen von Labels nicht mehr als
+                   Fehler gewertet.
+       09.08.93    rename erlaubt nicht mehr ein Umbenennen in eine
+                   leere Endung.
+       21.08.93    Die History wird nun an einen neuen Shell-Level
+                   vererbt. Somit funktioniert nun history | more.
+       31.08.93    Bei "set -x" werden die Kommandozeilen nun nach
+                   stderr ausgegeben.
+       30.09.93    ~\ sollte jetzt an jeder wichtigen Stelle zu $HOME
+                   substituiert werden.
+1.91   01.10.93    pushd und dirs verhalten sich jetzt, wie manche es
+                   schon von der bash gewohnt sind. D.h. pushd dir
+                   wechselt in das Verzeichnis "dir" und sichert
+                   das alte Verzeichnis auf dem Stack. pushd ohne
+                   Argumente vertauscht die oberen beiden EintrÑge.
+                   Das aktuelle Verzeichnis liegt immer ganz oben auf
+                   dem Stack.                   
+       05.10.93    Formatierte/Initialisiert Disketten sollten jetzt
+                   auch auf dem Mac benutzt werden kînnen.
+       07.10.93    ls gab manchmal bei nichtexistierenden Namen keine
+                   Fehlermeldung.
+       18.12.93    Neie LenderkennungÑn fir Briderchen in Osten eingefigt.
+       27.12.93    ROWS und COLUMNS werden auch wieder in der Standard-
+                   auflîsung gesetzt.
+                   echo gibt bei Newline jetzt ein CR+Newline aus.
+                   ZusÑtzlich zur Options-Library "default.opt" sucht
+                   Mupfel jetzt auch nach Optionen in Dateien mit der
+                   Endung "opl" in OPTIONPATH.
+1.99   30.12.93    Versionsprung.
+                   Bei Commandcompletion wird nun erst das 
+                   Dateiattribut geholt, wenn der Name stimmt.
+1.999  08.02.94    Lots of Bugs gefixt.
+                   ~+ und ~- expandieren jetzt zu PWD und OLDPWD.
+                   SHELL wird jetzt nicht mehr auf einen leeren String
+                   gesetzt, wenn die Mupfel nicht herausfinden konnte,
+                   wo sie liegt.
+                   TOS-Programme werden unter Multitasking Umgebungen
+                   nicht mehr auf dem TOS-Bildschirm gestartet.
+       11.02.94    Parametersubstitution funktioniert nun auch ohne ":"
+                   richtig.
+ACHTUNG!           Das Escapezeichen wurde von % nach ^ umgeÑndert. Das
+                   war lÑngst ÅberfÑllig und jetzt auch erforderlich:
+                   Die Mupfel kann nun Parametersubstitution ala
+                   ${parameter%pattern} und ${parameter#pattern}, die
+                   jeweils pattern als Pre-, bzw. Suffix entfernen.
+                   test=file.c
+                   echo ${test%.c}.o
+        13.02.94   Escapezeichen ist wieder %. Das Escapezeichen wird 
+                   sich in Zukunft per set setzen lassen.
+        21.02.94   set hat jetzt auch lange Optionen. Siehe dazu auch
+                   mupfel.opt. Fxattr() == -46 wird jetzt als EINVFN
+                   behandelt.
+        24.02.94   profile.mup heiût jetzt profile und mupfel.mup heiût
+                   mupfel.rc
+        14.03.94   init checkt jetzt gÅltige Laufwerksbezeichner.
+                   echo nimmt das Escapezeichen als Fluchtsequenz.
+                   Control-P und -N blÑttern jetzt in der History.
+                   Bei der Zuweisung sind nun auch Variablennamen
+                   erlaubt, die mit einer Zahl anfangen. Abfragen kann
+                   man sie allerdings nicht. Vielen Dank an den Autor
+                   von 7UP.
+                   Bug in eval gefixt.
+        26.03.94   Expansion  mit :? bricht bei nicht interaktiven Shells
+                   ab.
+                   Schreibfehler bei der Erzeugung der TEMP.GIN fÅr
+                   Overlaystarts werden jetzt abgefangen.
+        04.04.94   Ein Wildcard kann verneint werden, wenn das erste
+                   Zeichen ! oder ^ ist. Dies funktioniert aber nur,
+                   wenn auch Zeichen wie *, ? oder [] vorkommen. Bsp:
+                   !*.*     -- alle Objekte, die keine Endung haben
+                   !*.c     -- alle Objekte, die nicht in .c enden
+                   !abc     -- (!) genau der String !abc
+                   
+                   ls hÑngt bei Ordnern und Option -F keinen doppelten
+                   Backslash mehr an.
+        10.04.94   Programme werden unter normalem TOS mit menu_register
+                   unter ihrem richtigen Namen beim AES angemeldet.     
+        09.07.94   Julians énderungen wegen Magix installiert.
+        30.07.94   "$@" wird zu nix substituiert, wenn keine Shell-
+                   variablen gesetzt sind.
+                   Accessories lassen sich nun auch unter normalem
+                   TOS per VA-Protokoll Argumente schicken.
+        17.08.94   Mupfel und Gemini verhalten sich jetzt beim 
+                   Einlesen des profile/mupfel.rc genau gleich.
+        31.10.94   Bug bei Here-dokumenten behoben (leere Zeilen).
+                   Mupfel benutzt nun NLS Texte so vorhanden.
+        01.11.94   Bug von Martin Kîhling gefixt. set -e sollte nun
+                   nicht mehr bei if/case statements rausfliegen.     
+        16.11.94   MUPDEFAULT eingebaut.
+       	19.11.94   Ab MagiC 3.00 wird das Environment an gestartete
+       	           Programme vererbt.
+       	20.11.94   Mupfel startet jetzt unter MagiC auch GEM-Programme
+       	           wenn sie selbst nur ein TOS-Programm ist.
+        11.12.94   Fehler bei der ParameterÅbergabe an Accessories
+                   behoben.
+       -28.01.95   Fiele Fehler in der NLS Behandlung der Mupfel
+                   behoben.
+1.a     28.01.95   history kann nun auch sehr lange Zeilen ausgeben.
+                   HERE Dokumente hatten ein Bug, der zu Garbage am
+                   Ende einer Zeile fÅhren konnte. Gefixt.
+        05.02.95   Bug beim Parsen eines Strings behoben. FÅhrte dazu,
+                   daû trap keine Befehle ausfÅhrte, die Åber mehrere
+                   Zeilen gingen.
+        13.03.95   HÑûlicher Speicherschieûer gefixt.
+        
+Stefan Eissing

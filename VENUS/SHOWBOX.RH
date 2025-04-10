@@ -1,0 +1,14 @@
+#define SHOWBOX          4   /* Formular/Dialog */
+#define SHOWFONT         3   /* BOX in Baum SHOWBOX */
+#define SHOWFBG          4   /* BOX in Baum SHOWBOX */
+#define SHOWFB           5   /* BOX in Baum SHOWBOX */
+#define SHOWSTB          8   /* BOX in Baum SHOWBOX */
+#define SHOWST           9   /* BOX in Baum SHOWBOX */
+#define SHOWPBG          12  /* BOX in Baum SHOWBOX */
+#define SHOWPB           13  /* BOX in Baum SHOWBOX */
+#define SOPTSIZE         17  /* BUTTON in Baum SHOWBOX */
+#define SOPTDATE         18  /* BUTTON in Baum SHOWBOX */
+#define SOPTTIME         19  /* BUTTON in Baum SHOWBOX */
+#define SHOWCANC         20  /* BUTTON in Baum SHOWBOX */
+#define SHOWOK           21  /* BUTTON in Baum SHOWBOX */
+

@@ -1,0 +1,78 @@
+   Von: Markus Fritze @ HH2
+    An: Stefan Eissing @ ST
+ Wegen: Autostart
+  Zeit: Sonntag, 4. August 1991, 15:02
+Status: Nicht gelesen
+
+Erstmal folgendes: So schaltet das Desktop 3.05 die Aufl”sung um:
+
+;Dieses Unterprogramm liegt im AES
+set_rez:        link    A6,#0
+                movem.l D6-D7,-(SP)
+                move.w  8(A6),D7
+                cmp.w   AktRez,D7       ;Aufl”sung schon aktiv?
+                bne.s   set_rez1
+                clr.w   D0              ;Ja! => nicht mehr schalten
+                bra.s   set_rez2
+set_rez1:       move.w  D7,AktRez       ;neue Aufl”sung
+                move.w  D7,DesktopRez   ;Aufl”sung fr DESKTOP.INF
+                move.w  #1,SwitchRez    ;AES umschalten
+                moveq   #1,D0           ;umschalten
+set_rez2:       tst.l   (SP)+
+                movem.l (SP)+,D7
+                unlk    A6
+                rts
+
+;Ein Ausschnitt aus dem Unterprogramm des Keyboard-Events vom Desktop
+desk_keybd10:   move.l  A6,(SP)
+                addi.l  #-36,(SP)       ;0..5 fr die Taste eintragen
+                move.l  #rez_keys,-(SP)
+                move.w  8(A6),-(SP)     ;aktuelle Taste
+                bsr     check_key       ;ALT-1 bis ALT-6 testen
+                addq.l  #6,SP
+                tst.w   D0              ;nicht gedrckt
+                beq.s   desk_keybd11    ;=> andere Tasten auswerten
+                movea.w -36(A6),A0
+                movea.l #$914E,A1
+                tst.b   0(A0,A1.l)      ;Ausl”sung m”glich?
+                beq.s   desk_keybd11    ;Nein! => andere Tasten auswerten
+                move.w  -36(A6),(SP)
+                addq.w  #1,(SP)         ;1..6
+                jsr     set_rez
+                tst.w   D0              ;umschalten?
+                beq.s   desk_keybd11    ;Nein! => andere Tasten auswerten
+                move.w  #2,DesktopExit  ;Desktop wird verlassen
+                bra     desk_keybd_exit ;und raus
+
+;Hier der Start vom AES:
+                cmpi.l  #"PATH",(A0)+
+                bne.s   L0E1B
+                cmpi.l  #$3D00413A,(A0)+
+                bne.s   L0E1B
+                move.l  (A0),D0
+                clr.b   D0
+                cmp.l   #$5C000000,D0
+                bne.s   L0E1B
+                move.b  #$43,-2(A0)
+L0E1B:          clr.w   SwitchRez       ;Ausl”sung nicht umschalten
+                move.w  #1,D0
+                move.w  D0,AktRez       ;aktuelle Aufl”sung = ALT-1-Aufl”sung
+                move.w  D0,NoAutoStart  ;#Z-Autostart erlauben.
+                move.w  D0,Rez2Flag
+                move.w  D0,Rez3Flag
+
+Wenn "NoAutoStart" gesetzt ist, wird die #Z-Zeile im DESKTOP.INF ausgewertet.
+Nachdem der Filename in einen Buffer kopiert wurde und auch das Flag bertragen
+wurde, wird "NoAutoStart" gel”scht. Vor dem Einsprung in die Hauptschleife
+(Desktop -> Programm ausfhren -> Desktop) wird ein shel_write() mit diesen
+Parametern ausgefhrt. Wird im Desktop ALT-Ziffer gedrckt, so wird das Desktop
+und das AES verlassen und das AES neu gestartet. Da nun aber "NoAutoStart"
+gel”scht ist, wird die #Z-Zeile in DESKTOP.INF nicht mehr ausgewertet.
+
+Unsaubere L”sung: šber den _sysbase einen Ptr auf das AES-Magic $87654321 und
+dort auf den Start des AES holen. Nun die Variable NoAutoStart suchen. Fr
+bekannte TOS-Versionen sollte man eine Tabelle anlegen.  Wenn man
+"NoAutoStart" l”scht, wird die #Z-Zeile wieder ausgefhrt.
+
+     MfG Markus
+

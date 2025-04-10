@@ -1,0 +1,7 @@
+#define GINSAVE          37  /* Formular/Dialog */
+#define GSGIN            6   /* BUTTON in Baum GINSAVE */
+#define GINNAME          9   /* FTEXT in Baum GINSAVE */
+#define GINHELP          11  /* BOXTEXT in Baum GINSAVE */
+#define GSCANCEL         12  /* BUTTON in Baum GINSAVE */
+#define GSOK             13  /* BUTTON in Baum GINSAVE */
+

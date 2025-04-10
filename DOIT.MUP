@@ -1,0 +1,4 @@
+jrnls
+strip -fv *app *ttp
+size *app *ttp
+ll *msg

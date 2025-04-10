@@ -1,0 +1,13 @@
+#define OPTIOBOX         23  /* Formular/Dialog */
+#define CPVERB           4   /* BUTTON in Baum OPTIOBOX */
+#define RMVERB           5   /* BUTTON in Baum OPTIOBOX */
+#define OPTEXIST         6   /* BUTTON in Baum OPTIOBOX */
+#define GINVERB          7   /* BUTTON in Baum OPTIOBOX */
+#define OPTCPKOB         10  /* BUTTON in Baum OPTIOBOX */
+#define OPTCPNR          11  /* FTEXT in Baum OPTIOBOX */
+#define OPTDLKOB         13  /* BUTTON in Baum OPTIOBOX */
+#define OPTDELNR         14  /* FTEXT in Baum OPTIOBOX */
+#define OPTFOKOB         15  /* BUTTON in Baum OPTIOBOX */
+#define OPTICANC         16  /* BUTTON in Baum OPTIOBOX */
+#define OPTIOK           17  /* BUTTON in Baum OPTIOBOX */
+

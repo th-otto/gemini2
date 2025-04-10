@@ -1,0 +1,257 @@
+/*
+ * dialog.c
+ *
+ * project: venus
+ *
+ * author: stefan eissing
+ *
+ * description: Dialogstuff for Desktop
+ *
+ * last change: 14.10.1990
+ */
+
+#include <string.h>
+#include <flydial\flydial.h>
+
+#include "vs.h"
+#include "copyinfo.rh"
+#include "opendbox.rh"
+#include "foldbox.rh"
+#include "optiobox.rh"
+
+#include "dialog.h"
+#include "util.h"
+#include "fileutil.h"
+#include "redraw.h"
+#include "venuserr.h"
+#include "stand.h"
+
+store_sccs_id(dialog);
+
+/* externs
+*/
+extern word handle;
+extern word pxy[128];
+extern WindInfo wnull;
+extern ShowInfo show;
+extern DeskInfo NewDesk;
+extern OBJECT *pshowbox,*pcopyinfo,*pfoldbox;
+extern OBJECT *poptiobox,*popendbox;
+extern char cpCommand,mvCommand,rmCommand;
+
+/* internal texts
+ */
+#define NlsLocalSection "Gemini.Dialog"
+enum NlsLocalText{
+
+T_SHAREWARE1,	/*%s ist ein Shareware-Programm. Shareware 
+bedeutet, daû Sie dieses Programm fÅr nicht-kommerzielle 
+Zwecke frei kopieren und testen dÅrfen. Wenn Sie allerdings 
+GEMINI/MUPFEL/VENUS regelmÑûig benutzen, so haben Sie sich an das Konzept von 
+Shareware zu halten, indem Sie den Autoren einen Obolus von 
+50,- DM entrichten. Dies ist KEIN Public-Domain- oder Freeware-
+Programm!*/
+
+T_SHAREWARE2, /*Wenn Sie keine Raubkopie benutzen wollen oder 
+an der Weiterentwicklung diese Programms interessiert sind, 
+kînnen Sie das Geld auf eins unserer Konten 
+Åberweisen:|
+|Gereon Steffens,
+|%sKto. 1032583765, SSK Kîln, BLZ 370 501 98
+|Stefan Eissing,
+|%sKto. 0441939400, VB Baumberge eG, BLZ 400 694 08|
+|Danke.*/
+
+T_FOLDER,	/*Der Pfad dieses Fensters ist zu lang, um neue 
+Ordner anzulegen!*/
+
+T_NONAME,	/*Sie sollten einen Namen angeben!*/
+
+T_EXISTS,	/*Ein Objekt dieses Namens existiert schon!*/
+
+T_INVALID,	/*Dies ist kein gÅltiger Name fÅr eine Datei 
+oder einen Ordner! Bitte wÑhlen Sie einen anderen Namen.*/
+
+T_NOSPACE,	/*Die Auflîsung ist zu gering, um diesen Dialog 
+darzustellen!*/
+
+T_ESCTEST,  /* Dies ist Kommentaranfang \[ und -ende \]! und
+ein normaler Backslash-escape mit einem Kommentar \\\[ dran.
+mit einer Hexzahl \x40 und einer Oktalen \007*/
+};
+
+/*
+ * word doAboutInfo(void)
+ * Dialog about copyright and shareware information
+ */
+word doAboutInfo(void)
+{
+	word retcode;
+	DIALINFO d;
+
+#if MERGED
+	setHideTree(pcopyinfo, VENUNAME, TRUE);
+	setHideTree(pcopyinfo, GEMINAME, FALSE);
+	setHideTree(pcopyinfo, GERENAME, FALSE);
+	setHideTree(pcopyinfo, ARNDNAME, FALSE);
+#endif
+
+	DialCenter(pcopyinfo);
+	DialStart(pcopyinfo,&d);
+	DialDraw(&d);
+
+	do
+	{
+		retcode = DialDo(&d,0) & 0x7FFF;
+		setSelected(pcopyinfo,retcode,FALSE);
+		if (retcode == GMNIINFO)
+		{
+			if ((venusInfoFollow(T_SHAREWARE1,PGMNAME) < 0)
+				|| (venusInfo(T_SHAREWARE2) < 0))
+			{
+				venusErr(T_NOSPACE);
+				DialDraw(&d);
+			}
+		}
+		fulldraw(pcopyinfo,retcode);
+	} while (retcode == GMNIINFO);
+
+	DialEnd(&d);
+
+	return retcode;
+}
+
+/*
+ * void doNewFolder(void)
+ * dialog for a new foldername, and trying to create it
+ */
+void doNewFolder(void)
+{
+	DIALINFO d;
+	TEDINFO *pti;
+	WindInfo *wp;
+	word ok,retcode;
+	char name[14],path[MAXLEN];
+	char tmpsave[14],*pfoldname;
+	
+	if(((wp = wnull.nextwind) != NULL) && (wp->kind == WK_FILE))
+	{
+		if (strlen(wp->path) >= MAXLEN-28)
+		{
+			venusErr(T_FOLDER);
+			return;
+		}
+		pti = pfoldbox[FONAME].ob_spec.tedinfo;
+		pfoldname = pti->te_ptext;
+		strcpy(tmpsave,pfoldname);
+		
+		DialCenter(pfoldbox);
+		DialStart(pfoldbox,&d);
+		DialDraw(&d);
+		
+		ok = TRUE;
+		while(ok)
+		{
+			retcode = DialDo(&d,FONAME) & 0x7FFF;
+			setSelected(pfoldbox,retcode,FALSE);
+			fulldraw(pfoldbox,retcode);
+			
+			switch(retcode)
+			{
+				case FOCANCEL:
+					ok = FALSE;
+					break;
+				case FOOK:
+					if((*pfoldname == '@') || !strlen(pfoldname))
+					{
+						venusErr(T_NONAME);
+						break;
+					}
+					if (!ValidFileName(pfoldname))
+					{
+						venusErr(T_INVALID);
+						break;
+					}
+					GrafMouse(HOURGLASS,NULL);
+					strcpy(name,pfoldname);
+					makeFullName(name);
+					strcpy(path,wp->path);
+					strcat(path,name);
+					if(dirCreate(path) < 0)
+						venusErr(T_EXISTS);
+					else
+						ok = FALSE;
+					GrafMouse(ARROW,NULL);
+			}
+		}
+		DialEnd(&d);
+		
+		strcpy(pfoldname,tmpsave);
+		if(retcode == FOOK)
+			pathUpdate(wp->path,"");
+	}
+	else
+		venusDebug("This function should be disabled!");
+}
+
+/*
+ * void doGeneralOptions(void)
+ * Dialog for general options
+ */
+void doGeneralOptions(void)
+{
+	word retcode;
+	DIALINFO d;
+
+	DialCenter(poptiobox);
+	DialStart(poptiobox,&d);
+	
+	setSelected(poptiobox,OPTEXIST,NewDesk.replaceExisting);
+	setSelected(poptiobox,CPVERB,!NewDesk.silentCopy);
+	setSelected(poptiobox,RMVERB,!NewDesk.silentRemove);
+	
+	DialDraw(&d);
+
+	retcode = DialDo(&d,0) & 0x7FFF;
+	setSelected(poptiobox,retcode,FALSE);
+
+	DialEnd(&d);
+
+	if(retcode == OPTIOK)
+	{
+		NewDesk.replaceExisting = isSelected(poptiobox,OPTEXIST);
+		NewDesk.silentCopy = !isSelected(poptiobox,CPVERB);
+		NewDesk.silentRemove = !isSelected(poptiobox,RMVERB);
+	}
+}
+
+void doFinishOptions(void)
+{
+	word retcode;
+	DIALINFO d;
+
+	DialCenter(popendbox);
+	DialStart(popendbox,&d);
+	
+	setSelected(popendbox,OPTEMPTY,NewDesk.emptyPaper);
+	setSelected(popendbox,OPTWAIT,NewDesk.waitKey);
+	setSelected(popendbox,OPTQUEST,NewDesk.askQuit);
+	setSelected(popendbox,OPTSAVE,NewDesk.saveState);
+	setSelected(popendbox,OPTOVL,NewDesk.ovlStart);
+	
+	DialDraw(&d);
+
+	retcode = DialDo(&d,0) & 0x7FFF;
+	setSelected(popendbox,retcode,FALSE);
+
+	DialEnd(&d);
+
+	if(retcode == OPENDOK)
+	{
+		NewDesk.emptyPaper = isSelected(popendbox,OPTEMPTY);
+		NewDesk.waitKey = isSelected(popendbox,OPTWAIT);
+		NewDesk.askQuit = isSelected(popendbox,OPTQUEST);
+		NewDesk.saveState = isSelected(popendbox,OPTSAVE);
+		NewDesk.ovlStart = isSelected(popendbox,OPTOVL);
+	}
+}

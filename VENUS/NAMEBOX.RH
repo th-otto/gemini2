@@ -1,0 +1,12 @@
+#define NAMEBOX          10  /* Formular/Dialog */
+#define NOLDNAM1         3   /* FTEXT in Baum NAMEBOX */
+#define NNEWNAM1         4   /* FTEXT in Baum NAMEBOX */
+#define NNEWTEXT         5   /* STRING in Baum NAMEBOX */
+#define NSKIP            7   /* BUTTON in Baum NAMEBOX */
+#define NOVER            8   /* BUTTON in Baum NAMEBOX */
+#define NABORT           9   /* BUTTON in Baum NAMEBOX */
+#define NOK              10  /* BUTTON in Baum NAMEBOX */
+#define NOLDTEXT         11  /* STRING in Baum NAMEBOX */
+#define NOLDNAM2         12  /* FTEXT in Baum NAMEBOX */
+#define NNEWNAM2         13  /* FTEXT in Baum NAMEBOX */
+

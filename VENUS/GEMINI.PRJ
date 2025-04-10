@@ -1,0 +1,223 @@
+..\geminix.app
+.C[-P -I..]
+.L[-S=20000]
+=
+pcstart.o
+
+accwind.c  (vs.h, accwind.h, window.h, menu.rh, util.h)
+applmana.c (vs.h, applmana.h, appledit.h, util.h, fileutil.h, 
+			myalloc.h, venuserr.h, wildcard.h, select.h, stand.h, 
+			window.h, iconinst.h, infofile.h, filewind.h,
+			..\mupfel\mupfel.h, ..\common\alloc.h, 
+			..\common\fileutil.h)
+appledit.c (vs.h, appledit.rh, applbox.rh, appledit.h, util.h, 
+			fileutil.h, myalloc.h, venuserr.h, redraw.h, applmana.h,
+			window.h, filewind.h, filedraw.h)
+basecopy.c	(vs.h, basecopy.h, cpintern.h, venuserr.h,
+			fileutil.h, ..\mupfel\mupfel.h, util.h, ..\common\strerror.h)
+clipbrd.c	(vs.h, clipbrd.h, fileutil.h, util.h, venuserr.h)
+color.c    (vs.h, colorbox.rh, color.h, util.h)
+conio.s		
+conselec.c (vs.h, stand.h, conselec.h, termio.h, wintool.h, 
+			draglogi.h, venuserr.h, conselec.rh, fileutil.h, util.h, 
+			redraw.h, window.h, clipbrd.h, conwind.h)
+conwind.c	(vs.h, conwind.h, mvwindow.h, myalloc.h, stand.h, 
+			venuserr.h, window.h, util.h, terminal.h, termio.h,
+			menu.rh, draglogi.c, message.h, conselec.h,
+			..\mupfel\mupfel.h, filewind.h, windstak.h, fileutil.h,
+			timeevnt.h)
+copymove.c (renambox.rh, copybox.rh, namebox.rh, vs.h, copymove.h, 
+			util.h, fileutil.h, myalloc.h, venuserr.h, undo.h,
+			select.h, window.h, iconinst.h, cpintern.h, basecopy.h,
+			filewind.h, ..\common\alloc.h, ..\common\fileutil.h,
+			..\common\charutil.h, ..\common\argvinfo.h, 
+			..\common\genargv.h, cpkobold.h)
+cpkobold.c (..\common\alloc.h, ..\common\charutil.h, 
+			..\common\fileutil.h, ..\common\argvinfo.h, 
+			..\common\genargv.h, vs.h, cpkobold.h, venuserr.h,
+			util.h, erase.h, window.h, ..\exec_job\exec_job.h, 
+			..\mupfel\mupfel.h)
+deskwind.c	(vs.h, window.h, deskwind.h, iconinst.h, util.h, menu.rh,
+			clipbrd.h, select.h, deskback.rh, ..\common\alloc.h, 
+			..\common\fileutil.h, color.h, fileutil.h, image.h,
+			venuserr.h, pattbox.rh, gemini.h, draglogi.h,
+			icondrag.h, dispatch.h, redraw.h, ..\common\genargv.h,
+			..\common\argvinfo.h, drives.h, erase.h, ..\common\strerror.h)
+dialog.c   (copyinfo.rh, opendbox.rh, optiobox.rh, vs.h,
+			dialog.h, util.h, venuserr.h, ..\mupfel\mupfel.h,
+			stand.h, color.h, window.h, ginsave.rh,	infofile.h)
+dispatch.c (ttpbox.rh, message.h, menu.rh, vs.h, dispatch.h, 
+			myalloc.h, util.h, fileutil.h, select.h, venuserr.h, 
+			pexec.h, redraw.h, window.h, applmana.h, undo.h, 
+			icondrag.h, menu.h, getinfo.h, iconinst.h, filewind.h, 
+			..\common\alloc.h, ..\common\fileutil.h,
+			..\common\charutil.h, ..\common\strerror.h)
+dragdrop.c (vs.h, dragdrop.h, draglogi.h, venuserr.h, window.h,
+			..\common\strerror.h)
+draglogi.c (vs.h, draglogi.h, redraw.h, util.h, 
+			venuserr.h, copymove.h, erase.h, select.h, fileutil.h, 
+			iconinst.h, myalloc.h, dispatch.h, icondrag.h, menu.h, 
+			stand.h, applmana.h, window.h, filewind.h, message.h,
+			order.h)
+drives.c	(..\common\alloc.h, ..\common\charutil.h, 
+			..\common\fileutil.h, vs.h, instbox.rh, drivesel.rh,
+			window.h, color.h, fileutil.h, gemtrees.h, icondraw.h, 
+			iconinst.h, drives.h, iconrule.h, myalloc.h, redraw.h, 
+			select.h, scut.h, stand.h, util.h, venuserr.h, 
+			timeevnt.h, order.h)
+erase.c    (erasebox.rh, vs.h, erase.h, util.h, fileutil.h, select.h, 
+			myalloc.h, venuserr.h, redraw.h, iconinst.h, undo.h, 
+			window.h, filewind.h, ..\common\alloc.h, 
+			..\common\fileutil.h, cpintern.h, ..\common\argvinfo.h,
+			..\common\genargv.h, cpkobold.h, drives.h,
+			..\common\strerror.h)
+filedraw.c (showbox.rh, stdbox.rh, vs.h, filedraw.h, redraw.h, util.h, 
+			venuserr.h, fileutil.h, filewind.h, window.h, menu.h,
+			gemini.h, icondraw.h, message.h, terminal.h)
+filenew.c	(..\common\alloc.h, ..\common\fileutil.h, vs.h, 
+			foldbox.rh, window.h, filenew.h, fileutil.h, filewind.h, 
+			util.h, venuserr.h, select.h, sortfile.h,  
+			..\common\argvinfo.h, ..\common\genargv.h,
+			..\common\strerror.h)
+files.c    (stdbox.rh, vs.h, files.h,  
+			myalloc.h, sortfile.h, window.h, iconrule.h, 
+			filedraw.h, filewind.h, icondraw.h, select.h, 
+			..\common\cookie.h, iconinst.h)
+filewind.c	(vs.h, filewind.h, wildcard.h, window.h, filedraw.h,
+			stdbox.rh, menu.rh, select.h, clipbrd.h, myalloc.h, 
+			..\mupfel\mupfel.h, ..\common\alloc.h, ..\common\fileutil.h,
+			draglogi.h, icondrag.h, dispatch.h, windstak.h,
+			filenew.h, undo.h, sortfile.h, erase.h, scroll.h,
+			..\common\strerror.h)
+fileutil.c (vs.h, fileutil.h, util.h, venuserr.h, myalloc.h, 
+			window.h, select.h, iconinst.h,
+			..\mupfel\mupfel.h, ..\common\alloc.h, 
+			..\common\fileutil.h, ..\common\charutil.h,
+			..\common\strerror.h)
+gemtrees.c (vs.h, gemtrees.h, myalloc.h)
+getinfo.c  (iconfile.rh, specinfo.rh, fileinfo.rh, foldinfo.rh, 
+			drivinfo.rh, vs.h, getinfo.h, util.h, fileutil.h, 
+			venuserr.h, select.h, redraw.h, iconinst.h, applmana.h, 
+			scut.h, window.h, iconrule.h, filewind.h, stand.h,
+			color.h, icondraw.h, ..\mupfel\mupfel.h, ..\common\alloc.h, 
+			..\common\fileutil.h, ..\common\argvinfo.h, 
+			..\common\genargv.h, cpintern.h, drives.h,
+			..\common\strerror.h)
+greeting.c (vs.h, greeting.h, hello.rsh, util.h, ..\mupfel\mupfel.h)
+icondrag.c (vs.h, util.h, redraw.h, window.h, select.h, myalloc.h, 
+			venuserr.h, draglogi.h, message.h, wintool.h, 
+			fileutil.h, filewind.h, userdefs.h, scroll.h)
+icondraw.c	(vs.h, window.h, filewind.h, icondraw.h, filedraw.h)
+iconhash.c (vs.h, iconhash.h, iconrule.h)
+iconinst.c (trashbox.rh, scrapbox.rh, shredbox.rh, vs.h, 
+			venuserr.h, iconinst.h, iconrule.h, myalloc.h, util.h, 
+			fileutil.h, redraw.h, select.h, stand.h, gemtrees.h, 
+			scut.h, window.h, filewind.h, icondraw.h, ..\common\alloc.h, 
+			..\common\fileutil.h, ..\common\charutil.h,
+			order.h, drives.h)
+iconrule.c (ruleedit.rh, stdbox.rh, rulebox.rh, vs.h, iconrule.h, 
+			myalloc.h, util.h, venuserr.h, iconhash.h, wildcard.h, 
+			redraw.h, color.h, select.h, fileutil.h, filewind.h,
+			window.h, iconinst.h, infofile.h, filedraw.h, icondraw.h, 
+			..\common\alloc.h, ..\common\fileutil.h)
+image.c		(image.h)
+infofile.c (menu.rh, vs.h, infofile.h, 
+			myalloc.h, venuserr.h, util.h, redraw.h, window.h, 
+			iconinst.h, fileutil.h, windstak.h, applmana.h, 
+			iconrule.h, iconhash.h, ..\common\memfile.h, stand.h,
+			..\common\alloc.h, mvwindow.h, filedraw.h, message.h, 
+			wildcard.h, menu.h, conwind.h, filewind.h, ..\common\alloc.h, 
+			..\common\fileutil.h, deskwind.h, ..\mupfel\mupfel.h,
+			drives.h)
+init.c		(vs.h, init.h, venus.h, util.h, fileutil.h, select.h, 
+			redraw.h, pexec.h, iconinst.h, venuserr.h, applmana.h, 
+			gemtrees.h, stand.h, mvwindow.h, window.h, menu.h,
+			filewind.h, ..\mupfel\mupfel.h, ..\common\alloc.h, 
+			..\common\fileutil.h, cpkobold.h, ..\common\argvinfo.h, 
+			..\common\genargv.h, rscvers.h)
+keylogi.c	(menu.rh, vs.h, scancode.h, keylogi.h, redraw.h, 
+			window.h, util.h, fileutil.h, scroll.h, menu.h, conwind.h,
+			venuserr.h, message.h, scut.h, filewind.h,
+			..\common\alloc.h, ..\common\fileutil.h, dialog.h,
+			..\common\strerror.h)
+menu.c     (menu.rh, vs.h, menu.h, dialog.h, 
+			dispatch.h, getinfo.h, window.h, redraw.h, undo.h, util.h, 
+			venuserr.h, applmana.h, iconrule.h, select.h, 
+			iconinst.h, init.h, stand.h, 
+			order.h, conwind.h, filewind.h, clipbrd.h, deskwind.h,
+			message.h)
+message.c  (vs.h, vaproto.h, stand.h, message.h, util.h, 
+			venuserr.h, select.h, redraw.h, filedraw.h, mvwindow.h, 
+			window.h, menu.h, fileutil.h, greeting.h, scroll.h, dispatch.h, 
+			accwind.h, fileutil.h, draglogi.h, filewind.h, conwind.h,
+			..\common\alloc.h, ..\common\fileutil.h, cpkobold.h,
+			..\common\charutil.h, dragdrop.h, copymove.h,
+			..\mupfel\mupfel.h, switchof.rh)
+mvwindow.c (fontbox.rh, vs.h, window.h, venuserr.h, util.h, 
+			..\mupfel\mupfel.h, mvwindow.h, terminal.h, termio.h, 
+			wintool.h, filedraw.h, redraw.h, filewind.h, conwind.h, 
+			fileutil.h, stand.h, message.h)
+order.c    (divbox.rh, vs.h, order.h, venuserr.h, gemtrees.h, util.h, 
+			redraw.h, venus.h, window.h)
+overlay.c  (vs.h, overlay.h, stand.h, venusErr.h, fileutil.h, 
+			infofile.h, util.h, keylogi.h, ..\mupfel\mupfel.h)
+pexec.c    (vs.h, pexec.h, util.h, fileutil.h, myalloc.h, window.h, 
+			redraw.h, infofile.h, applmana.h, stand.h, menu.h,  
+			message.h, iconinst.h,  ..\mupfel\mupfel.h,	gemini.h, 
+			terminal.h, conwind.h, venuserr.h, ..\common\alloc.h, 
+			..\common\fileutil.h, deskwind.h)
+redraw.c   (vs.h, redraw.h, venuserr.h, window.h)
+select.c   (menu.rh, vs.h, select.h, venuserr.h, redraw.h, util.h, 
+			scroll.h, myalloc.h, window.h, iconinst.h, filewind.h,
+			vaproto.h, icondrag.h, ..\common\alloc.h, 
+			..\common\charutil.h, ..\common\fileutil.h, 
+			..\common\wildmat.h)
+scroll.c   (menu.rh, vs.h, scroll.h, myalloc.h, window.h, util.h, 
+			select.h, filedraw.h, filewind.h, redraw.h, window.h)
+scut.c     (shortcut.rh, vs.h, scut.h, util.h, redraw.h, select.h, 
+			dispatch.h, iconinst.h, scancode.h)
+sortfile.c (menu.rh, vs.h, sortfile.h, myalloc.h, venuserr.h,
+			filewind.h, window.h)
+terminal.c (vs.h, ascii.h, termio.h, terminal.h, console.h,
+			..\common\xbra.h, ..\mupfel\sysvars.h)
+termio.c   (vs.h, wintool.h, terminal.h, termio.h, util.h)
+timeevnt.c (vs.h, util.h, timeevnt.h)
+undo.c     (menu.rh, vs.h, undo.h, window.h, redraw.h, 
+			fileutil.h, venuserr.h, filewind.h, conwind.h)
+util.c     (menu.rh, vs.h, util.h, fileutil.h, myalloc.h, redraw.h, 
+			venuserr.h, iconrule.h, stand.h, select.h, window.h,
+			iconinst.h, filewind.h, applmana.h, undo.h, ..\common\alloc.h, 
+			..\common\fileutil.h, ..\common\charutil.h)
+venus.c    (vs.h, venus.h, message.h, menu.h, window.h, fileutil.h, 
+			redraw.h, scroll.h, init.h, venuserr.h, myalloc.h, 
+			keylogi.h, util.h, infofile.h, erase.h, 
+			iconinst.h, iconrule.h, stand.h, gemini.h, 
+			windstak.h, greeting.h, filewind.h,
+			wildcard.h, mvwindow.h, deskwind.h, applmana.h,
+			..\common\alloc.h, ..\common\fileutil.h, timeevnt.h,
+			conwind.h, drives.h)
+venuserr.c (changbox.rh, vs.h, util.h, stand.h)
+wildcard.c (wedit.rh, wildbox.rh, vs.h, wildcard.h, util.h, redraw.h, 
+			venuserr.h, fileutil.h, window.h, filewind.h, filedraw.h,
+			..\common\wildmat.h)
+windstak.c (vs.h, windstak.h, myalloc.h, util.h, fileutil.h)
+window.c   (vs.h, window.h, fileutil.h, util.h, myalloc.h, 
+			undo.h, venuserr.h, menu.rh, windstak.h, 
+			..\common\fileutil.h, select.h)
+wintool.c  (vs.h, wintool.h)
+
+..\xrsrc\xrsrc.c
+
+..\mint\mintbind.o
+..\mupfel\mupfgmni.prj
+
+..\nls\nlslib.lib
+flydial.lib
+..\common\common.prj
+
+..\exec_job\exec_job.lib
+myalloc.c  (myalloc.h, ..\common\alloc.h)
+
+pcstdlib.lib
+pcgemlib.lib
+pctoslib.lib

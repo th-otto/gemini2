@@ -1,0 +1,10 @@
+#define WILDBOX          5   /* Formular/Dialog */
+#define WILDBG           3   /* BOX in Baum WILDBOX */
+#define WILDB            4   /* BOX in Baum WILDBOX */
+#define DEF1             5   /* STRING in Baum WILDBOX */
+#define DEF2             6   /* STRING in Baum WILDBOX */
+#define WILDEDIT         7   /* BUTTON in Baum WILDBOX */
+#define WILDCANC         8   /* BUTTON in Baum WILDBOX */
+#define WILDQUIT         9   /* BUTTON in Baum WILDBOX */
+#define WILDTEXT         10  /* FTEXT in Baum WILDBOX */
+

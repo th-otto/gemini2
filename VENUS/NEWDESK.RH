@@ -1,0 +1,3 @@
+#define NEWDESK          1   /* Formular/Dialog */
+#define BACKDESK         0   /* BOX in Baum NEWDESK */
+

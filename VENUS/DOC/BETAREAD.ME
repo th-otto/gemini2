@@ -1,0 +1,61 @@
+
+Hallo verehrte Beta-Tester von Gemini,
+
+anbei erhaltet Ihr die neueste Betatest-Version von Gemini. Dies
+ist wie gesagt eine Beta-Version und daher nicht zur Weitergabe
+gedacht!!!
+Anbei folgen Hinweise, die bei dieser Version besonders zu beachten
+sind:
+
+29.01.92: Dies ist die erste Version von Gemini, in der die neue
+  Mupfel eingebaut ist. Sie lÑuft eigentlich schon sehr stabil, daher
+  jetzt auch die Freigabe zum Test.
+  Einige Dinge sind nun (besonders in der Mupfel) anders. Beim Hochfahren
+  wird nun nicht mehr MUPFEL.MUP sondern PROFILE.MUP eingelesen. Dies
+  wird aus dem HOME-Verzeichnis geladen oder, falls HOME im Environment
+  nicht gesetzt ist, aus dem aktuellen Verzeichnis.
+  Einige MUP-Dateien werden geÑndert werden mÅssen, besonders, wenn if,
+  then, else Kommandos von Stefan Rademacher benutzt wurden. Beispiel:
+  > if "test -f d:\gemini\gemini.mup"
+  wird zur Ausgabe von
+  test -f d:\gemini\gemini.mup: nicht gefunden. Richtig ist daher
+  > if test -f d:\gemini\gemini.mup
+  
+  Das kommt daher, daû die Mupfel sich jetzt wie eine richtige UNIX-Shell
+  verhÑlt. Es wird noch eine Anleitung zur Shellprogrammierung folgen;
+  wer /bin/sh von UNIX kennt oder eine Anleitung dazu hat, kann und sollte
+  damit rumspielen.
+  
+  Noch eine énderung, die sich bemerkbar machen dÅrfte: die Environment-
+  Variablen PRGNAME_EXT, mit denen man festlegen konnte wie ein Programm
+  gestartet wird, mÅssen nun OPT_PRGNAME_EXT heiûen. Das fÅhrt einerseits
+  dazu, daû alle Optionen im Environment "zusammenstehen" und war notwendig,
+  da Environmentvariablen nicht mit einer Zahl anfangen dÅrfen (man setze
+  da mal die Parameter fÅr 7UP.APP!).
+
+
+01.02.92: GEMINI.MUP wird jetzt im Verzeichnis $HOME gesucht, wenn
+  HOME gesetzt ist. 
+
+05.05.92: Die Tools von Julian Reschke liegen jetzt mit allem, was es
+  dazu gibt im Archiv TOOLBETA.ZOO bei. Ein more von Arnd Beissner
+  befindet sich in MORE.ZOO. Alle Programme und Dateien auf dieser
+  Diskette dÅrfen _nicht_ weitergegeben werden!
+  In Mupfel hat der Support von MiNT begonnen. D.h. Programme kînnen
+  im Hintergrund gestartet werden und es werden auch echte Pipes
+  benutzt.
+
+25.05.92: Viele Leute haben Probleme mit dem Kommando "set". FrÅher
+  gab es solche Sachen wie "set slashcond" und "set screensave". Die
+  gibt es nun nicht mehr!
+  "set" dient einerseits zum Setzen der Variablen 1,2,3,...,9. Also
+set slashconv und hallo; echo $1
+  ergibt
+slashconv und hallo
+  Auch wenn es screensave gar nicht mehr gibt: slashvon schaltet man
+  jetzt einfach mit "set -S" ein. Alle Kommandos, die die history
+  betreffen, (set histsave) sind jetzt mit dem Kommando "history"
+  zu erreichen.
+
+
+mfG Stefan Eissing

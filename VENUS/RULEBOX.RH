@@ -1,0 +1,11 @@
+#define RULEBOX          6   /* Formular/Dialog */
+#define RUBGBOX          3   /* BOX in Baum RULEBOX */
+#define RUBOX            4   /* BOX in Baum RULEBOX */
+#define RUSPEC           5   /* IBOX in Baum RULEBOX */
+#define RUNEW            7   /* IMAGE in Baum RULEBOX */
+#define RUDEL            8   /* BUTTON in Baum RULEBOX */
+#define RUINS            9   /* BUTTON in Baum RULEBOX */
+#define RUEDIT           10  /* BUTTON in Baum RULEBOX */
+#define RUCANCEL         11  /* BUTTON in Baum RULEBOX */
+#define RUOK             12  /* BUTTON in Baum RULEBOX */
+

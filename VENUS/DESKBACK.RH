@@ -1,0 +1,18 @@
+#define DESKBACK         38  /* Formular/Dialog */
+#define DBCOLSC          5   /* STRING in Baum DESKBACK */
+#define DBPATSC          6   /* STRING in Baum DESKBACK */
+#define DBCOLTXT         9   /* BUTTON in Baum DESKBACK */
+#define DBCOLBX          10  /* BOX in Baum DESKBACK */
+#define DBCOL0           11  /* BOXCHAR in Baum DESKBACK */
+#define DBPAT0           13  /* BOXCHAR in Baum DESKBACK */
+#define DBPATBX          14  /* BOX in Baum DESKBACK */
+#define DBDATEI          17  /* STRING in Baum DESKBACK */
+#define DBNAME           18  /* BUTTON in Baum DESKBACK */
+#define DBUSEPIC         19  /* BUTTON in Baum DESKBACK */
+#define DBPALET          20  /* BUTTON in Baum DESKBACK */
+#define DBCENTER         21  /* BUTTON in Baum DESKBACK */
+#define DBSNX            24  /* FTEXT in Baum DESKBACK */
+#define DBSNY            25  /* FTEXT in Baum DESKBACK */
+#define DBCANCEL         26  /* BUTTON in Baum DESKBACK */
+#define DBOK             27  /* BUTTON in Baum DESKBACK */
+

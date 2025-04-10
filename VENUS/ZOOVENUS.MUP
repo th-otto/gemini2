@@ -1,0 +1,3 @@
+echo updating venus
+zoo ahunP venus2 *.prj *.[chs] doc\* *.rs? *.mup makenls
+cp -v venus2.zoo ${ARCHIV}\venus2.zoo

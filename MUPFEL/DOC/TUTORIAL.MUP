@@ -1,0 +1,91 @@
+#!mupfel
+#
+# @(#) Mupfel\doc\tutorial.mup
+# @(#) Stefan Eissing, 18. April 1992
+#
+# Ein Tutorial fÅr die Mupfel
+#
+
+clear_screen()
+{
+	echo '%033E%c'
+}
+
+invers_on()
+{
+	echo '%033p%c'
+}
+
+invers_off()
+{
+	echo '%033q%c'
+}
+
+press_return()
+{
+	echo "Bitte drÅcken Sie <RETURN>"%%c
+	read
+	echo
+}
+
+AskForString()
+{
+	input=$1
+	REPLY="${input}murks"
+	i=1
+
+	while [ "$input" != "${REPLY:=RETURN}" ]
+	do
+		if [ $i = 1 ]
+		then
+			i=2
+			echo "Bitte geben Sie jetzt >$input< ein:"
+			read
+		else
+			echo
+			echo "Naja, tun wir mal so, als hÑtten Sie statt >$REPLY< >$input< eingegeben!"
+			break
+		fi 
+	done
+}
+
+finished=false
+
+until [ $finished = true ]
+do
+	clear_screen
+	echo
+	invers_on; echo Eine kleine EinfÅhrung in die Mupfel; invers_off
+	echo
+
+	echo '    %c'
+	invers_on; echo ' 1%c'; invers_off
+	echo '. Ein biûchen "ls"'
+
+	echo '    %c'
+	invers_on; echo ' 2%c'; invers_off
+	echo '. Hallo "echo"'
+
+	echo
+	echo '    %c'
+	invers_on; echo ' 0%c'; invers_off
+	echo '. Ende'
+
+	echo
+	echo 
+	echo 'Bitte wÑhlen Sie: %c'
+	read choice
+
+	case $choice in
+		0)	finished=true
+			;;
+
+		1)	( . simple.tut)
+			;;
+		
+		2)	( . echo.tut)
+			;;
+	esac
+done
+
+echo Ende des Tutorials

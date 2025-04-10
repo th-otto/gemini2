@@ -1,0 +1,14 @@
+#define COPYBOX          9   /* Formular/Dialog */
+#define CPTITLE          2   /* STRING in Baum COPYBOX */
+#define MVTITLE          3   /* STRING in Baum COPYBOX */
+#define CPFOLDNR         4   /* FTEXT in Baum COPYBOX */
+#define CPFILENR         5   /* FTEXT in Baum COPYBOX */
+#define CPBYTES          6   /* FTEXT in Baum COPYBOX */
+#define CPFILESC         7   /* STRING in Baum COPYBOX */
+#define CPFILEDS         8   /* STRING in Baum COPYBOX */
+#define CPOVERWR         10  /* BUTTON in Baum COPYBOX */
+#define CPRENAME         11  /* BUTTON in Baum COPYBOX */
+#define CPABORT          12  /* BOXTEXT in Baum COPYBOX */
+#define CPCANCEL         13  /* BUTTON in Baum COPYBOX */
+#define CPOK             14  /* BUTTON in Baum COPYBOX */
+

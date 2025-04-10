@@ -1,0 +1,18 @@
+#define COLORBOX         34  /* Formular/Dialog */
+#define CLWHITE          2   /* STRING in Baum COLORBOX */
+#define CLBLACK          4   /* STRING in Baum COLORBOX */
+#define CLRED            6   /* STRING in Baum COLORBOX */
+#define CLGREEN          8   /* STRING in Baum COLORBOX */
+#define CLBLUE           10  /* STRING in Baum COLORBOX */
+#define CLCYAN           12  /* STRING in Baum COLORBOX */
+#define CLYELLOW         14  /* STRING in Baum COLORBOX */
+#define CLMAGENT         16  /* STRING in Baum COLORBOX */
+#define CLLWHITE         18  /* STRING in Baum COLORBOX */
+#define CLLBLACK         20  /* STRING in Baum COLORBOX */
+#define CLLRED           22  /* STRING in Baum COLORBOX */
+#define CLLGREEN         24  /* STRING in Baum COLORBOX */
+#define CLLBLUE          26  /* STRING in Baum COLORBOX */
+#define CLLCYAN          28  /* STRING in Baum COLORBOX */
+#define CLLYELLO         30  /* STRING in Baum COLORBOX */
+#define CLLMAGEN         32  /* STRING in Baum COLORBOX */
+

@@ -1,0 +1,5 @@
+#define CONSELEC         30  /* Formular/Dialog */
+#define CONSPAST         1   /* STRING in Baum CONSELEC */
+#define CONSCOPY         2   /* STRING in Baum CONSELEC */
+#define CONSEXEC         3   /* STRING in Baum CONSELEC */
+

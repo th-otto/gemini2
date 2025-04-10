@@ -1,0 +1,14 @@
+#!mupfel
+#
+
+(
+	cd venus;
+	getcfile gemini.prj | nlscat - > $TMPDIR\nls.tmp
+)
+(
+	cd mupfel;
+	getcfile mupfgmni.prj | ..\nls\nlscat -a - >> $TMPDIR\nls.tmp
+)
+
+cat $TMPDIR\nls.tmp | nls\nlscomp - gemini.msg
+

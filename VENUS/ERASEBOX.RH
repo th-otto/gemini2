@@ -1,0 +1,10 @@
+#define ERASEBOX         11  /* Formular/Dialog */
+#define ERFOLDNR         4   /* FTEXT in Baum ERASEBOX */
+#define ERFILENR         5   /* FTEXT in Baum ERASEBOX */
+#define ERBYTES          6   /* FTEXT in Baum ERASEBOX */
+#define ERFILESC         7   /* STRING in Baum ERASEBOX */
+#define ERFILEDS         8   /* STRING in Baum ERASEBOX */
+#define ERABORT          9   /* BOXTEXT in Baum ERASEBOX */
+#define ERCANCEL         10  /* BUTTON in Baum ERASEBOX */
+#define EROK             11  /* BUTTON in Baum ERASEBOX */
+

@@ -1,0 +1,14 @@
+#define INITBOX          25  /* Formular/Dialog */
+#define INITSOFT         4   /* BUTTON in Baum INITBOX */
+#define INITFORM         5   /* BUTTON in Baum INITBOX */
+#define FMT360           7   /* BUTTON in Baum INITBOX */
+#define FMT400           8   /* BUTTON in Baum INITBOX */
+#define FMT720           9   /* BUTTON in Baum INITBOX */
+#define FMT800           10  /* BUTTON in Baum INITBOX */
+#define FMT140           11  /* BUTTON in Baum INITBOX */
+#define FMT160           12  /* BUTTON in Baum INITBOX */
+#define INITNAME         13  /* FTEXT in Baum INITBOX */
+#define FMTHELP          14  /* BOXTEXT in Baum INITBOX */
+#define INITCANC         15  /* BUTTON in Baum INITBOX */
+#define INITOK           16  /* BUTTON in Baum INITBOX */
+

@@ -1,0 +1,12 @@
+#define FOLDINFO         14  /* Formular/Dialog */
+#define FDIICON          3   /* BOX in Baum FOLDINFO */
+#define FDINAME          5   /* FTEXT in Baum FOLDINFO */
+#define FDINAME2         6   /* FTEXT in Baum FOLDINFO */
+#define FDIDATE          7   /* FTEXT in Baum FOLDINFO */
+#define FDITIME          8   /* FTEXT in Baum FOLDINFO */
+#define FDISIZE          9   /* FTEXT in Baum FOLDINFO */
+#define FDIFOLNR         11  /* FTEXT in Baum FOLDINFO */
+#define FDIFILNR         12  /* FTEXT in Baum FOLDINFO */
+#define FDICANC          13  /* BUTTON in Baum FOLDINFO */
+#define FDIOK            14  /* BUTTON in Baum FOLDINFO */
+

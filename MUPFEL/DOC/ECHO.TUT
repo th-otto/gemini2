@@ -1,0 +1,72 @@
+#!mupfel
+#
+# @(#) mupfel\doc\echo.tut
+# @(#) Stefan Eissing, 21. April 1992
+#
+# Teil 2 des Tutorials
+# Das Kommando echo
+#
+#
+
+cat <<ENDE
+  Ein herrlich einfaches Kommando ist >echo<. Sehen Sie selbst:
+  
+ENDE
+
+AskForString "echo Hallo!"
+echo "Das bewirkt der Befehl:"
+echo Hallo!
+echo
+
+cat <<ENDE
+  Verblffend nicht? Sie kennen vielleicht den ersten Schritt, den man
+  beim Erlernen einer neuen Programmiersprache immer gezeigt bekommt:
+  Es ist ein Programm, das die Welt begržt. So ein Programm kann man in
+  der Mupfel ganz leicht schreiben; Sie k”nnen sich denken, wie es
+  aussieht:
+
+echo Hallo, Welt!
+ENDE
+echo "Und das bewirkt der Befehl:"
+echo Hallo, Welt!
+echo
+press_return
+
+cat <<ENDE
+
+  Na also. Und damit Sie nicht zu zufrieden sind, kommt gleich etwas
+  verwirrendes:
+  echo Hier ist links                             und hier ist rechts
+ENDE
+echo Hier ist links                             und hier ist rechts
+cat <<'ENDE'
+
+  Was ist nun passiert? Das sollte doch nicht sein! Ist >echo< kaputt?
+  Die sch”nen Leerzeichen zwischen "links" und "und" sind bis auf eins
+  verschwunden. Haben Sie noch im Kopf, was bei >ls< ber Parameter 
+  gesagt wurde? Eine Zeile besteht immer aus einem Kommando gefolgt von
+  Parametern.
+
+  >echo< ist das Kommando und die Parameter sind die einzelnen Worte, die
+  Sie dahinter setzen. Die Mupfel zerhackt die Zeile
+echo Hier ist links                             und hier ist rechts
+  in einzelne Stckchen und gibt ihnen Bedeutung:
+echo            (Kommando)
+Hier            (1. Parameter)
+ist             (2. Parameter)
+...
+rechts          (7. Parameter)
+ENDE
+press_return
+
+cat <<ENDE
+  
+  >echo< gibt aber alle Parameter, die es bekommt, durch ein Leerzeichen
+  getrennt nacheinander wieder aus. Somit wird daraus
+(1. Parameter) (2. Parameter) (3. Parameter) (usw.)
+  oder
+Hier ist links und hier ist rechts
+
+  Alles klar, alles normal, wir k”nnen beruhigt weiterarbeiten.
+ENDE
+press_return

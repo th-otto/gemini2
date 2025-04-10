@@ -1,0 +1,171 @@
+    Der Dialog "Datei-Icons" (Extras -> Datei-Icon...)
+    ----------------------------------------------------------------
+
+    In der Venus k”nnen Sie Dateitypen Icons zuordnen, um den Zweck einer
+    Datei schneller erfabar zu machen (Zum Beispiel gibt es einen
+    Stift fr Textverarbeitungsprogramme). Dazu ben”tigt Venus
+    Regeln, damit sie diese Zuordnung vornehmen kann. Diese Regeln sind
+    nicht starr festgelegt, sonder k”nnen ver„ndert werden. Daher dieser
+    Dialog.
+
+    In der Dialogbox sehen Sie links die Liste der vorhandenen Regeln.
+    Rechts oben ist ein kleines Klemmbrett (das Bildchen mit dem Text
+    "Regel" darin) und rechts unten sind fnf Kn”pfe. 
+    Die obersten drei arbeiten auf der selektierten Regel und die unteren 
+    zwei beenden den Dialog.
+    Zu einer Regel geh”rt ein Icon (klein und gro), das Ordnersymbol,
+    das festlegt, ob diese Regel fr Ordner oder Dateien gilt (Regeltyp),
+    und ein Wildcard.
+    Pat nun ein Dateiname auf diesen Wildcard und hat die Regel den 
+    entsprechenden Typ, so bekommt die Datei das zugeh”rige Icon.
+    Die Liste wird dazu von oben nach unten durchsucht. Daher sollten
+    die spezielleren Regeln, die z.B. nur fr ein Programm zust„ndig
+    sind, weiter oben in der Liste stehen. Ganz unten sehen Sie 
+    normalerweise die allgemeinsten Regeln mit dem Wildcard "*", die
+    auf alle Dateien und Ordner zutreffen.
+    
+    Ein kleines Beispiel:
+    Es sind drei Regeln in der Liste vorhanden. Diese stehen in folgender
+    Reihenfolge in der Liste:
+    
+            1.    []   *.APP
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            
+    Wenn Venus nun die Datei "GEMINI.APP" darstellen soll, so schaut sie
+    sich zuerst die Regel 1 an und stellt fest, da sie pat. (Zur 
+    Erinnerung: "*" steht fr irgendwelche Zeichen, in diesem Fall 
+    "GEMINI". Ersetzt man "*" durch "GEMINI", so kommt der Name GEMINI.APP
+    heraus.)
+    Wenn nun Venus nach einem Icon fr "ZOO.TTP" sucht, so trifft die erste
+    Regel nicht zu ("ZOO.TTP" endet nicht mit ".APP"). Venus schaut sich
+    also die zweite Regel an. Leider trifft auch "*.TOS" nicht auf 
+    "ZOO.TTP" zu. Die zweite Regel hat aber noch ein weiters Muster und
+    dies trifft auch zu (Ersetze "*" durch "ZOO"). Also wird das Bild
+    der zweiten Regel fr die Datei benutzt.
+    Sucht Venus aber zum Beispiel nach "GEMINI.INF", so trifft weder die
+    erste, noch die zweite Regel zu. In diesem Fall greift die dritte
+    Regel. "*" pat n„mlich auf alle Dateien, man ersetzte einfach "*"
+    durch den Dateinamen!
+    
+    Neue Regeln k”nnen Sie erzeugen, indem Sie das Klemmbrett des
+    Dialogs in die Liste ziehen. Es wird dann eine neue Regel an der
+    Stelle eingefgt, auf die Sie das Klemmbrett gezogen haben. 
+    Wenn Sie das Klemmbrett auf die dritte Regel ziehen, wird nach der 
+    dritten Regel eine Vierte eingefgt. 
+    
+    Wenn Sie die selektierte Regel l”schen, so wird diese in dem
+    Klemmbrett des Dialoges abgelegt. Ziehen Sie danach das Klemmbrett
+    in die Liste, so wird die gel”schte Regel eingefgt. So k”nnen Sie
+    die Regeln umsortieren.
+    
+    Jede Regel, die in der Dialogbox angezeigt wird kann von ihnen
+    ver„ndert werden. Klicken Sie dazu auf den Knopf "ndern...".
+    Es erscheint eine Dialogbox, in der Sie diese Regel ver„ndern k”nnen.
+    In dieser Box sehen Sie eine Liste mit allen zur Verfgung stehenden
+    Icons, einen Knopf, der anzeigt, ob die Regel fr Ordner ist, und
+    den Wildcard der Regel. Natrlich k”nnen Sie hier auch mehrere
+    Wildcards durch Semikolon oder Kommata getrennt eingeben.
+
+    Zus„tzlich l„t sich hier die Farbe, in der das Icon gezeichnet
+    werden soll, einstellen. Beachten Sie, nur Dateien, auf die diese
+    Regel pat, bekommen ein Icon in dieser Farbe. Mit verschiedenen
+    Regeln l„t sich so ein Icon in verschiedenen Farben verwenden.
+    Sorgf„ltig eingesetzt kann Farbe zur šbersichtlichkeit sehr stark
+    beitragen, zu bunt ist allerdings immer schnell verwirrend. Am
+    sinnvollsten ist es sicher alle Dateien, die auch logisch 
+    zusammengeh”ren (obwohl sie verschiedene Typen haben) mit einer
+    Farbe zu versehen.
+    
+    HINWEIS: Sollte eine eingestellte Farbe nicht zur Verfgung stehen,
+    so wird fr den Hintergrund immer wei und fr den Vordergrund
+    immer schwarz verwendet.
+    
+    Verlassen Sie den Dialog mit dem "OK"-Button, so werden alle nderungen,
+    die Sie vorgenommen haben, bernommen; mit dem "Abbruch"-Button werden
+    aber alle Ihre nderungen ignoriert. Sie k”nnen also in aller Ruhe in
+    dem Dialog herumspielen, ohne Gefahr zu laufen, Ihr sorgsam aufgebautes
+    Regelwerk zu zerst”ren.
+    
+    
+    An obigem Beispiel soll nun erkl„rt werden, wie Sie Ihre Liste von
+    Regeln erweitern k”nnen. 
+    
+    1. Sie wollen, da fr alle Dateien mit der Endung ".PRG" dasgleiche
+       Icon wie fr Dateien mit der Endung ".APP" benutzt werden soll.
+       Klicken Sie dazu einfach auf die erste Regel (Sie wird schwarz) und
+       dann auf den Knopf "ndern...". ndern Sie in der nun folgenden
+       Dialogbox das Muster (Wildcard) von "*.APP" auf "*.APP,*.PRG" und
+       drcken Sie "OK".
+       Die Liste sieht nun so aus:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            
+    2. Sie wollen fr Dateien mit der Endung ".INF" ein besonderes Icon
+       benutzen. Ziehen Sie dazu das Klemmbrett in die Liste und lassen
+       Sie den Mausknopf los. An der Stelle, auf die Sie das Klemmbrett
+       gezogen haben, wird eine neue Regel eingefgt. War das z.B. die
+       dritte Regel, so die Liste jetzt so aus:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            4.    []   *
+            
+       Klicken Sie jetzt auf die vierte Regel und dann auf "ndern...".
+       W„hlen Sie das gewnschte Icon und geben Sie den Wildcard "*.INF"
+       ein. Drcken Sie auf "OK". Die Liste danach:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            4.    []   *.INF
+            
+       Leider haben wir jetzt einen kleinen Fehler gemacht! Venus wird
+       sich n„mlich niemals die vierte Regel anschauen. Daher wird auch
+       keine Datei mit der Endung ".INF" das von Ihnen gew„hlte Icon
+       erhalten. Was ist passiert? Wir haben die Regel an der falschen
+       Stelle eingefgt. Wie oben schon beschrieben wurde, pat die dritte
+       Regel ja auf alle Dateien. Daher wird Venus auf der Suche nach einem
+       Icon sp„testens bei der dritten Regel aufh”ren.
+       Was tun? Wir mssen die Regeln umsortierten; die vierte Regel mu
+       weiter nach oben. Dazu klicken Sie einfach auf die vierte Regel.
+       Nun ist die vierte Regel invertiert (schwarz) und Sie k”nnen auf
+       den Knopf "L”schen" klicken. Die vierte Regel wird entfernt und
+       wandert auf das Klemmbrett. Nun ziehen Sie das Klemmbrett erneut
+       in die Liste z.B. zwischen die erste und zweite Regel. Die Liste:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.INF
+            3.    []   *.TOS,*.TTP
+            4.    []   *
+            
+       Nun werden alle Dateien mit der Endung ".INF" das richtige Icon
+       erhalten.
+       
+    3. Sie wollen "GEMINI.INF" ein spezielles Icon zuordnen. Da schon
+       eine Regel fr Dateien mit der Endung ".INF" vorhanden ist, mu
+       die neue Regel vor der zweiten Regel eingefgt werden.
+       Ziehen Sie dazu das Klemmbrett zwischen die erste und die zweite
+       Regel. Klicken Sie die neue Regel an und „ndern Sie mittels
+       "ndern..." Icon und Muster (Wildcard). Die Regelliste mte jetzt
+       so aussehen:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   GEMINI.INF
+            3.    []   *.INF
+            4.    []   *.TOS,*.TTP
+            5.    []   *
+            
+       Nun wird die Datei GEMINI.INF das Icon aus Regel zwei erhalten,
+       w„hrend z.B. VENUS.INF das Icon der dritten Regel erh„lt.
+       
+    Allgemein sollte man darauf achten, da Regeln, die nur fr eine
+    bestimmte Datei gedacht sind, immer am Anfang der Liste stehen. Vor
+    einer Regel fr eine einzige Datei sollten keine Regeln stehen, die
+    einen Stern "*" oder ein Fragezeichen "?" enthalten. Ist dies Ihnen
+    doch einmal passiert, so sortieren Sie die Regeln bitte wie oben
+    beschrieben um.
+    

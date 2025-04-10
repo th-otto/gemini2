@@ -1,0 +1,58 @@
+#!mupfel
+
+cd d:\gemini\gemini2
+
+aktdat ()
+{
+  if [ -d gen ]
+  then
+    cp -vd d:\gemini\src\mupfel\doc\mupfel.gen gen\
+    cp -vd d:\gemini\src\venus\doc\gemini.gen gen\
+  fi
+
+  cp -vd d:\gemini\src\venus\vaproto.h doc\
+  cp -vd d:\gemini\src\gemini.app .
+  cp -vd d:\gemini\src\gemini.msg .
+  cp -vd d:\gemini\src\gemini.rsc .
+  cp -vd d:\gemini\src\geminiic.rsc .
+  cp -vd d:\gemini\src\geminiic.old .\oldicons.rsc
+  cp -vd d:\gemini\src\mupfel.ttp .
+  cp -vd d:\gemini\src\mupfel.msg .
+  cp -vd d:\gemini\src\runner2.app .
+}
+
+if [ -r e:\tmp\gmni2.tos ]
+then
+  echo "Soll das vorhandene gmni2.tos kopiert werden? "%%c
+  read test
+  case $test in
+	[j|J])
+		echo "Das vorhandene Archiv wird kopiert..."
+		;;
+	*)
+		echo "Das Archiv wird neu angelegt..."
+  		rm -f e:\tmp\gmni2.tos
+		;;
+  esac
+fi
+
+if [ ! -r e:\tmp\gmni2.tos ]
+then
+  echo "Sollen die Dateien aktualisiert werden? "%%c
+  read test
+  case $test in
+	[j|J])
+		echo "Die Dateien werden aktualisiert..."
+		aktdat
+		;;
+	*)
+		;;
+  esac
+
+  (cd ..; stzip -ar -ed e:\tmp\gmni2.zip gemini2 )
+
+  ( cd e:\tmp\; zip2tos gmni2.zip )
+
+fi
+
+

@@ -1,0 +1,12 @@
+#define SPECINFO         24  /* Formular/Dialog */
+#define SPIICON          3   /* BOX in Baum SPECINFO */
+#define SPINAME          4   /* FTEXT in Baum SPECINFO */
+#define SPIFILES         5   /* FTEXT in Baum SPECINFO */
+#define SPIFOLDE         6   /* FTEXT in Baum SPECINFO */
+#define SPISIZE          7   /* FTEXT in Baum SPECINFO */
+#define SPISCSC          8   /* STRING in Baum SPECINFO */
+#define SPISC            10  /* BUTTON in Baum SPECINFO */
+#define SPISC0           11  /* BOXCHAR in Baum SPECINFO */
+#define SPICANC          12  /* BUTTON in Baum SPECINFO */
+#define SPIOK            13  /* BUTTON in Baum SPECINFO */
+

@@ -1,0 +1,5 @@
+#
+# zoo all nls files
+#
+zoo auhnP nls.zoo '*.c' '*.h' '*.prj' '*.nls' '*.mup'
+cp nls.zoo $ARCHIV

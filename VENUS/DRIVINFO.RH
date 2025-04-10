@@ -1,0 +1,15 @@
+#define DRIVINFO         15  /* Formular/Dialog */
+#define DRVICON          3   /* BOX in Baum DRIVINFO */
+#define DRVDRIVE         4   /* FTEXT in Baum DRIVINFO */
+#define DRVNAME          5   /* FTEXT in Baum DRIVINFO */
+#define DRVLABEL         6   /* FTEXT in Baum DRIVINFO */
+#define DRVFOLNR         7   /* FTEXT in Baum DRIVINFO */
+#define DRVFILNR         8   /* FTEXT in Baum DRIVINFO */
+#define DRVSIZE          9   /* FTEXT in Baum DRIVINFO */
+#define DRVFREE          10  /* FTEXT in Baum DRIVINFO */
+#define DRVSCSC          11  /* STRING in Baum DRIVINFO */
+#define DRVSC            13  /* BUTTON in Baum DRIVINFO */
+#define DRVSC0           14  /* BOXCHAR in Baum DRIVINFO */
+#define DRVCANC          15  /* BUTTON in Baum DRIVINFO */
+#define DRVOK            16  /* BUTTON in Baum DRIVINFO */
+

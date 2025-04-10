@@ -1,0 +1,8 @@
+#define DIVBOX           29  /* Formular/Dialog */
+#define SHOWHIDD         4   /* BUTTON in Baum DIVBOX */
+#define DIVLOWER         5   /* BUTTON in Baum DIVBOX */
+#define SNAPWIND         6   /* BUTTON in Baum DIVBOX */
+#define SNAPALWA         7   /* BUTTON in Baum DIVBOX */
+#define DIVCANCE         8   /* BUTTON in Baum DIVBOX */
+#define DIVOK            9   /* BUTTON in Baum DIVBOX */
+

@@ -1,0 +1,6 @@
+export NAME=$PWD\mupfb1a1
+
+strip -fv mupfel.ttp
+zip -a $NAME mupfel.ttp changes runner2.app
+cd c:\usr\man\cat1m\
+zip -a $NAME label.1m ls.1m help.1m

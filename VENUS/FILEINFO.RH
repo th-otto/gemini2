@@ -1,0 +1,14 @@
+#define FILEINFO         13  /* Formular/Dialog */
+#define FLIICON          3   /* BOX in Baum FILEINFO */
+#define FLINAME          5   /* FTEXT in Baum FILEINFO */
+#define FLINAME2         6   /* FTEXT in Baum FILEINFO */
+#define FLIDATE          7   /* FTEXT in Baum FILEINFO */
+#define FLITIME          8   /* FTEXT in Baum FILEINFO */
+#define FLISIZE          9   /* FTEXT in Baum FILEINFO */
+#define FILEREON         11  /* BUTTON in Baum FILEINFO */
+#define FILEHIDD         12  /* BUTTON in Baum FILEINFO */
+#define FILESYST         13  /* BUTTON in Baum FILEINFO */
+#define FILEARCH         14  /* BUTTON in Baum FILEINFO */
+#define FLICANC          15  /* BUTTON in Baum FILEINFO */
+#define FLIOK            16  /* BUTTON in Baum FILEINFO */
+

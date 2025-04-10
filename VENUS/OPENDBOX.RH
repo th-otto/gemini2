@@ -1,0 +1,8 @@
+#define OPENDBOX         28  /* Formular/Dialog */
+#define OPTWAIT          4   /* BUTTON in Baum OPENDBOX */
+#define OPTOVL           6   /* BUTTON in Baum OPENDBOX */
+#define OPTEMPTY         8   /* BUTTON in Baum OPENDBOX */
+#define OPTQUEST         9   /* BUTTON in Baum OPENDBOX */
+#define OPTSAVE          10  /* BUTTON in Baum OPENDBOX */
+#define OPENDOK          12  /* BUTTON in Baum OPENDBOX */
+

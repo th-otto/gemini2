@@ -1,0 +1,3 @@
+#define SWITCHOF         41  /* Formular/Dialog */
+#define OFFICON          2   /* ICON in Baum SWITCHOF */
+

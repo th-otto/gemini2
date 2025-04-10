@@ -1,0 +1,7 @@
+#define TOTALINF         36  /* Formular/Dialog */
+#define TIFOLDNR         5   /* FTEXT in Baum TOTALINF */
+#define TIFILENR         6   /* FTEXT in Baum TOTALINF */
+#define TIBYTES          7   /* FTEXT in Baum TOTALINF */
+#define TIOK             8   /* BUTTON in Baum TOTALINF */
+#define TIMORE           9   /* BUTTON in Baum TOTALINF */
+

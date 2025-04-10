@@ -1,0 +1,5 @@
+#define FMTBOX           35  /* Formular/Dialog */
+#define FMTBACK          2   /* BOX in Baum FMTBOX */
+#define FMTFORE          3   /* BOX in Baum FMTBOX */
+#define INITESC          4   /* BOXTEXT in Baum FMTBOX */
+

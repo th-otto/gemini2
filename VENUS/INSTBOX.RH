@@ -1,0 +1,26 @@
+#define INSTBOX          7   /* Formular/Dialog */
+#define INSTBG           3   /* BOX in Baum INSTBOX */
+#define INSTB            4   /* BOX in Baum INSTBOX */
+#define INSTSPEC         5   /* IBOX in Baum INSTBOX */
+#define INDRSCSC         7   /* STRING in Baum INSTBOX */
+#define INDRVSC          9   /* BUTTON in Baum INSTBOX */
+#define INDRVSC0         10  /* BOXCHAR in Baum INSTBOX */
+#define INSTBGSC         12  /* STRING in Baum INSTBOX */
+#define INSTBACK         14  /* BUTTON in Baum INSTBOX */
+#define INSTBBOX         15  /* BOX in Baum INSTBOX */
+#define INSTBK0          16  /* BOXCHAR in Baum INSTBOX */
+#define INSTFGSC         17  /* STRING in Baum INSTBOX */
+#define INSTFORE         19  /* BUTTON in Baum INSTBOX */
+#define INSTFBOX         20  /* BOX in Baum INSTBOX */
+#define INSTFR0          21  /* BOXCHAR in Baum INSTBOX */
+#define INSTSCSC         22  /* STRING in Baum INSTBOX */
+#define INSTSC           24  /* BUTTON in Baum INSTBOX */
+#define INSTSC0          25  /* BOXCHAR in Baum INSTBOX */
+#define INSTNAME         26  /* FTEXT in Baum INSTBOX */
+#define INSHOWB          27  /* BUTTON in Baum INSTBOX */
+#define INSTNEVE         28  /* BUTTON in Baum INSTBOX */
+#define INSTALWA         29  /* BUTTON in Baum INSTBOX */
+#define INSTAVAI         30  /* BUTTON in Baum INSTBOX */
+#define INSTCANC         31  /* BUTTON in Baum INSTBOX */
+#define INSTOK           32  /* BUTTON in Baum INSTBOX */
+

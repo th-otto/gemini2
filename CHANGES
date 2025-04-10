@@ -1,0 +1,130 @@
+README zur Mupfel-Beta-Version 1.A2
+-----------------------------------
+
+Da im Moment nicht abzusehen ist, ob und wann es ein komplett neues 
+Gemini-Release geben wird, ver”ffentliche ich hiermit zumindest meine 
+aktuelle Fassung der Mupfel. Bitte informiert mich ber neue Bugs, aber auch 
+ber bekannte Bugs, die ich m”glicherweise vergessen habe.
+
+Die Dokumentation zur alten Mupfel kann weiterverwendet werden, daher enth„lt 
+dieses Archiv nur die Programmdatei und dieses README.
+
+Und ACHTUNG:
+
+-   Bitte die Datei MUPFEL.MSG aus der letzten Gemini-Distribution wegwerfen.
+
+-   Stefan Eissing hat nichts mit diesem Update zu tun. Neue Fehler sind 
+    ausschlielich auf meine nderungen zurckzufhren. Geht bitte Stefan 
+    NICHT damit auf die Nerven.
+
+-   Ich bitte darum, dieses Archiv *nicht* zu ver„ndern. Neue Versionen 
+    werden in der Maus MS2 (0251/77261) und im Internet zu finden sein 
+    (ftp://ftp.uni-muenster.de/pub/atari/Gemini).
+
+Und nun viel Spa.
+
+Julian Reschke (jr@ms.maus.de)
+
+
+Version 1.A2 beta ()
+--------------------------------
+
+cp und mv
+    Generelle Aufr„umarbeiten fr POSIX 1003.1 (siehe auch Manualpages).
+
+    U.a.:
+
+    mv t T auf einem Mac-FS macht jetzt das richtige.
+    mv a b\c mit a Ordnername geht jetzt.
+    cp -p kopiert uid, gid und timestamps.
+	cp kopiert die Dateiattribute mit
+    cp kopiert die Mac-HFS-Attribute sowie die Resource-Fork mit (MacMiNT, 
+    MagiCMac)
+
+label
+	Aufger„umt; benutzt jetzt Dreadlabel/Dwritelabel. L”schen des Labels 
+	unter alten TOS-Versionen wird nicht mehr untersttzt.
+
+ls
+    (-l) Es werden jetzt User- und Gruppennamen ausgegeben.
+
+	(-H) Bei -l werden anstelle von User- und Gruppennamen die Mac-Typ- und~
+	Creator-Infos ausgegeben (so vorhanden). Achtung: langsam.
+
+    (-R) Verzeichnisnamen werden nicht mehr verschluckt (ich hoffe, da diese 
+    nderung keine anderen Nebenwirkungen hat...).
+
+unalias
+    Absturzbug beseitigt.
+
+Sonstiges
+    Der Speicherschiesser, der zum Absturz unter MagiC 5 fhrte, wurde 
+    beseitigt (der Fehler lag brigens in Code von mir, Steve war natrlich
+    nicht schuld). Daher wurde auch der Workaround vom 23. Juni entfernt.
+
+    Es wird nun regelm„ig Pwait() aufgerufen, um unter MiNT beendete 
+    Tochterprozesse richtig abzur„umen.
+
+	Im Zeileneditor werden jetzt nur noch Leerzeichen als Worttrenner erkannt 
+    (CTRL-Cursor).
+
+    Die šbernahme von $LINES und $COLUMNS aus dem Environment des Aufrufers
+    sollte wieder funktionieren.
+
+
+Version 1.A1 beta (June 23 1996)
+--------------------------------
+
+ls
+    Gibt jetzt alle Permission-Bits aus und bettet die TOS-Attribute in das 
+    "optional access method flag" ein. Anzahl der Links wird angezeigt. Datum 
+    nach POSIX-Norm.
+
+rm
+    Aufger„umt. rm -if macht jetzt das, was POSIX verlangt.
+
+runner
+    Sollte jetzt auch mit ver„nderten Systemfonts korrekt laufen.
+
+Sonstiges
+    Version der MSG-Datei wird berprft (normalerweise wird diese nicht 
+    gebraucht!). Bei der Datumsausgabe im Prompt (PS1) wird der _IDT-Cookie 
+    bercksichtigt.
+
+    Workaround: unter MagiC 5 benutzt die Mupfel vorl„ufig nicht mehr Pexec 
+    104, weil das zu einer Speicherschutzverletzung fhrte.
+
+
+Version 1.A0 beta (May 18 1996)
+-------------------------------
+
+format
+    gibt Errorcodes aus.
+
+free
+    -l: Ausgabebreite gefixt.
+
+getopt
+    getopt tut jetzt auch ohne aktuelle Parameter.
+
+init
+    Fehlermeldungen korrigiert, -s wird nun richtig evaluiert.
+
+ls
+    Symlink-Problem beseitigt (zumindest etwas ertr„glicher gemacht). Neue
+    Optionen -L, -c, -i und -u.
+
+rename
+    rename geht jetzt (wieder?) mit leeren Extensions.
+
+rmdir
+    Errorhandling verbessert.
+
+test
+    benutzt mtime anstelle von ctime (bei -nt etc).
+
+version
+    XHDI-Treibername wird angezeigt. Wei von MagiC.
+
+Sonstiges
+    Generelle nderungen, um die Lauff„higkeit mit MacMiNT zu erm”glichen.

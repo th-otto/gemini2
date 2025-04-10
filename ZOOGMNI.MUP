@@ -1,0 +1,12 @@
+#!mupfel
+
+( cd mupfel; zoomupfe.mup ) &&
+( cd venus; zoovenus.mup ) &&
+( cd nls; zoonls.mup ) &&
+zoo aunf gmnisrc.zoo venus\venus2.zoo mupfel\mupfel2.zoo nls\nls.zoo &&
+find mint | zoo anuhI gmnisrc.zoo &&
+find xrsrc | zoo anuhI gmnisrc.zoo &&
+find exec_job | zoo anuhI gmnisrc.zoo &&
+zoo ahunP gmnisrc.zoo zoogmni.mup &&
+zoo PP gmnisrc.zoo &&
+rm -f gmnisrc.bak

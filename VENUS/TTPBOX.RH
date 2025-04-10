@@ -1,0 +1,6 @@
+#define TTPBOX           17  /* Formular/Dialog */
+#define TTPNAME          3   /* FTEXT in Baum TTPBOX */
+#define TTPCOMM          4   /* FTEXT in Baum TTPBOX */
+#define TTPCANC          5   /* BUTTON in Baum TTPBOX */
+#define TTPOK            6   /* BUTTON in Baum TTPBOX */
+

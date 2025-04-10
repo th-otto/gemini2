@@ -1,0 +1,16 @@
+#define SCRAPBOX         21  /* Formular/Dialog */
+#define SCRAPNAM         6   /* FTEXT in Baum SCRAPBOX */
+#define SCRPSCSC         7   /* STRING in Baum SCRAPBOX */
+#define SCRAPSC          9   /* BUTTON in Baum SCRAPBOX */
+#define SCRAPSC0         10  /* BOXCHAR in Baum SCRAPBOX */
+#define SCRPBGSC         12  /* STRING in Baum SCRAPBOX */
+#define SCRABACK         14  /* BUTTON in Baum SCRAPBOX */
+#define SCRABBOX         15  /* BOX in Baum SCRAPBOX */
+#define SCRABK0          16  /* BOXCHAR in Baum SCRAPBOX */
+#define SCRPFGSC         17  /* STRING in Baum SCRAPBOX */
+#define SCRAFORE         19  /* BUTTON in Baum SCRAPBOX */
+#define SCRAFBOX         20  /* BOX in Baum SCRAPBOX */
+#define SCRAFR0          21  /* BOXCHAR in Baum SCRAPBOX */
+#define SCRAPCAN         22  /* BUTTON in Baum SCRAPBOX */
+#define SCRAPOK          23  /* BUTTON in Baum SCRAPBOX */
+

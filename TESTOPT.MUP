@@ -1,0 +1,12 @@
+set -- $( getopt "?l" $* )
+
+echo $*
+
+while [ $# -ne 0 ]
+do
+	case $1 in
+		"-%?" )	echo Fragezeichen ; shift ;;
+		"-l" ) 	echo -l ; shift ;;
+		* )	echo $1 kenne ich nicht ; shift
+	esac
+done
