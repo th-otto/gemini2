@@ -1267,6 +1267,8 @@ venusErr ("mb[]=%04x %04x %04x %04x %04x %04x %04x %04x",
 			break;
 		}
 
+#undef CH_EXIT /* wrong value in original aes.h */
+#define CH_EXIT 90
 		case CH_EXIT:
 			break;
 

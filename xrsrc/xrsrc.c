@@ -40,10 +40,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <tos.h>
-#include <portab.h>
-#include "xvdi.h"
 #include "xaes.h"
 #include "xrsrc.h"
+#include "xvdi.h"
+
+#ifndef FALSE
+#define FALSE 0
+#define TRUE  1
+#endif
 
 /****** Compilerswitches ******************************************************/
 
@@ -62,95 +66,95 @@
 typedef struct
 {
 	USERBLK	ublk;
-	UWORD		old_type;
+	_UWORD		old_type;
 } OBBLK;
 #endif
 
 /****** VARIABLES ************************************************************/
 
-LOCAL WORD  xgl_wbox, xgl_hbox;
-LOCAL GRECT xdesk;
+static _WORD  xgl_wbox, xgl_hbox;
+static GRECT xdesk;
 
 #if COLOR_ICONS == TRUE
-LOCAL WORD xvdi_handle;
+static _WORD xvdi_handle;
 #endif
 
-LOCAL WORD		*rs_global;
-LOCAL RSXHDR  *rs_hdr;
-LOCAL RSXHDR	*hdr_buf;
+static _WORD		*rs_global;
+static RSXHDR  *rs_hdr;
+static RSXHDR	*hdr_buf;
 
 #if COLOR_ICONS == TRUE
-LOCAL WORD    farbtbl[256][32];
-LOCAL ULONG   farbtbl2[32];
-LOCAL WORD    is_palette;
-LOCAL WORD    rgb_palette[256][4];
-LOCAL WORD    xpixelbytes;
-LOCAL WORD    xscrn_planes;
+static _WORD    farbtbl[256][32];
+static _ULONG   farbtbl2[32];
+static _WORD    is_palette;
+static _WORD    rgb_palette[256][4];
+static _WORD    xpixelbytes;
+static _WORD    xscrn_planes;
 #endif
 
 /****** FUNCTIONS ************************************************************/
 
-LOCAL VOID rs_obfix      _((OBJECT *rs_otree, WORD rs_oobject));
-LOCAL VOID rs_sglobal    _((WORD *base));
-LOCAL WORD rs_free       _((WORD *base));
-LOCAL WORD rs_gaddr      _((WORD *base, WORD re_gtype, WORD re_gindex, OBJECT **re_gaddr));
-LOCAL WORD rs_sadd       _((WORD *base, WORD rs_stype, WORD rs_sindex, OBJECT *re_saddr));
-LOCAL WORD rs_load       _((WORD *global, CONST BYTE *fname));
-LOCAL VOID *get_address  _((WORD type, WORD index));
-LOCAL VOID *get_sub      _((WORD index, LONG offset, WORD size));
-LOCAL WORD rs_read       _((WORD *global, CONST BYTE *fname));
-LOCAL VOID rs_fixindex   _((WORD *global));
-LOCAL VOID do_rsfix      _((ULONG rs_size, LONG file_size));
-LOCAL VOID fix_treeindex _((VOID));
-LOCAL VOID fix_object    _((VOID));
-LOCAL VOID fix_tedinfo   _((VOID));
-LOCAL VOID fix_nptr      _((LONG index, WORD ob_type));
-LOCAL WORD fix_ptr       _((WORD type, LONG index));
-LOCAL WORD fix_long      _((LONG *lptr));
-LOCAL VOID fix_chp       _((WORD *pcoord, WORD flag));
+static void rs_obfix      (OBJECT *rs_otree, _WORD rs_oobject);
+static void rs_sglobal    (_WORD *base);
+static _WORD rs_free       (_WORD *base);
+static _WORD rs_gaddr      (_WORD *base, _WORD re_gtype, _WORD re_gindex, OBJECT **re_gaddr);
+static _WORD rs_sadd       (_WORD *base, _WORD rs_stype, _WORD rs_sindex, OBJECT *re_saddr);
+static _WORD rs_load       (_WORD *global, const char *fname);
+static void *get_address  (_WORD type, _WORD index);
+static void *get_sub      (_WORD index, _LONG offset, _WORD size);
+static _WORD rs_read       (_WORD *global, const char *fname);
+static void rs_fixindex   (_WORD *global);
+static void do_rsfix      (_ULONG rs_size, _LONG file_size);
+static void fix_treeindex (void);
+static void fix_object    (void);
+static void fix_tedinfo   (void);
+static void fix_nptr      (_LONG index, _WORD ob_type);
+static _WORD fix_ptr       (_WORD type, _LONG index);
+static _WORD fix_long      (_LONG *lptr);
+static void fix_chp       (_WORD *pcoord, _WORD flag);
 
-LOCAL VOID do_ciconfix   _((ULONG header, RSXHDR *rsxhdr, LONG rs_len));
-LOCAL WORD xadd_cicon    _((CICONBLK *cicnblk, OBJECT *obj, WORD nub));
-LOCAL VOID draw_bitblk   _((WORD *p, WORD x, WORD y, WORD w, WORD h, WORD num_planes, WORD mode, WORD *index));
-LOCAL VOID xfix_cicon    _((UWORD *col_data, LONG len, WORD old_planes, WORD new_planes, MFDB *s));
-LOCAL VOID std_to_byte   _((UWORD *col_data, LONG len, WORD old_planes, ULONG *farbtbl2, MFDB *s));
-LOCAL VOID xrect2array   _((CONST GRECT *rect, WORD *array));
-LOCAL WORD test_rez      _((VOID));
-LOCAL VOID xfill_farbtbl _((VOID));
-LOCAL WORD fill_cicon_liste  _((LONG *cicon_liste, ULONG header, RSXHDR *rsxhdr));
-LOCAL WORD CDECL xdraw_cicon _((PARMBLK *pb));
+static void do_ciconfix   (_ULONG header, RSXHDR *rsxhdr, _LONG rs_len);
+static _WORD xadd_cicon    (CICONBLK *cicnblk, OBJECT *obj, _WORD nub);
+static void draw_bitblk   (_WORD *p, _WORD x, _WORD y, _WORD w, _WORD h, _WORD num_planes, _WORD mode, _WORD *index);
+static void xfix_cicon    (_UWORD *col_data, _LONG len, _WORD old_planes, _WORD new_planes, MFDB *s);
+static void std_to_byte   (_UWORD *col_data, _LONG len, _WORD old_planes, _ULONG *farbtbl2, MFDB *s);
+static void xrect2array   (const GRECT *rect, _WORD *array);
+static _WORD test_rez      (void);
+static void xfill_farbtbl (void);
+static _WORD fill_cicon_liste  (_LONG *cicon_liste, _ULONG header, RSXHDR *rsxhdr);
+static _WORD cdecl xdraw_cicon (PARMBLK *pb);
 
 /*****************************************************************************/
 
-GLOBAL WORD xrsrc_load (CONST BYTE *re_lpfname, WORD *pglobal)
+_WORD xrsrc_load (const char *re_lpfname, _WORD *pglobal)
 {
 	return (rs_load (pglobal, re_lpfname));
 }
 
 /*****************************************************************************/
 
-GLOBAL WORD xrsrc_free (WORD *pglobal)
+_WORD xrsrc_free (_WORD *pglobal)
 {
 	return (rs_free (pglobal));
 }
 
 /*****************************************************************************/
 
-GLOBAL WORD xrsrc_gaddr (WORD re_gtype, WORD re_gindex, VOID *re_gaddr, WORD *pglobal)
+_WORD xrsrc_gaddr (_WORD re_gtype, _WORD re_gindex, void *re_gaddr, _WORD *pglobal)
 {
 	return (rs_gaddr (pglobal, re_gtype, re_gindex, re_gaddr));
 }
 
 /*****************************************************************************/
 
-GLOBAL WORD xrsrc_saddr (WORD re_stype, WORD re_sindex, VOID *re_saddr, WORD *pglobal)
+_WORD xrsrc_saddr (_WORD re_stype, _WORD re_sindex, void *re_saddr, _WORD *pglobal)
 {
 	return (rs_sadd (pglobal, re_stype, re_sindex, re_saddr));
 }
 
 /*****************************************************************************/
 
-GLOBAL WORD xrsrc_obfix (OBJECT *re_otree, WORD re_oobject)
+_WORD xrsrc_obfix (OBJECT *re_otree, _WORD re_oobject)
 {
 	rs_obfix (re_otree, re_oobject);
 
@@ -159,11 +163,11 @@ GLOBAL WORD xrsrc_obfix (OBJECT *re_otree, WORD re_oobject)
 
 /*****************************************************************************/
 
-LOCAL VOID rs_obfix (OBJECT *rs_otree, WORD rs_oobject)
+static void rs_obfix (OBJECT *rs_otree, _WORD rs_oobject)
 {
-	WORD *coord;
-	WORD tmp = FALSE;
-	WORD count = 0;
+	_WORD *coord;
+	_WORD tmp = FALSE;
+	_WORD count = 0;
 
 	coord = &rs_otree[rs_oobject].ob_x;
 
@@ -176,22 +180,22 @@ LOCAL VOID rs_obfix (OBJECT *rs_otree, WORD rs_oobject)
 
 /*****************************************************************************/
 
-LOCAL VOID rs_sglobal (WORD *base)
+static void rs_sglobal (_WORD *base)
 {
 	rs_global = base;
-	hdr_buf = (RSXHDR *)*(LONG *)&rs_global[7];
-	(LONG)rs_hdr = (LONG)hdr_buf + sizeof (RSXHDR);
+	hdr_buf = (RSXHDR *)*(_LONG *)&rs_global[7];
+	(_LONG)rs_hdr = (_LONG)hdr_buf + sizeof (RSXHDR);
 
 	return;
 }
 
 /*****************************************************************************/
 
-LOCAL WORD rs_free (WORD *base)
+static _WORD rs_free (_WORD *base)
 
 {
 #if COLOR_ICONS == TRUE
-	WORD     i;
+	_WORD     i;
 	CICON    *color_icn;
 #endif
 
@@ -199,10 +203,10 @@ LOCAL WORD rs_free (WORD *base)
 
 #if COLOR_ICONS == TRUE
 
-	if ((color_icn = (CICON *)*(LONG *)&rs_global[2]) != NULL)
+	if ((color_icn = (CICON *)*(_LONG *)&rs_global[2]) != NULL)
 	{
-		WORD *start = *(WORD **)&rs_global[7];
-		WORD *end = *(WORD **)&rs_global[10];
+		_WORD *start = *(_WORD **)&rs_global[7];
+		_WORD *end = *(_WORD **)&rs_global[10];
 		
 		for (i = 0; i < rs_global[4]; i++)
 		{
@@ -231,19 +235,19 @@ LOCAL WORD rs_free (WORD *base)
 		free (color_icn);
 	}
 
-	if (*(LONG *)rs_global)
-		free ((VOID *)*(LONG *)rs_global);
+	if (*(_LONG *)rs_global)
+		free ((void *)*(_LONG *)rs_global);
 
 #endif
 
-	free ((RSXHDR *)*(LONG *)&rs_global[7]);
+	free ((RSXHDR *)*(_LONG *)&rs_global[7]);
 
 	return (TRUE);
 }
 
 /*****************************************************************************/
 
-LOCAL WORD rs_gaddr (WORD *base, WORD re_gtype, WORD re_gindex, OBJECT **re_gaddr)
+static _WORD rs_gaddr (_WORD *base, _WORD re_gtype, _WORD re_gindex, OBJECT **re_gaddr)
 {
 	rs_sglobal (base);
 
@@ -257,7 +261,7 @@ LOCAL WORD rs_gaddr (WORD *base, WORD re_gtype, WORD re_gindex, OBJECT **re_gadd
 
 /*****************************************************************************/
 
-LOCAL WORD rs_sadd (WORD *base, WORD rs_stype, WORD rs_sindex, OBJECT *re_saddr)
+static _WORD rs_sadd (_WORD *base, _WORD rs_stype, _WORD rs_sindex, OBJECT *re_saddr)
 {
 	OBJECT *old_addr;
 
@@ -275,7 +279,7 @@ LOCAL WORD rs_sadd (WORD *base, WORD rs_stype, WORD rs_sindex, OBJECT *re_saddr)
 
 /*****************************************************************************/
 
-LOCAL WORD rs_load (WORD *global, CONST BYTE *fname)
+static _WORD rs_load (_WORD *global, const char *fname)
 {
 	if (!rs_read (global, fname))
 		return (FALSE);
@@ -287,13 +291,13 @@ LOCAL WORD rs_load (WORD *global, CONST BYTE *fname)
 
 /*****************************************************************************/
 
-LOCAL VOID *get_address (WORD type, WORD index)
+static void *get_address (_WORD type, _WORD index)
 {
-	VOID *the_addr = (VOID *)NULL;
+	void *the_addr = (void *)NULL;
 	union
 	{
-		VOID		*dummy;
-		BYTE		*string;
+		void		*dummy;
+		char		*string;
 		OBJECT	**dpobject;
 		OBJECT	*object;
 		TEDINFO	*tedinfo;
@@ -351,22 +355,22 @@ LOCAL VOID *get_address (WORD type, WORD index)
 			break;
 
 		case R_STRING:
-			the_addr = get_sub (index, hdr_buf->rsh_frstr, sizeof (BYTE *));
-			the_addr = (VOID *)*(BYTE *)the_addr;
+			the_addr = get_sub (index, hdr_buf->rsh_frstr, sizeof (char *));
+			the_addr = (void *)*(char *)the_addr;
 			break;
 
 		case R_IMAGEDATA:
-			the_addr = get_sub (index, hdr_buf->rsh_imdata, sizeof (BYTE *));
-			the_addr = (VOID *)*(BYTE *)the_addr;
+			the_addr = get_sub (index, hdr_buf->rsh_imdata, sizeof (char *));
+			the_addr = (void *)*(char *)the_addr;
 			break;
 
 		case R_FRIMG:
-			the_addr = get_sub (index, hdr_buf->rsh_frimg, sizeof (BYTE *));
-			the_addr = (VOID *)*(BYTE *)the_addr;
+			the_addr = get_sub (index, hdr_buf->rsh_frimg, sizeof (char *));
+			the_addr = (void *)*(char *)the_addr;
 			break;
 
 		case R_FRSTR:
-			the_addr = get_sub (index, hdr_buf->rsh_frstr, sizeof (BYTE *));
+			the_addr = get_sub (index, hdr_buf->rsh_frstr, sizeof (char *));
 			break;
 	}
 
@@ -375,25 +379,25 @@ LOCAL VOID *get_address (WORD type, WORD index)
 
 /*****************************************************************************/
 
-LOCAL VOID *get_sub (WORD index, LONG offset, WORD size)
+static void *get_sub (_WORD index, _LONG offset, _WORD size)
 {
-	UBYTE *ptr = (UBYTE *)rs_hdr;
+	char *ptr = (char *)rs_hdr;
 
 	ptr += offset;
 	ptr += (index * size);
 
-	return ((VOID *)ptr);
+	return ((void *)ptr);
 }
 
 /*****************************************************************************/
 
-LOCAL WORD rs_read (WORD *global, CONST BYTE *fname)
+static _WORD rs_read (_WORD *global, const char *fname)
 {
-	WORD i, fh;
-	BYTE tmpnam[128];
+	_WORD i, fh;
+	char tmpnam[128];
   DTA  dta, *old_dta;
-  LONG size;
-  WORD ret = TRUE;
+  _LONG size;
+  _WORD ret = TRUE;
 
 	strcpy (tmpnam, fname);
 
@@ -414,20 +418,20 @@ LOCAL WORD rs_read (WORD *global, CONST BYTE *fname)
 	{
 		if ((hdr_buf = (RSXHDR *)malloc (size + sizeof (RSXHDR))) != NULL)
 		{
-			(LONG)rs_hdr = (LONG)hdr_buf + sizeof (RSXHDR);
+			(_LONG)rs_hdr = (_LONG)hdr_buf + sizeof (RSXHDR);
 			
 			if (Fread (fh, size, rs_hdr) == size)
 			{
 				if (((RSHDR *)rs_hdr)->rsh_vrsn == 3)
 					memcpy (hdr_buf, rs_hdr, sizeof (RSXHDR));
 				else
-					for (i = 0; i < sizeof (RSXHDR) / sizeof (LONG); i++)
-						((ULONG *)hdr_buf)[i] = ((UWORD *)rs_hdr)[i];
+					for (i = 0; i < sizeof (RSXHDR) / sizeof (_LONG); i++)
+						((_ULONG *)hdr_buf)[i] = ((_UWORD *)rs_hdr)[i];
 
 				do_rsfix (hdr_buf->rsh_rssize, size);
 
 				if (size > hdr_buf->rsh_rssize + 72L)	/* Farbicons in der Resource? */
-					do_ciconfix ((ULONG)rs_hdr, hdr_buf, size);
+					do_ciconfix ((_ULONG)rs_hdr, hdr_buf, size);
 			}
 			else
 				ret = FALSE;
@@ -445,7 +449,7 @@ LOCAL WORD rs_read (WORD *global, CONST BYTE *fname)
 
 /*****************************************************************************/
 
-LOCAL VOID rs_fixindex (WORD *global)
+static void rs_fixindex (_WORD *global)
 {
 	rs_sglobal (global);
 
@@ -454,11 +458,11 @@ LOCAL VOID rs_fixindex (WORD *global)
 
 /*****************************************************************************/
 
-LOCAL VOID do_rsfix (ULONG size, LONG file_size)
+static void do_rsfix (_ULONG size, _LONG file_size)
 {
-	rs_global[7] = ((LONG)hdr_buf >> 16) & 0xFFFF;
-	rs_global[8] = (LONG)hdr_buf & 0xFFFF;
-	rs_global[9] = (UWORD)size;
+	rs_global[7] = ((_LONG)hdr_buf >> 16) & 0xFFFF;
+	rs_global[8] = (_LONG)hdr_buf & 0xFFFF;
+	rs_global[9] = (_UWORD)size;
 	*(char **)&rs_global[10] = ((char *)hdr_buf) + file_size;
 
 	fix_treeindex ();
@@ -475,30 +479,30 @@ LOCAL VOID do_rsfix (ULONG size, LONG file_size)
 
 /*****************************************************************************/
 
-LOCAL VOID fix_treeindex (VOID)
+static void fix_treeindex (void)
 {
 	OBJECT **adr;
-	LONG   count;
+	_LONG   count;
 
 	count = hdr_buf->rsh_ntree - 1L;
 
 	adr = get_sub (0, hdr_buf->rsh_trindex, sizeof (OBJECT *));
 
-	rs_global[5] = ((LONG)adr >> 16) & 0xFFFF;
-	rs_global[6] = (LONG)adr & 0xFFFF;
+	rs_global[5] = ((_LONG)adr >> 16) & 0xFFFF;
+	rs_global[6] = (_LONG)adr & 0xFFFF;
 
 	while (count >= 0)
 	{
-		fix_long ((LONG *)(count * sizeof (OBJECT *) + (LONG)adr));
+		fix_long ((_LONG *)(count * sizeof (OBJECT *) + (_LONG)adr));
 		count--;
 	}
 }
 
 /*****************************************************************************/
 
-LOCAL VOID fix_object (VOID)
+static void fix_object (void)
 {
-	WORD 	 count;
+	_WORD 	 count;
 	OBJECT *obj;
 
 	count = hdr_buf->rsh_nobs - 1;
@@ -508,7 +512,7 @@ LOCAL VOID fix_object (VOID)
 		obj = get_address (R_OBJECT, count);
 		rs_obfix (obj, 0);
 		if ((obj->ob_type & 0xff) != G_BOX && (obj->ob_type & 0xff) != G_IBOX && (obj->ob_type & 0xff) != G_BOXCHAR)
-			fix_long ((LONG *)&obj->ob_spec);
+			fix_long ((_LONG *)&obj->ob_spec);
 
 		count--;
 	}
@@ -516,9 +520,9 @@ LOCAL VOID fix_object (VOID)
 
 /*****************************************************************************/
 
-LOCAL VOID fix_tedinfo()
+static void fix_tedinfo()
 {
-	LONG		count;
+	_LONG		count;
 	TEDINFO *tedinfo;
 
 	count = hdr_buf->rsh_nted - 1;
@@ -543,7 +547,7 @@ LOCAL VOID fix_tedinfo()
 
 /*****************************************************************************/
 
-LOCAL VOID fix_nptr (LONG index, WORD ob_type)
+static void fix_nptr (_LONG index, _WORD ob_type)
 {
 	while (index >= 0)
 		fix_long (get_address(ob_type, index--));
@@ -551,22 +555,22 @@ LOCAL VOID fix_nptr (LONG index, WORD ob_type)
 
 /*****************************************************************************/
 
-LOCAL WORD fix_ptr (WORD type, LONG index)
+static _WORD fix_ptr (_WORD type, _LONG index)
 {
 	return (fix_long (get_address (type, index)));
 }
 
 /*****************************************************************************/
 
-LOCAL WORD fix_long (LONG *lptr)
+static _WORD fix_long (_LONG *lptr)
 {
-	LONG base;
+	_LONG base;
 
 	base = *lptr;
 	if (base == 0L)
 		return (FALSE);
 
-	base += (LONG)rs_hdr;
+	base += (_LONG)rs_hdr;
 
 	*lptr = base;
 
@@ -575,9 +579,9 @@ LOCAL WORD fix_long (LONG *lptr)
 
 /*****************************************************************************/
 
-LOCAL VOID fix_chp (WORD *pcoord, WORD flag)
+static void fix_chp (_WORD *pcoord, _WORD flag)
 {
-	WORD ncoord;
+	_WORD ncoord;
 
 	ncoord = *pcoord & 0xff;
 
@@ -598,29 +602,29 @@ LOCAL VOID fix_chp (WORD *pcoord, WORD flag)
 /* Farbicons fÅr aktuelle Auflîsung initialisieren                           */
 /*****************************************************************************/
 
-LOCAL VOID do_ciconfix (ULONG header, RSXHDR *rsxhdr, LONG rs_len)
+static void do_ciconfix (_ULONG header, RSXHDR *rsxhdr, _LONG rs_len)
 
-{	LONG   *cicon_liste;
-	WORD   i;
+{	_LONG   *cicon_liste;
+	_WORD   i;
 	OBJECT *obj;
 
-	cicon_liste = (LONG *)(*(LONG *)(rsxhdr->rsh_rssize + (rsxhdr->rsh_rssize & 1L) + header + sizeof (LONG)) + header);
-	if ((LONG)cicon_liste - header > rsxhdr->rsh_rssize && (LONG)cicon_liste - header < rs_len)
+	cicon_liste = (_LONG *)(*(_LONG *)(rsxhdr->rsh_rssize + (rsxhdr->rsh_rssize & 1L) + header + sizeof (_LONG)) + header);
+	if ((_LONG)cicon_liste - header > rsxhdr->rsh_rssize && (_LONG)cicon_liste - header < rs_len)
 	{
 		if (fill_cicon_liste (cicon_liste, header, rsxhdr) != NIL)
 		{
 #if COLOR_ICONS == TRUE
-			WORD nub = 0, work_out [57], *palette;
+			_WORD nub = 0, work_out [57], *palette;
 			
-			if (*(LONG *)rs_global && *(LONG *)&rs_global[2])
+			if (*(_LONG *)rs_global && *(_LONG *)&rs_global[2])
 			{
 				vq_extnd (xvdi_handle, TRUE, work_out);	/* Anzahl der Planes ermitteln */
 				xscrn_planes = work_out[4];
 
 				xpixelbytes = test_rez ();
-				palette = (WORD *)*(LONG *)(rsxhdr->rsh_rssize + (rsxhdr->rsh_rssize & 1L) + header + 2 * sizeof (LONG));
+				palette = (_WORD *)*(_LONG *)(rsxhdr->rsh_rssize + (rsxhdr->rsh_rssize & 1L) + header + 2 * sizeof (_LONG));
 				if (palette != NULL)
-				{	(LONG)palette += header;
+				{	(_LONG)palette += header;
 					memcpy (rgb_palette, palette, sizeof (rgb_palette));
 					is_palette = TRUE;
 				}
@@ -636,7 +640,7 @@ LOCAL VOID do_ciconfix (ULONG header, RSXHDR *rsxhdr, LONG rs_len)
 					{
 						if (xadd_cicon ((CICONBLK *)obj->ob_spec, obj, nub++) == FALSE)
 						{
-							memset (&((CICON *)*(LONG *)&rs_global[2])[nub-1], 0, sizeof (CICON));
+							memset (&((CICON *)*(_LONG *)&rs_global[2])[nub-1], 0, sizeof (CICON));
 							obj->ob_type = (obj->ob_type & 0xff00) | G_ICON;
 						}
 						obj->ob_spec -= header;
@@ -663,11 +667,11 @@ LOCAL VOID do_ciconfix (ULONG header, RSXHDR *rsxhdr, LONG rs_len)
 /* Pointer fÅr Farbicons in der Resource initialisieren                      */
 /*****************************************************************************/
 
-LOCAL WORD fill_cicon_liste (LONG *cicon_liste, ULONG header, RSXHDR *rsxhdr)
+static _WORD fill_cicon_liste (_LONG *cicon_liste, _ULONG header, RSXHDR *rsxhdr)
 
-{	WORD     i, i2, num = 0;
-	BYTE     *p;
-	LONG     iclen, num_cicon, ob, p2;
+{	_WORD     i, i2, num = 0;
+	char     *p;
+	_LONG     iclen, num_cicon, ob, p2;
 	CICONBLK *cblk;
 	CICON    *cicon, *cold;
 	OBJECT   *pobject;
@@ -682,37 +686,37 @@ LOCAL WORD fill_cicon_liste (LONG *cicon_liste, ULONG header, RSXHDR *rsxhdr)
 	
 	for (i = 0; i < num; i++)
 	{
-		cicon_liste[i] = (LONG)cblk;
-		p = (BYTE *)&cblk[1];
-		cblk->monoblk.ib_pdata = (WORD *)p;
+		cicon_liste[i] = (_LONG)cblk;
+		p = (char *)&cblk[1];
+		cblk->monoblk.ib_pdata = (_WORD *)p;
 		iclen = cblk->monoblk.ib_wicon / 8 * cblk->monoblk.ib_hicon;
 		p += iclen;
-		cblk->monoblk.ib_pmask = (WORD *)p;
+		cblk->monoblk.ib_pmask = (_WORD *)p;
 		p += iclen;
-		p2 = (LONG)cblk->monoblk.ib_ptext;
-		if (!p2 || header + p2 == (LONG)p || p2 < rsxhdr->rsh_string || p2 > rsxhdr->rsh_rssize)
-			cblk->monoblk.ib_ptext = (BYTE *)p;
+		p2 = (_LONG)cblk->monoblk.ib_ptext;
+		if (!p2 || header + p2 == (_LONG)p || p2 < rsxhdr->rsh_string || p2 > rsxhdr->rsh_rssize)
+			cblk->monoblk.ib_ptext = (char *)p;
 		else
-			(LONG)cblk->monoblk.ib_ptext = header + (LONG)cblk->monoblk.ib_ptext;
+			(_LONG)cblk->monoblk.ib_ptext = header + (_LONG)cblk->monoblk.ib_ptext;
 		
 		cicon = (CICON *)&p[12];
 		p += 12L;
 		cold = cicon;
-		if ((num_cicon = (LONG)cblk->mainlist) > 0)
+		if ((num_cicon = (_LONG)cblk->mainlist) > 0)
 		{
 			cblk->mainlist = cicon;
 	
 			for (i2 = 0; i2 < num_cicon; i2++)
 			{
-				p = (BYTE *)&cicon[1];
-				cicon->col_data = (WORD *)p;
+				p = (char *)&cicon[1];
+				cicon->col_data = (_WORD *)p;
 				p += iclen * cicon->num_planes;
-				cicon->col_mask = (WORD *)p;
+				cicon->col_mask = (_WORD *)p;
 				p += iclen;
 				if (cicon->sel_data != NULL)
-				{	cicon->sel_data = (WORD *)p;
+				{	cicon->sel_data = (_WORD *)p;
 					p += iclen * cicon->num_planes;
-					cicon->sel_mask = (WORD *)p;
+					cicon->sel_mask = (_WORD *)p;
 					p += iclen;
 				}
 				cicon->next_res = (CICON *)p;
@@ -732,10 +736,10 @@ LOCAL WORD fill_cicon_liste (LONG *cicon_liste, ULONG header, RSXHDR *rsxhdr)
   		if ((pobject[ob].ob_type & 0xff) == G_CICON)
   			pobject[ob].ob_spec = cicon_liste[pobject[ob].ob_spec];
 
-		if ((*(LONG *)rs_global = (LONG)malloc (num * sizeof (OBBLK))) != 0L)
-			memset ((VOID *)*(LONG *)rs_global, 0, num * sizeof (OBBLK));
-		if ((*(LONG *)&rs_global[2] = (LONG)malloc (num * sizeof (CICON))) != 0L)
-			memset ((VOID *)*(LONG *)&rs_global[2], 0, num * sizeof (CICON));
+		if ((*(_LONG *)rs_global = (_LONG)malloc (num * sizeof (OBBLK))) != 0L)
+			memset ((void *)*(_LONG *)rs_global, 0, num * sizeof (OBBLK));
+		if ((*(_LONG *)&rs_global[2] = (_LONG)malloc (num * sizeof (CICON))) != 0L)
+			memset ((void *)*(_LONG *)&rs_global[2], 0, num * sizeof (CICON));
 		rs_global[4] = num;
 	}
 	
@@ -748,11 +752,11 @@ LOCAL WORD fill_cicon_liste (LONG *cicon_liste, ULONG header, RSXHDR *rsxhdr)
 /* anpassen                                                                  */
 /*****************************************************************************/
 
-LOCAL WORD xadd_cicon (CICONBLK *cicnblk, OBJECT *obj, WORD nub)
+static _WORD xadd_cicon (CICONBLK *cicnblk, OBJECT *obj, _WORD nub)
 
-{	WORD     x, y, line, xmax, best_planes, find_planes;
+{	_WORD     x, y, line, xmax, best_planes, find_planes;
 	CICON    *cicn, *color_icn, *best_icn = NULL;
-  LONG     len, *next;
+  _LONG     len, *next;
   MFDB     d;
 #if SAVE_MEMORY == TRUE
 	CICON    *max_icn = NULL;
@@ -760,7 +764,7 @@ LOCAL WORD xadd_cicon (CICONBLK *cicnblk, OBJECT *obj, WORD nub)
 
 	len = cicnblk->monoblk.ib_wicon / 8 * cicnblk->monoblk.ib_hicon;
 
-	color_icn = &((CICON *)*(LONG *)&rs_global[2])[nub];
+	color_icn = &((CICON *)*(_LONG *)&rs_global[2])[nub];
 
 	best_planes = 1;
 	if (xscrn_planes > 8)
@@ -769,12 +773,12 @@ LOCAL WORD xadd_cicon (CICONBLK *cicnblk, OBJECT *obj, WORD nub)
 		find_planes = xscrn_planes;
 
 	cicn = cicnblk->mainlist;
-	next = (LONG *)&cicnblk->mainlist;
+	next = (_LONG *)&cicnblk->mainlist;
 
 	while (cicn != NULL)
 	{
-		*next = (LONG)cicn;
-		next = (LONG *)&cicn->next_res;
+		*next = (_LONG)cicn;
+		next = (_LONG *)&cicn->next_res;
 
 #if SAVE_MEMORY == TRUE
 		if (cicn->num_planes > xscrn_planes)
@@ -846,10 +850,10 @@ LOCAL WORD xadd_cicon (CICONBLK *cicnblk, OBJECT *obj, WORD nub)
 		d.ff	= TRUE;
 		d.np	= xscrn_planes;
 	
-		xfix_cicon ((UWORD *)best_icn->col_data, len, best_planes, xscrn_planes, &d);
+		xfix_cicon ((_UWORD *)best_icn->col_data, len, best_planes, xscrn_planes, &d);
 		if (best_icn->sel_data)
 		{	d.mp = color_icn->sel_data;
-			xfix_cicon ((UWORD *)best_icn->sel_data, len, best_planes, xscrn_planes, &d);
+			xfix_cicon ((_UWORD *)best_icn->sel_data, len, best_planes, xscrn_planes, &d);
 		}
 	}
 	else
@@ -906,16 +910,16 @@ LOCAL WORD xadd_cicon (CICONBLK *cicnblk, OBJECT *obj, WORD nub)
 #endif
 
 #if GEMINI
-	(VOID)obj;
+	(void)obj;
 #else
 	{
 		OBBLK    *ub;
 
-		ub = (OBBLK *)*(LONG *)rs_global;
+		ub = (OBBLK *)*(_LONG *)rs_global;
 		ub[nub].old_type = G_CICON;
 		ub[nub].ublk.ub_parm = obj->ob_spec;
 		ub[nub].ublk.ub_code = xdraw_cicon;
-		obj->ob_spec = (LONG)&ub[nub].ublk;
+		obj->ob_spec = (_LONG)&ub[nub].ublk;
 		obj->ob_type = (obj->ob_type & 0xff00) | G_USERDEF;
 	}
 #endif
@@ -927,12 +931,12 @@ LOCAL WORD xadd_cicon (CICONBLK *cicnblk, OBJECT *obj, WORD nub)
 /* Testen wieviel Bytes pro Pixel im gerÑteabhÑngigen Format verwendet werden*/
 /*****************************************************************************/
 
-LOCAL WORD test_rez ()
+static _WORD test_rez (void)
 
-{	WORD     i, np, color, pxy[8], rgb[3], bpp = 0;
-	UWORD    backup[32], test[32];
-	WORD     black[3] = {0, 0, 0};
-	WORD     white[3] = {1000, 1000, 1000};
+{	_WORD     i, np, color, pxy[8], rgb[3], bpp = 0;
+	_UWORD    backup[32], test[32];
+	_WORD     black[3] = {0, 0, 0};
+	_WORD     white[3] = {1000, 1000, 1000};
 	MFDB     screen;
 	MFDB     pixel = {NULL, 16, 1, 1, 0, 1, 0, 0, 0};
 	MFDB     stdfm = {NULL, 16, 1, 1, 1, 1, 0, 0, 0};
@@ -944,7 +948,7 @@ LOCAL WORD test_rez ()
 		if (xscrn_planes == 8)
 		{
 			color = 0xff;
-			memset (test, 0, xscrn_planes * sizeof (WORD));
+			memset (test, 0, xscrn_planes * sizeof (_WORD));
 			for (np = 0; np < xscrn_planes; np++)
 				test[np] = (color & (1 << np)) << (15 - np);
 	
@@ -985,7 +989,7 @@ LOCAL WORD test_rez ()
 			vs_color (xvdi_handle, 15, white);
 			v_pline (xvdi_handle, 2, pxy);
 			
-			memset (test, 0, xscrn_planes * sizeof (WORD));
+			memset (test, 0, xscrn_planes * sizeof (_WORD));
 			vro_cpyfm (xvdi_handle, S_ONLY, pxy, &screen, &pixel);
 			
 			for (i = (xscrn_planes + 15) / 16 * 2; i < xscrn_planes; i++)
@@ -996,7 +1000,7 @@ LOCAL WORD test_rez ()
 				vs_color (xvdi_handle, 15, black);
 				v_pline (xvdi_handle, 2, pxy);
 				
-				memset (test, 0, xscrn_planes * sizeof (WORD));
+				memset (test, 0, xscrn_planes * sizeof (_WORD));
 				vro_cpyfm (xvdi_handle, S_ONLY, pxy, &screen, &pixel);
 				
 				for (i = (xscrn_planes + 15) / 16 * 2; i < xscrn_planes; i++)
@@ -1026,13 +1030,13 @@ LOCAL WORD test_rez ()
 /* Unter TrueColor Pixelwerte der RGB-Palette ermitteln                      */
 /*****************************************************************************/
 
-LOCAL VOID xfill_farbtbl ()
+static void xfill_farbtbl ()
 
-{	WORD np, color, pxy[8], backup[32], rgb[3];
+{	_WORD np, color, pxy[8], backup[32], rgb[3];
 	MFDB screen;
 	MFDB pixel = {NULL, 16, 1, 1, 0, 1, 0, 0, 0};
 	MFDB stdfm = {NULL, 16, 1, 1, 1, 1, 0, 0, 0};
-	WORD pixtbl[16] = {0, 2, 3, 6, 4, 7, 5, 8, 9, 10, 11, 14, 12, 15, 13, 16};
+	_WORD pixtbl[16] = {0, 2, 3, 6, 4, 7, 5, 8, 9, 10, 11, 14, 12, 15, 13, 16};
 	
 	if (xscrn_planes >= 8)
 	{
@@ -1059,7 +1063,7 @@ LOCAL VOID xfill_farbtbl ()
 			graf_mouse (M_OFF, NULL);
 
 			memset (backup, 0, sizeof (backup));
-	 		memset (farbtbl, 0, 32 * 256 * sizeof (WORD));
+	 		memset (farbtbl, 0, 32 * 256 * sizeof (_WORD));
 			screen.mp = NULL;
 			stdfm.np = pixel.np = xscrn_planes;
 		
@@ -1113,11 +1117,11 @@ LOCAL VOID xfill_farbtbl ()
 /* (z.B. 4 Plane Icon an 24 Plane TrueColor)                                 */
 /*****************************************************************************/
 
-LOCAL VOID xfix_cicon (UWORD *col_data, LONG len, WORD old_planes, WORD new_planes, MFDB *s)
+static void xfix_cicon (_UWORD *col_data, _LONG len, _WORD old_planes, _WORD new_planes, MFDB *s)
 
-{	LONG  x, i, old_len, rest_len, mul[32], pos;
-	UWORD np, *new_data, mask, pixel, bit, color, back[32], old_col[32], maxcol;
-	WORD  got_mem = FALSE;
+{	_LONG  x, i, old_len, rest_len, mul[32], pos;
+	_UWORD np, *new_data, mask, pixel, bit, color, back[32], old_col[32], maxcol;
+	_WORD  got_mem = FALSE;
 	MFDB  d;
 	
 	len >>= 1;
@@ -1156,20 +1160,20 @@ LOCAL VOID xfix_cicon (UWORD *col_data, LONG len, WORD old_planes, WORD new_plan
 
 		if (s != NULL)
 		{
-			new_data = &((UWORD *)s->mp)[old_len];
+			new_data = &((_UWORD *)s->mp)[old_len];
 			memset (new_data, 0, rest_len * 2);
 			memcpy (s->mp, col_data, old_len * 2);
 			col_data = s->mp;
 		}
 		else
-			new_data = (UWORD *)&col_data[old_len];
+			new_data = (_UWORD *)&col_data[old_len];
 		
 		for (x = 0; x < len; x++)
 		{
 			mask = 0xffff;
 	
 			for (i = 0; i < old_len; i += len)
-				mask &= (UWORD)col_data[x+i];
+				mask &= (_UWORD)col_data[x+i];
 			
 			if (mask)
 				for (i = 0; i < rest_len; i += len)
@@ -1201,13 +1205,13 @@ LOCAL VOID xfix_cicon (UWORD *col_data, LONG len, WORD old_planes, WORD new_plan
 			if (old_planes < 8)
 			{
 				maxcol = (1 << old_planes) - 1;
-				memcpy (old_col, farbtbl[maxcol], new_planes * sizeof (WORD));
-				memset (farbtbl[maxcol], 0, new_planes * sizeof (WORD));
+				memcpy (old_col, farbtbl[maxcol], new_planes * sizeof (_WORD));
+				memset (farbtbl[maxcol], 0, new_planes * sizeof (_WORD));
 			}
 	
 			if (s != NULL)
 			{
-				new_data = &((UWORD *)s->mp)[old_len];
+				new_data = &((_UWORD *)s->mp)[old_len];
 				memset (new_data, 0, rest_len * 2);
 				memcpy (s->mp, col_data, old_len * 2);
 				col_data = s->mp;
@@ -1237,7 +1241,7 @@ LOCAL VOID xfix_cicon (UWORD *col_data, LONG len, WORD old_planes, WORD new_plan
 				}
 			}
 			if (old_planes < 8)
-				memcpy (farbtbl[maxcol], old_col, new_planes * sizeof (WORD));
+				memcpy (farbtbl[maxcol], old_col, new_planes * sizeof (_WORD));
 
 			if (s != NULL)	/* ins gerÑteabhÑngige Format konvertieren */
 			{
@@ -1264,18 +1268,18 @@ LOCAL VOID xfix_cicon (UWORD *col_data, LONG len, WORD old_planes, WORD new_plan
 /* abhÑngige Format (in Auflîsungen mit >= 16 Planes)                        */
 /*****************************************************************************/
 
-LOCAL VOID std_to_byte (col_data, len, old_planes, farbtbl2, s)
-UWORD *col_data;
-LONG  len;
-WORD  old_planes;
-ULONG *farbtbl2;
+static void std_to_byte (col_data, len, old_planes, farbtbl2, s)
+_UWORD *col_data;
+_LONG  len;
+_WORD  old_planes;
+_ULONG *farbtbl2;
 MFDB  *s;
 
-{	LONG  x, i, mul[32], pos;
-	UWORD np, *new_data, pixel, color, back[32];
-	WORD  memflag = FALSE;
-	UBYTE *p1, *p2;
-	ULONG  colback;
+{	_LONG  x, i, mul[32], pos;
+	_UWORD np, *new_data, pixel, color, back[32];
+	_WORD  memflag = FALSE;
+	unsigned char *p1, *p2;
+	_ULONG  colback;
 
 	if (s->mp == col_data)
 	{
@@ -1284,8 +1288,8 @@ MFDB  *s;
 		memcpy (col_data, s->mp, len * 2 * s->np);
 		memflag = TRUE;
 	}
-	new_data = (UWORD *)s->mp;
-	p1 = (UBYTE *)new_data;
+	new_data = (_UWORD *)s->mp;
+	p1 = (unsigned char *)new_data;
 
 	if (old_planes < 8)
 	{
@@ -1315,18 +1319,18 @@ MFDB  *s;
 			switch (xpixelbytes)
 			{
 				case 2:
-					new_data[pos++] = *(UWORD *)&farbtbl2[color];
+					new_data[pos++] = *(_UWORD *)&farbtbl2[color];
 					break;
 
 				case 3:
-					p2 = (UBYTE *)&farbtbl2[color];
+					p2 = (unsigned char *)&farbtbl2[color];
 					*(p1++) = *(p2++);
 					*(p1++) = *(p2++);
 					*(p1++) = *(p2++);
 					break;
 
 				case 4:
-					((ULONG *)new_data)[pos++] = farbtbl2[color];
+					((_ULONG *)new_data)[pos++] = farbtbl2[color];
 					break;
 			}
 		}
@@ -1343,16 +1347,16 @@ MFDB  *s;
 /* Zeichnet Farb-Icon                                                        */
 /*****************************************************************************/
 
-LOCAL WORD CDECL xdraw_cicon (PARMBLK *pb)
+static _WORD cdecl xdraw_cicon (PARMBLK *pb)
 
-{	WORD	 	ob_x, ob_y, x, y, dummy, pxy[4], m_mode, i_mode, mskcol, icncol;
-	LONG	 	ob_spec;
+{	_WORD	 	ob_x, ob_y, x, y, dummy, pxy[4], m_mode, i_mode, mskcol, icncol;
+	_LONG	 	ob_spec;
 	ICONBLK *iconblk;
 	CICON   *cicn;
-	WORD    *mask, *data, *dark = NULL;
-	BYTE    letter[2];
-	WORD    selected, mindex[2], iindex[2], buf, xy[4];
-	BOOLEAN invert = FALSE;
+	_WORD    *mask, *data, *dark = NULL;
+	char    letter[2];
+	_WORD    selected, mindex[2], iindex[2], buf, xy[4];
+	_BOOL invert = FALSE;
 	
 	selected = pb->pb_currstate & SELECTED;
 	
@@ -1416,7 +1420,7 @@ LOCAL WORD CDECL xdraw_cicon (PARMBLK *pb)
 	mindex [0] = ((iconblk->ib_char & 0x0f00) != 0x0100) ? (iconblk->ib_char & 0x0f00) >> 8 : WHITE;
 	mindex [1] = WHITE;
 	
-	icncol = iindex[0] = (WORD)(((UWORD)iconblk->ib_char & 0xf000U) >> 12U);
+	icncol = iindex[0] = (_WORD)(((_UWORD)iconblk->ib_char & 0xf000U) >> 12U);
 	iindex[1] = WHITE;
 
 	mskcol = (iconblk->ib_char & 0x0f00) >> 8;
@@ -1495,13 +1499,13 @@ LOCAL WORD CDECL xdraw_cicon (PARMBLK *pb)
 
 /*****************************************************************************/
 
-LOCAL VOID draw_bitblk (WORD *p, WORD x, WORD y, WORD w, WORD h, WORD num_planes, WORD mode, WORD *index)
+static void draw_bitblk (_WORD *p, _WORD x, _WORD y, _WORD w, _WORD h, _WORD num_planes, _WORD mode, _WORD *index)
 
-{	WORD	 	pxy[8];
+{	_WORD	 	pxy[8];
 	MFDB	 	s, d;
 
 	d.mp	= NULL; /* screen */
-	s.mp	= (VOID *)p;
+	s.mp	= (void *)p;
 	s.fwp = w;
 	s.fh	= h;
 	s.fww = w >> 4;
@@ -1526,7 +1530,7 @@ LOCAL VOID draw_bitblk (WORD *p, WORD x, WORD y, WORD w, WORD h, WORD num_planes
 
 /*****************************************************************************/
 
-LOCAL VOID xrect2array (CONST GRECT *rect, WORD *array)
+static void xrect2array (const GRECT *rect, _WORD *array)
 
 {
   *array++ = rect->g_x;
@@ -1537,7 +1541,7 @@ LOCAL VOID xrect2array (CONST GRECT *rect, WORD *array)
 
 /*****************************************************************************/
 
-GLOBAL BOOLEAN init_xrsrc (WORD vdi_handle, GRECT *desk, WORD gl_wbox, WORD gl_hbox)
+_BOOL init_xrsrc (_WORD vdi_handle, GRECT *desk, _WORD gl_wbox, _WORD gl_hbox)
 
 {
 	xvdi_handle = vdi_handle;
@@ -1550,7 +1554,7 @@ GLOBAL BOOLEAN init_xrsrc (WORD vdi_handle, GRECT *desk, WORD gl_wbox, WORD gl_h
 
 /*****************************************************************************/
 
-GLOBAL VOID term_xrsrc ()
+void term_xrsrc (void)
 
 {
 }

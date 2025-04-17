@@ -380,8 +380,8 @@ _WORD cdecl ObjcDefaultCallback (ANIMBITBLK *p);
 */ 
 
 #ifdef __MSDOS__
-VOID ObjcMyButton(VOID);
-VOID ObjcAnimImage(VOID);
+void ObjcMyButton(void);
+void ObjcAnimImage(void);
 #else
 _WORD cdecl ObjcMyButton (PARMBLK *pb);
 _WORD cdecl ObjcAnimImage (PARMBLK *pb);

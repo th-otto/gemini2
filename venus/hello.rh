@@ -5,7 +5,7 @@ EXTERN CICONBLK rs_ciconblk[];
 EXTERN CICON    rs_cicon[];
 EXTERN ICONBLK  rs_iconblk[];
 EXTERN BITBLK   rs_bitblk[];
-EXTERN BYTE     *rs_frstr[];
+EXTERN char     *rs_frstr[];
 EXTERN BITBLK   *rs_frimg[];
 EXTERN OBJECT   rs_object[];
 EXTERN OBJECT   *rs_trindex[];

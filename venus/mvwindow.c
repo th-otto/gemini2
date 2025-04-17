@@ -351,7 +351,7 @@ int TerminalDarstellung (WindInfo *wp, int only_asking)
 	
 	do
 	{
-		uword key;
+		word key;
 	
 		draw = TRUE;
 		item = -1;

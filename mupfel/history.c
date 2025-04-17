@@ -660,6 +660,9 @@ m_fc (MGLOBAL *M, int argc, char **argv)
 		return PrintHelp (M, argv[0], NlsStr(OPT_fc), NlsStr(HLP_fc));
 	optinit (&G);
 	
+#ifdef __PUREC__
+#pragma warn -aus
+#endif
 	while ((c = getopt_long (M, &G, argc, argv, "e:lnrs", 
 		long_options, &opt_index)) != EOF)
 	{

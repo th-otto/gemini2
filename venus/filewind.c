@@ -842,6 +842,9 @@ int fileWindowAddToPath (WindInfo *wp, const char *name)
 	   path if top window */
 	   /* xxx muû noch Åberdacht werden */
 	{
+#ifdef __PUREC__
+#pragma warn -aus
+#endif
 		WindInfo *top_file = GetTopWindInfoOfKind (WK_FILE);
 		int success = 1;
 		

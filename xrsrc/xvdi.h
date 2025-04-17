@@ -27,70 +27,70 @@
 #define OW_BROAD        55
 #define OW_INDIRECT    255 /* use work_in [101] and work_in [102] */
 
-VOID v_get_driver_info _((WORD device_id, WORD info_select,
-                          UBYTE FAR *info_string));
-VOID v_opnwk           _((WORD FAR *work_in, WORD FAR *handle,
-                          WORD FAR *work_out));
-VOID v_clswk           _((WORD handle));
-VOID v_clrwk           _((WORD handle));
-VOID v_updwk           _((WORD handle));
-VOID v_opnvwk          _((WORD FAR *work_in, WORD FAR *handle, 
-                          WORD FAR *work_out));
-VOID v_clsvwk          _((WORD handle));
-WORD vst_load_fonts    _((WORD handle, WORD select));
-VOID vst_unload_fonts  _((WORD handle, WORD select));
+void v_get_driver_info (_WORD device_id, _WORD info_select,
+                          char *info_string);
+void v_opnwk           (_WORD *work_in, _WORD *handle,
+                          _WORD *work_out);
+void v_clswk           (_WORD handle);
+void v_clrwk           (_WORD handle);
+void v_updwk           (_WORD handle);
+void v_opnvwk          (_WORD *work_in, _WORD *handle, 
+                          _WORD *work_out);
+void v_clsvwk          (_WORD handle);
+_WORD vst_load_fonts    (_WORD handle, _WORD select);
+void vst_unload_fonts  (_WORD handle, _WORD select);
 
 #if GEM & (GEM3 | XGEM)
-WORD vst_ex_load_fonts _((WORD handle, WORD select, WORD font_max,
-                          WORD font_free));
+_WORD vst_ex_load_fonts (_WORD handle, _WORD select, _WORD font_max,
+                          _WORD font_free);
 #endif
 
-VOID vs_clip           _((WORD handle, WORD clip_flag, WORD FAR *pxyarray));
-VOID v_set_app_buff    _((VOID FAR *address, WORD nparagraphs));
-WORD v_bez_on          _((WORD handle));
-WORD v_bez_off         _((WORD handle));
-WORD v_bez_qual        _((WORD handle, WORD prcnt));
-VOID v_pat_rotate      _((WORD handle, WORD angle));
+void vs_clip           (_WORD handle, _WORD clip_flag, _WORD *pxyarray);
+void v_set_app_buff    (void *address, _WORD nparagraphs);
+_WORD v_bez_on          (_WORD handle);
+_WORD v_bez_off         (_WORD handle);
+_WORD v_bez_qual        (_WORD handle, _WORD prcnt);
+void v_pat_rotate      (_WORD handle, _WORD angle);
 
 /****** Output library *******************************************************/
 
-VOID v_pline           _((WORD handle, WORD count, WORD FAR *xy));
-VOID v_pmarker         _((WORD handle, WORD count, WORD FAR *xy));
-VOID v_gtext           _((WORD handle, WORD x, WORD y, BYTE FAR *string));
+void v_pline           (_WORD handle, _WORD count, _WORD *xy);
+void v_pmarker         (_WORD handle, _WORD count, _WORD *xy);
+void v_gtext           (_WORD handle, _WORD x, _WORD y, char *string);
 
 #if GEM & (GEM3 | XGEM)
-VOID v_etext           _((WORD handle, WORD x, WORD y, UBYTE FAR *string,
-                          WORD FAR *offsets));
+void v_etext           (_WORD handle, _WORD x, _WORD y, char *string,
+                          _WORD *offsets);
 #endif
 
-VOID v_fillarea        _((WORD handle, WORD count, WORD FAR *xy));
-VOID v_cellarray       _((WORD handle, WORD FAR *pxyarray, WORD row_length,
-                          WORD el_used, WORD num_rows, WORD wrt_mode,
-                          WORD FAR *colarray));
-VOID v_bar             _((WORD handle, WORD FAR *pxyarray));
-VOID v_arc             _((WORD handle, WORD x, WORD y, WORD radius,
-                          WORD begang, WORD endang));
-VOID v_pieslice        _((WORD handle, WORD x, WORD y, WORD radius,
-                          WORD begang, WORD endang));
-VOID v_circle          _((WORD handle, WORD x, WORD y, WORD radius));
-VOID v_ellipse         _((WORD handle, WORD x, WORD y, WORD xradius,
-                          WORD yradius));
-VOID v_ellarc          _((WORD handle, WORD x, WORD y, WORD xradius,
-                          WORD yradius, WORD begang, WORD endang));
-VOID v_ellpie          _((WORD handle, WORD x, WORD y, WORD xradius,
-                          WORD yradius, WORD begang, WORD endang));
-VOID v_rbox            _((WORD handle, WORD FAR *xyarray));
-VOID v_rfbox           _((WORD handle, WORD FAR *xyarray));
-VOID v_justified       _((WORD handle, WORD x, WORD y, BYTE FAR *string,
-                          WORD length, WORD word_space, WORD char_space));
-VOID v_contourfill     _((WORD handle, WORD x, WORD y, WORD index));
-VOID vr_recfl          _((WORD handle, WORD FAR *pxyarray));
-VOID v_bez             _((WORD handle, WORD count, WORD FAR *xyarr,
-                          UBYTE FAR *bezarr, WORD FAR *minmax, WORD FAR *npts,
-                          WORD FAR *nmove));
-VOID v_bez_fill        _((WORD handle, WORD count, WORD FAR *xyarr,
-                          UBYTE FAR *bezarr, WORD FAR *minmax, WORD FAR *npts,
-                          WORD FAR *nmove));
+void v_fillarea        (_WORD handle, _WORD count, _WORD *xy);
+void v_cellarray       (_WORD handle, _WORD *pxyarray, _WORD row_length,
+                          _WORD el_used, _WORD num_rows, _WORD wrt_mode,
+                          _WORD *colarray);
+void v_bar             (_WORD handle, _WORD *pxyarray);
+void v_arc             (_WORD handle, _WORD x, _WORD y, _WORD radius,
+                          _WORD begang, _WORD endang);
+void v_pieslice        (_WORD handle, _WORD x, _WORD y, _WORD radius,
+                          _WORD begang, _WORD endang);
+void v_circle          (_WORD handle, _WORD x, _WORD y, _WORD radius);
+void v_ellipse         (_WORD handle, _WORD x, _WORD y, _WORD xradius,
+                          _WORD yradius);
+void v_ellarc          (_WORD handle, _WORD x, _WORD y, _WORD xradius,
+                          _WORD yradius, _WORD begang, _WORD endang);
+void v_ellpie          (_WORD handle, _WORD x, _WORD y, _WORD xradius,
+                          _WORD yradius, _WORD begang, _WORD endang);
+void v_rbox            (_WORD handle, _WORD *xyarray);
+void v_rfbox           (_WORD handle, _WORD *xyarray);
+void v_justified       (_WORD handle, _WORD x, _WORD y, char *string,
+                          _WORD length, _WORD word_space, _WORD char_space);
+void v_contourfill     (_WORD handle, _WORD x, _WORD y, _WORD index);
+void vr_recfl          (_WORD handle, _WORD *pxyarray);
+void v_bez             (_WORD handle, _WORD count, _WORD *xyarr,
+                          unsigned char *bezarr, _WORD *minmax, _WORD *npts,
+                          _WORD *nmove);
+void v_bez_fill        (_WORD handle, _WORD count, _WORD *xyarr,
+                          unsigned char *bezarr, _WORD *minmax, _WORD *npts,
+                          _WORD *nmove);
 
 /****** Attribute library ****************************************************/
 
@@ -183,38 +183,38 @@ VOID v_bez_fill        _((WORD handle, WORD count, WORD FAR *xyarr,
 
 typedef struct patarray
 {
-  WORD patword [16];
+  _WORD patword [16];
 } FILLPAT;
 
-WORD vswr_mode         _((WORD handle, WORD mode));
-VOID vs_color          _((WORD handle, WORD index, WORD FAR *rgb_in));
-WORD vsl_type          _((WORD handle, WORD style));
-VOID vsl_udsty         _((WORD handle, WORD pattern));
-WORD vsl_width         _((WORD handle, WORD width));
-WORD vsl_color         _((WORD handle, WORD color_index));
-VOID vsl_ends          _((WORD handle, WORD beg_style, WORD end_style));
-WORD vsm_type          _((WORD handle, WORD symbol));
-WORD vsm_height        _((WORD handle, WORD height));
-WORD vsm_color         _((WORD handle, WORD color_index));
-VOID vst_height        _((WORD handle, WORD height,
-                          WORD FAR *char_width, WORD FAR *char_height,
-                          WORD FAR *cell_width, WORD FAR *cell_height));
-WORD vst_point         _((WORD handle, WORD point,
-                          WORD FAR *char_width, WORD FAR *char_height,
-                          WORD FAR *cell_width, WORD FAR *cell_height));
-WORD vst_rotation      _((WORD handle, WORD angle));
-WORD vst_font          _((WORD handle, WORD font));
-WORD vst_color         _((WORD handle, WORD color_index));
-WORD vst_effects       _((WORD handle, WORD effect));
-VOID vst_alignment     _((WORD handle, WORD hor_in, WORD vert_in,
-                          WORD FAR *hor_out, WORD FAR *vert_out));
-WORD vsf_interior      _((WORD handle, WORD style));
-WORD vsf_style         _((WORD handle, WORD style_index));
-WORD vsf_color         _((WORD handle, WORD color_index));
-WORD vsf_perimeter     _((WORD handle, WORD per_vis));
-WORD vsf_xperimeter    _((WORD handle, WORD per_vis, WORD per_style));
-VOID vsf_udpat         _((WORD handle, WORD FAR *pfill_pat, WORD planes));
-VOID vs_grayoverride   _((WORD handle, WORD grayval));
+_WORD vswr_mode         (_WORD handle, _WORD mode);
+void vs_color          (_WORD handle, _WORD index, _WORD *rgb_in);
+_WORD vsl_type          (_WORD handle, _WORD style);
+void vsl_udsty         (_WORD handle, _WORD pattern);
+_WORD vsl_width         (_WORD handle, _WORD width);
+_WORD vsl_color         (_WORD handle, _WORD color_index);
+void vsl_ends          (_WORD handle, _WORD beg_style, _WORD end_style);
+_WORD vsm_type          (_WORD handle, _WORD symbol);
+_WORD vsm_height        (_WORD handle, _WORD height);
+_WORD vsm_color         (_WORD handle, _WORD color_index);
+void vst_height        (_WORD handle, _WORD height,
+                          _WORD *char_width, _WORD *char_height,
+                          _WORD *cell_width, _WORD *cell_height);
+_WORD vst_point         (_WORD handle, _WORD point,
+                          _WORD *char_width, _WORD *char_height,
+                          _WORD *cell_width, _WORD *cell_height);
+_WORD vst_rotation      (_WORD handle, _WORD angle);
+_WORD vst_font          (_WORD handle, _WORD font);
+_WORD vst_color         (_WORD handle, _WORD color_index);
+_WORD vst_effects       (_WORD handle, _WORD effect);
+void vst_alignment     (_WORD handle, _WORD hor_in, _WORD vert_in,
+                          _WORD *hor_out, _WORD *vert_out);
+_WORD vsf_interior      (_WORD handle, _WORD style);
+_WORD vsf_style         (_WORD handle, _WORD style_index);
+_WORD vsf_color         (_WORD handle, _WORD color_index);
+_WORD vsf_perimeter     (_WORD handle, _WORD per_vis);
+_WORD vsf_xperimeter    (_WORD handle, _WORD per_vis, _WORD per_style);
+void vsf_udpat         (_WORD handle, _WORD *pfill_pat, _WORD planes);
+void vs_grayoverride   (_WORD handle, _WORD grayval);
 
 /****** Raster library *******************************************************/
 
@@ -222,38 +222,38 @@ VOID vs_grayoverride   _((WORD handle, WORD grayval));
 
 typedef struct memform
 {
-  VOID FAR *mp;
-  WORD fwp;
-  WORD fh;
-  WORD fww;
-  WORD ff;
-  WORD np;
-  WORD r1;
-  WORD r2;
-  WORD r3;
+  void *mp;
+  _WORD fwp;
+  _WORD fh;
+  _WORD fww;
+  _WORD ff;
+  _WORD np;
+  _WORD r1;
+  _WORD r2;
+  _WORD r3;
 } MFDB;
 
 typedef struct fdbstr   /* for compatibility */
 {
-  VOID FAR *fd_addr;
-  WORD fd_w;
-  WORD fd_h;
-  WORD fd_wdwidth;
-  WORD fd_stand;
-  WORD fd_nplanes;
-  WORD fd_r1;
-  WORD fd_r2;
-  WORD fd_r3;
+  void *fd_addr;
+  _WORD fd_w;
+  _WORD fd_h;
+  _WORD fd_wdwidth;
+  _WORD fd_stand;
+  _WORD fd_nplanes;
+  _WORD fd_r1;
+  _WORD fd_r2;
+  _WORD fd_r3;
 } FDB;
 
-VOID v_get_pixel       _((WORD handle, WORD x, WORD y, WORD FAR *pel,
-                          WORD FAR *index));
-VOID vro_cpyfm         _((WORD handle, WORD wr_mode, WORD FAR *xy,
-                          MFDB FAR *srcMFDB, MFDB FAR *desMFDB));
-VOID vr_trnfm          _((WORD handle, MFDB FAR *srcMFDB, MFDB FAR *desMFDB));
-VOID vrt_cpyfm         _((WORD handle, WORD wr_mode, WORD FAR *xy,
-                          MFDB FAR *srcMFDB, MFDB FAR *desMFDB,
-                          WORD FAR *index));
+void v_get_pixel       (_WORD handle, _WORD x, _WORD y, _WORD *pel,
+                          _WORD *index);
+void vro_cpyfm         (_WORD handle, _WORD wr_mode, _WORD *xy,
+                          MFDB *srcMFDB, MFDB *desMFDB);
+void vr_trnfm          (_WORD handle, MFDB *srcMFDB, MFDB *desMFDB);
+void vrt_cpyfm         (_WORD handle, _WORD wr_mode, _WORD *xy,
+                          MFDB *srcMFDB, MFDB *desMFDB,
+                          _WORD *index);
 
 /****** Input library ********************************************************/
 
@@ -265,75 +265,75 @@ VOID vrt_cpyfm         _((WORD handle, WORD wr_mode, WORD FAR *xy,
 #define MODE_REQUEST     1 /* input mode */
 #define MODE_SAMPLE      2
 
-VOID vsin_mode         _((WORD handle, WORD dev_type, WORD mode));
-VOID vrq_locator       _((WORD handle, WORD initx, WORD inity,
-                          WORD FAR *xout, WORD FAR *yout, WORD FAR *term));
-WORD vsm_locator       _((WORD handle, WORD initx, WORD inity,
-                          WORD FAR *xout, WORD FAR *yout, WORD FAR *term));
-VOID vrq_valuator      _((WORD handle, WORD val_in, WORD FAR *val_out,
-                          WORD FAR *term));
-VOID vsm_valuator      _((WORD handle, WORD val_in, WORD FAR *val_out,
-                          WORD FAR *term, WORD FAR *status));
-VOID vrq_choice        _((WORD handle, WORD in_choice, WORD FAR *out_choice));
-WORD vsm_choice        _((WORD handle, WORD FAR *choice));
-VOID vrq_string        _((WORD handle, WORD length, WORD echo_mode,
-                          WORD FAR *echo_xy, BYTE FAR *string));
-WORD vsm_string        _((WORD handle, WORD length, WORD echo_mode,
-                          WORD FAR *echo_xy, BYTE FAR *string));
-VOID vsc_form          _((WORD handle, WORD FAR *cur_form));
+void vsin_mode         (_WORD handle, _WORD dev_type, _WORD mode);
+void vrq_locator       (_WORD handle, _WORD initx, _WORD inity,
+                          _WORD *xout, _WORD *yout, _WORD *term);
+_WORD vsm_locator       (_WORD handle, _WORD initx, _WORD inity,
+                          _WORD *xout, _WORD *yout, _WORD *term);
+void vrq_valuator      (_WORD handle, _WORD val_in, _WORD *val_out,
+                          _WORD *term);
+void vsm_valuator      (_WORD handle, _WORD val_in, _WORD *val_out,
+                          _WORD *term, _WORD *status);
+void vrq_choice        (_WORD handle, _WORD in_choice, _WORD *out_choice);
+_WORD vsm_choice        (_WORD handle, _WORD *choice);
+void vrq_string        (_WORD handle, _WORD length, _WORD echo_mode,
+                          _WORD *echo_xy, char *string);
+_WORD vsm_string        (_WORD handle, _WORD length, _WORD echo_mode,
+                          _WORD *echo_xy, char *string);
+void vsc_form          (_WORD handle, _WORD *cur_form);
 #if HIGH_C
-VOID vex_timv          _((WORD handle, FAR WORD (*tim_addr)(),
-                          FAR WORD (* FAR *old_addr)(), WORD FAR *scale));
+void vex_timv          (_WORD handle, _WORD (*tim_addr)(),
+                          _WORD (* *old_addr)(), _WORD *scale);
 #else
-VOID vex_timv          _((WORD handle, WORD (FAR *tim_addr)(),
-                          WORD (FAR * FAR *old_addr)(), WORD FAR *scale));
+void vex_timv          (_WORD handle, _WORD (*tim_addr)(),
+                          _WORD (* *old_addr)(), _WORD *scale);
 #endif
-VOID v_show_c          _((WORD handle, WORD reset));
-VOID v_hide_c          _((WORD handle));
-VOID vq_mouse          _((WORD handle, WORD FAR *status, WORD FAR *px,
-                          WORD FAR *py));
+void v_show_c          (_WORD handle, _WORD reset);
+void v_hide_c          (_WORD handle);
+void vq_mouse          (_WORD handle, _WORD *status, _WORD *px,
+                          _WORD *py);
 #if HIGH_C
-VOID vex_butv          _((WORD handle, FAR WORD (*usercode)(),
-                          FAR WORD (* FAR *savecode)()));
-VOID vex_motv          _((WORD handle, FAR WORD (*usercode)(),
-                          FAR WORD (* FAR *savecode)()));
-VOID vex_curv          _((WORD handle, FAR WORD (*usercode)(),
-                          FAR WORD (* FAR *savecode)()));
+void vex_butv          (_WORD handle, _WORD (*usercode)(),
+                          _WORD (* *savecode)());
+void vex_motv          (_WORD handle, _WORD (*usercode)(),
+                          _WORD (* *savecode)());
+void vex_curv          (_WORD handle, _WORD (*usercode)(),
+                          _WORD (* *savecode)());
 #else
-VOID vex_butv          _((WORD handle, WORD (FAR *usercode)(),
-                          WORD (FAR * FAR *savcode)()));
-VOID vex_motv          _((WORD handle, WORD (FAR *usercode)(),
-                          WORD (FAR * FAR *savecode)()));
-VOID vex_curv          _((WORD handle, WORD (FAR *usercode)(),
-                          WORD (FAR * FAR *savecode)()));
+void vex_butv          (_WORD handle, _WORD (*usercode)(),
+                          _WORD (* *savcode)());
+void vex_motv          (_WORD handle, _WORD (*usercode)(),
+                          _WORD (* *savecode)());
+void vex_curv          (_WORD handle, _WORD (*usercode)(),
+                          _WORD (* *savecode)());
 #endif
 
-VOID vq_key_s          _((WORD handle, WORD FAR *status));
+void vq_key_s          (_WORD handle, _WORD *status);
 
 /****** Inquire library ******************************************************/
 
-VOID vq_color          _((WORD handle, WORD index, WORD set_flag,
-                          WORD FAR *rgb));
-VOID vq_cellarray      _((WORD handle, WORD FAR *pxyarray,
-                          WORD row_length, WORD num_rows,
-                          WORD FAR *el_used, WORD FAR *rows_used,
-                          WORD FAR *status, WORD FAR *colarray));
-VOID vql_attributes    _((WORD handle, WORD FAR *attrib));
-VOID vqm_attributes    _((WORD handle, WORD FAR *attrib));
-VOID vqf_attributes    _((WORD handle, WORD FAR *attrib));
-VOID vqt_attributes    _((WORD handle, WORD FAR *attrib));
-VOID vq_extnd          _((WORD handle, WORD owflag, WORD FAR *work_out));
-VOID vqin_mode         _((WORD handle, WORD dev_type, WORD FAR *input_mode));
-VOID vqt_extent        _((WORD handle, BYTE FAR *string, WORD FAR *extent));
-WORD vqt_width         _((WORD handle, BYTE character, WORD FAR *cell_width,
-                          WORD FAR *left_delta, WORD FAR *right_delta));
-WORD vqt_name          _((WORD handle, WORD element_num, BYTE FAR *name));
-VOID vqt_fontinfo      _((WORD handle, WORD FAR *minADE, WORD FAR *maxADE,
-                          WORD FAR *distances, WORD FAR *maxwidth,
-                          WORD FAR *effects));
-WORD vqt_justified     _((WORD handle, WORD x, WORD y, BYTE FAR *string,
-                          WORD length, WORD word_space, WORD char_space,
-                          WORD FAR *offsets));
+void vq_color          (_WORD handle, _WORD index, _WORD set_flag,
+                          _WORD *rgb);
+void vq_cellarray      (_WORD handle, _WORD *pxyarray,
+                          _WORD row_length, _WORD num_rows,
+                          _WORD *el_used, _WORD *rows_used,
+                          _WORD *status, _WORD *colarray);
+void vql_attributes    (_WORD handle, _WORD *attrib);
+void vqm_attributes    (_WORD handle, _WORD *attrib);
+void vqf_attributes    (_WORD handle, _WORD *attrib);
+void vqt_attributes    (_WORD handle, _WORD *attrib);
+void vq_extnd          (_WORD handle, _WORD owflag, _WORD *work_out);
+void vqin_mode         (_WORD handle, _WORD dev_type, _WORD *input_mode);
+void vqt_extent        (_WORD handle, char *string, _WORD *extent);
+_WORD vqt_width         (_WORD handle, char character, _WORD *cell_width,
+                          _WORD *left_delta, _WORD *right_delta);
+_WORD vqt_name          (_WORD handle, _WORD element_num, char *name);
+void vqt_fontinfo      (_WORD handle, _WORD *minADE, _WORD *maxADE,
+                          _WORD *distances, _WORD *maxwidth,
+                          _WORD *effects);
+_WORD vqt_justified     (_WORD handle, _WORD x, _WORD y, char *string,
+                          _WORD length, _WORD word_space, _WORD char_space,
+                          _WORD *offsets);
 
 /****** Escape library *******************************************************/
 
@@ -382,93 +382,93 @@ WORD vqt_justified     _((WORD handle, WORD x, WORD y, BYTE FAR *string,
 #define XBIT_MIDDLE      1
 #define XBIT_BOTTOM      2
 
-VOID vq_chcells        _((WORD handle, WORD FAR *rows, WORD FAR *columns));
-VOID v_exit_cur        _((WORD handle));
-VOID v_enter_cur       _((WORD handle));
-VOID v_curup           _((WORD handle));
-VOID v_curdown         _((WORD handle));
-VOID v_curright        _((WORD handle));
-VOID v_curleft         _((WORD handle));
-VOID v_curhome         _((WORD handle));
-VOID v_eeos            _((WORD handle));
-VOID v_eeol            _((WORD handle));
-VOID vs_curaddress     _((WORD handle, WORD row, WORD column));
-VOID v_curtext         _((WORD handle, BYTE FAR *string));
-VOID v_rvon            _((WORD handle));
-VOID v_rvoff           _((WORD handle));
-VOID vq_curaddress     _((WORD handle, WORD FAR *row, WORD FAR *column));
-WORD vq_tabstatus      _((WORD handle));
-VOID v_hardcopy        _((WORD handle));
-VOID v_dspcur          _((WORD handle, WORD x, WORD y));
-VOID v_rmcur           _((WORD handle));
-VOID v_form_adv        _((WORD handle));
-VOID v_output_window   _((WORD handle, WORD FAR *xyarray));
-VOID v_clear_disp_list _((WORD handle));
-VOID v_bit_image       _((WORD handle, BYTE FAR *filename,
-                          WORD aspect, WORD x_scale, WORD y_scale,
-                          WORD h_align, WORD v_align, WORD FAR *xyarray));
-VOID vq_scan           _((WORD handle, WORD FAR *g_height, WORD FAR *g_slices,
-                          WORD FAR *a_height, WORD FAR *a_slices,
-                          WORD FAR *factor));
-VOID v_alpha_text      _((WORD handle, BYTE FAR *string));
-WORD vs_palette        _((WORD handle, WORD palette));
-VOID v_sound           _((WORD handle, WORD frequency, WORD duration));
-WORD vs_mute           _((WORD handle, WORD action));
-VOID vt_resolution     _((WORD handle, WORD xres, WORD yres,
-                          WORD FAR *xset, WORD FAR *yset));
-VOID vt_axis           _((WORD handle, WORD xres, WORD yres,
-                          WORD FAR *xset, WORD FAR *yset));
-VOID vt_origin         _((WORD handle, WORD xorigin, WORD yorigin));
-VOID vq_tdimensions    _((WORD handle, WORD FAR *xdimension,
-                          WORD FAR *ydimension));
-VOID vt_alignment      _((WORD handle, WORD dx, WORD dy));
-VOID vsp_film          _((WORD handle, WORD index, WORD lightness));
-WORD vqp_filmname      _((WORD handle, WORD index, BYTE FAR *name));
-VOID vsc_expose        _((WORD handle, WORD state));
-VOID v_meta_extents    _((WORD handle, WORD min_x, WORD min_y,
-                          WORD max_x, WORD max_y));
-VOID v_write_meta      _((WORD handle, WORD num_intin, WORD FAR *intin,
-                          WORD num_ptsin, WORD FAR *ptsin));
-VOID vm_filename       _((WORD handle, BYTE FAR *filename));
+void vq_chcells        (_WORD handle, _WORD *rows, _WORD *columns);
+void v_exit_cur        (_WORD handle);
+void v_enter_cur       (_WORD handle);
+void v_curup           (_WORD handle);
+void v_curdown         (_WORD handle);
+void v_curright        (_WORD handle);
+void v_curleft         (_WORD handle);
+void v_curhome         (_WORD handle);
+void v_eeos            (_WORD handle);
+void v_eeol            (_WORD handle);
+void vs_curaddress     (_WORD handle, _WORD row, _WORD column);
+void v_curtext         (_WORD handle, char *string);
+void v_rvon            (_WORD handle);
+void v_rvoff           (_WORD handle);
+void vq_curaddress     (_WORD handle, _WORD *row, _WORD *column);
+_WORD vq_tabstatus      (_WORD handle);
+void v_hardcopy        (_WORD handle);
+void v_dspcur          (_WORD handle, _WORD x, _WORD y);
+void v_rmcur           (_WORD handle);
+void v_form_adv        (_WORD handle);
+void v_output_window   (_WORD handle, _WORD *xyarray);
+void v_clear_disp_list (_WORD handle);
+void v_bit_image       (_WORD handle, char *filename,
+                          _WORD aspect, _WORD x_scale, _WORD y_scale,
+                          _WORD h_align, _WORD v_align, _WORD *xyarray);
+void vq_scan           (_WORD handle, _WORD *g_height, _WORD *g_slices,
+                          _WORD *a_height, _WORD *a_slices,
+                          _WORD *factor);
+void v_alpha_text      (_WORD handle, char *string);
+_WORD vs_palette        (_WORD handle, _WORD palette);
+void v_sound           (_WORD handle, _WORD frequency, _WORD duration);
+_WORD vs_mute           (_WORD handle, _WORD action);
+void vt_resolution     (_WORD handle, _WORD xres, _WORD yres,
+                          _WORD *xset, _WORD *yset);
+void vt_axis           (_WORD handle, _WORD xres, _WORD yres,
+                          _WORD *xset, _WORD *yset);
+void vt_origin         (_WORD handle, _WORD xorigin, _WORD yorigin);
+void vq_tdimensions    (_WORD handle, _WORD *xdimension,
+                          _WORD *ydimension);
+void vt_alignment      (_WORD handle, _WORD dx, _WORD dy);
+void vsp_film          (_WORD handle, _WORD index, _WORD lightness);
+_WORD vqp_filmname      (_WORD handle, _WORD index, char *name);
+void vsc_expose        (_WORD handle, _WORD state);
+void v_meta_extents    (_WORD handle, _WORD min_x, _WORD min_y,
+                          _WORD max_x, _WORD max_y);
+void v_write_meta      (_WORD handle, _WORD num_intin, _WORD *intin,
+                          _WORD num_ptsin, _WORD *ptsin);
+void vm_filename       (_WORD handle, char *filename);
 
 #if GEM & (GEM3 | XGEM)
-VOID vm_pagesize       _((WORD handle, WORD pgwidth, WORD pgheight));
-VOID vm_coords         _((WORD handle, WORD llx, WORD lly,
-                          WORD urx, WORD ury));
-VOID v_copies          _((WORD handle, WORD count));
-VOID v_orient          _((WORD handle, WORD orientation));
-VOID v_tray            _((WORD handle, WORD tray));
-WORD v_xbit_image      _((WORD handle, BYTE FAR *filename, WORD aspect,
-                          WORD x_scale, WORD y_scale,
-                          WORD h_align, WORD v_align, WORD rotate,
-                          WORD background, WORD foreground, WORD FAR *xy));
+void vm_pagesize       (_WORD handle, _WORD pgwidth, _WORD pgheight);
+void vm_coords         (_WORD handle, _WORD llx, _WORD lly,
+                          _WORD urx, _WORD ury);
+void v_copies          (_WORD handle, _WORD count);
+void v_orient          (_WORD handle, _WORD orientation);
+void v_tray            (_WORD handle, _WORD tray);
+_WORD v_xbit_image      (_WORD handle, char *filename, _WORD aspect,
+                          _WORD x_scale, _WORD y_scale,
+                          _WORD h_align, _WORD v_align, _WORD rotate,
+                          _WORD background, _WORD foreground, _WORD *xy);
 #endif
 
-VOID vs_bkcolor        _((WORD handle, WORD color));
-VOID v_setrgbi         _((WORD handle, WORD primtype, WORD r, WORD g, WORD b,
-                          WORD i));
-VOID v_topbot          _((WORD handle, WORD height,
-                          WORD FAR *char_width, WORD FAR *char_height,
-                          WORD FAR *cell_width, WORD FAR *cell_height));
-VOID v_ps_halftone     _((WORD handle, WORD index, WORD angle,
-                          WORD frequency));
+void vs_bkcolor        (_WORD handle, _WORD color);
+void v_setrgbi         (_WORD handle, _WORD primtype, _WORD r, _WORD g, _WORD b,
+                          _WORD i);
+void v_topbot          (_WORD handle, _WORD height,
+                          _WORD *char_width, _WORD *char_height,
+                          _WORD *cell_width, _WORD *cell_height);
+void v_ps_halftone     (_WORD handle, _WORD index, _WORD angle,
+                          _WORD frequency);
 
 #if GEM & GEM1
-VOID vqp_films         _((WORD handle, BYTE FAR *film_names));
-VOID vqp_state         _((WORD handle, WORD FAR *port, BYTE FAR *film_name,
-                          WORD FAR *lightness, WORD FAR *interlace,
-                          WORD FAR *planes, WORD FAR *indexes));
-VOID vsp_state         _((WORD handle, WORD port, WORD film_num,
-                          WORD lightness, WORD interlace, WORD planes,
-                          WORD FAR *indexes));
-VOID vsp_save          _((WORD handle));
-VOID vsp_message       _((WORD handle));
-WORD vqp_error         _((WORD handle));
+void vqp_films         (_WORD handle, char *film_names);
+void vqp_state         (_WORD handle, _WORD *port, char *film_name,
+                          _WORD *lightness, _WORD *interlace,
+                          _WORD *planes, _WORD *indexes);
+void vsp_state         (_WORD handle, _WORD port, _WORD film_num,
+                          _WORD lightness, _WORD interlace, _WORD planes,
+                          _WORD *indexes);
+void vsp_save          (_WORD handle);
+void vsp_message       (_WORD handle);
+_WORD vqp_error         (_WORD handle);
 
-VOID v_offset          _((WORD handle, WORD offset));
-VOID v_fontinit        _((WORD handle, WORD fh_high, WORD fh_low));
-VOID v_escape2000      _((WORD times));
-WORD vq_gdos           _((VOID));
+void v_offset          (_WORD handle, _WORD offset);
+void v_fontinit        (_WORD handle, _WORD fh_high, _WORD fh_low);
+void v_escape2000      (_WORD times);
+_WORD vq_gdos           (void);
 #endif /* GEM1 */
 
 /*****************************************************************************/

@@ -797,7 +797,7 @@ int SetDeskBackground (void)
 	exit = FALSE;
 	do
 	{
-		uword shift_state;
+		word shift_state;
 	
 		draw = FALSE;
 		cycle_obj = -1;

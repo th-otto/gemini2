@@ -1,4 +1,5 @@
 mupfgmni.o
+.C[-DMERGED=1]
 .C[-P -I..]
 .L[-J]
 =
@@ -166,4 +167,6 @@ trap.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, trap.h,
 type.c		(..\common\alloc.h, mglob.h, alias.h, chario.h, locate.h, 
 			type.h, mdef.h)
 version.c	(..\common\alloc.h, mglob.h, chario.h, date.h, getopt.h, mdef.h,
-			puninfo.h, sysvars.h, version.h, ioutil.h)
+			puninfo.h, sysvars.h, version.h, ioutil.h,
+			..\common\xhdi.h)
+

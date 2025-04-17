@@ -40,6 +40,72 @@
 #include "nameutil.h"
 #include "redirect.h"
 
+#if !defined(_SYS_STAT_H) && !defined(__EXT_H__)
+#undef S_IFCHR
+#define S_IFCHR   0x2000
+#undef S_IFBLK
+#define S_IFBLK   0x6000
+#undef S_IFDIR
+#define S_IFDIR   0x4000
+#undef S_IFREG
+#define S_IFREG   0x8000
+#undef S_IFLNK
+#define S_IFLNK   0xe000
+#undef S_IFIFO
+#define S_IFIFO   0xa000
+#undef S_IFSOCK
+#define S_IFSOCK  0x1000
+#undef S_IFMEM
+#define S_IFMEM   0xc000
+
+#define S_IEXEC   0x0040
+#define S_IREAD   0x0100
+#define S_IWRITE  0x0080
+
+#define S_IFMT 0170000
+
+#undef S_IRUSR
+#define	S_IRUSR	00400	/* Read by owner.  */
+#undef S_IWUSR
+#define	S_IWUSR	00200	/* Write by owner.  */
+#undef S_IXUSR
+#define	S_IXUSR	00100	/* Execute by owner.  */
+#undef S_IRWXU
+#define	S_IRWXU	(S_IRUSR|S_IWUSR|S_IXUSR)
+
+#undef S_IRGRP
+#define	S_IRGRP	(S_IRUSR >> 3)	/* Read by group.  */
+#undef S_IWGRP
+#define	S_IWGRP	(S_IWUSR >> 3)	/* Write by group.  */
+#undef S_IXGRP
+#define	S_IXGRP	(S_IXUSR >> 3)	/* Execute by group.  */
+#undef S_IRWXG
+#define	S_IRWXG	(S_IRWXU >> 3)
+
+#undef S_IROTH
+#define	S_IROTH	(S_IRGRP >> 3)	/* Read by others.  */
+#undef S_IWOTH
+#define	S_IWOTH	(S_IWGRP >> 3)	/* Write by others.  */
+#undef S_IXOTH
+#define	S_IXOTH	(S_IXGRP >> 3)	/* Execute by others.  */
+#undef S_IRWXO
+#define	S_IRWXO	(S_IRWXG >> 3)
+
+#define	S_ISUID 04000	/* Set user ID on execution.  */
+#define	S_ISGID	02000	/* Set group ID on execution.  */
+#define S_ISVTX	01000
+#define S_ISTXT	S_ISVTX
+
+#define S_ISDIR(m)	(((m) & S_IFMT) == S_IFDIR)
+#define S_ISCHR(m)	(((m) & S_IFMT) == S_IFCHR)
+#define S_ISBLK(m)	(((m) & S_IFMT) == S_IFBLK)
+#define S_ISREG(m)	(((m) & S_IFMT) == S_IFREG)
+#define S_ISLNK(m)	(((m) & S_IFMT) == S_IFLNK)
+#define S_ISFIFO(m)	(((m) & S_IFMT) == S_IFIFO)
+#define S_ISSOCK(m)	(((m) & S_IFMT) == S_IFSOCK)
+#define S_ISMEM(m)	(((m) & S_IFMT) == S_IFMEM)
+#endif
+
 /* internal texts
  */
 #define NlsLocalSection "M.ls"
@@ -569,7 +635,7 @@ fappend (MGLOBAL *M, LSINFO *L, XATTR *xattr, MACINFO *mp, char *name,
 	f->attrib = xattr->attr;
 	f->fmode = xattr->mode;
 	f->nlink = xattr->nlink;
-	f->rdev = xattr->rdev;
+	f->rdev = xattr->reserved1;
 	f->index = xattr->index;
 	f->uid = xattr->uid;
 	f->gid = xattr->gid;

@@ -86,8 +86,8 @@ locate.c	(locate.h, names.h, ..\common\fileutil.h, chario.h, mglob.h,
 			internal.h, ..\common\alloc.h, nameutil.h, hash.h, makeargv.h,
 			mdef.h, ..\common\strerror.h, ..\common\argvinfo.h, 
 			..\common\genargv.h)
-; loctime.c	(mglob.h, loctime.h, chario.h, nameutil.h, 
-;			..\common\alloc.h)
+loctime.c	(mglob.h, loctime.h, chario.h, nameutil.h, 
+			..\common\alloc.h)
 ls.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h,
 			..\common\cookie.h, date.h, 
 			..\common\fileutil.h, getopt.h, locate.h, redirect.h, 
@@ -114,8 +114,8 @@ mparse.c	(mglob.h, mparse.h, partypes.h, mlex.h, maketree.h,
 			parsinpt.h, chario.h, ..\common\alloc.h, duptree.h)
 mset.c		(mglob.h, shellvar.h, mset.h, ioutil.h, chario.h,
 			redirect.h, ..\common\alloc.h, nameutil.h, stand.h)
-names.c		(partypes.h, parsinpt.h, mglob.h, maketree.h, names.h,
-			..\common\charutil.h,
+names.c		(partypes.h, parsinpt.h, mglob.h, maketree.h,
+			names.h, ..\common\charutil.h,
 			chario.h, ..\common\alloc.h, hash.h, ioutil.h, duptree.h)
 nameutil.c	(..\common\alloc.h, mglob.h, names.h, nameutil.h, partypes.h,
 			subst.h, chario.h, makeargv.h, prnttree.h, getopt.h,
@@ -144,6 +144,8 @@ rmdir.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, ..\common\
 			getopt.h, ..\common\strerror.h, rmdir.h, mdef.h)
 screen.c	(..\common\alloc.h, mglob.h, chario.h, gemutil.h, screen.h,
 			vt52.h, stand.h, ..\venus\gemini.h, exec.h, ..\common\cookie.h)
+setscrap.c	(..\common\alloc.h, mglob.h, mdef.h, chario.h, ..\common\charutil.h,
+			..\common\fileutil.h, getopt.h, setscrap.h)
 shelfork.c	(..\common\alloc.h, mglob.h, chario.h, exectree.h, maketree.h,
 			shelfork.h, duptree.h, redirect.h)
 shell.s		(shell.h, sysvars.h)
@@ -173,7 +175,7 @@ mupfnls.c
 ..\common\common.prj
 
 ..\nls\nlslib.prj
-..\mint\mintbind.o
+..\mint\mintbind.s
 
 pctoslib.lib
 pcstdlib.lib

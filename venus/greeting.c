@@ -7,7 +7,6 @@
  * jr 27.6.96
  */
 
-#include <aes.h>
 #include <flydial\flydial.h>
 
 #include "vs.h"

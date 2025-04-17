@@ -187,6 +187,9 @@ myfree (ALLOCINFO *A, void *ap, int try_sys_free, int check_guard)
 {
 	Header *bp, *p;
 
+#ifdef __PUREC__
+#pragma warn -par
+#endif
 	bp = (Header *)ap-1;
 
 	for (p = A->freep; !(bp > p && bp < p->ptr); p = p->ptr)

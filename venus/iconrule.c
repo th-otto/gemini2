@@ -43,7 +43,6 @@
 
 #ifdef LOAD_COLOR_ICONS
 
-#include <portab.h>
 #include "..\xrsrc\xrsrc.h"
 
 #endif
@@ -605,7 +604,7 @@ static word editSingleRule (DisplayRule *rule)
 	char *wildcard;
 	char color;
 	int edit_object = REBGBOX;
-	uword key;
+	word key;
 	
 	iconNr = rule->iconNr - 1;
 	wildcard = pruleedit[REWILD].ob_spec.tedinfo->te_ptext;
@@ -637,7 +636,7 @@ static word editSingleRule (DisplayRule *rule)
 	exit = FALSE;
 	do
 	{
-		uword shift_state;
+		word shift_state;
 
 		draw = FALSE;
 		cycle_obj = -1;
@@ -1167,7 +1166,7 @@ word EditIconRule (void)
 	word retcode, draw;
 	word clicks, rulecopied;
 	word edit_object = RUBGBOX;
-	uword key;
+	word key;
 	long listresult;
 	
 	if (IBase.RuleList == NULL)

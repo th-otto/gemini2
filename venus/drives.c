@@ -425,7 +425,7 @@ void DriveInstDialog (const char *drivePath)
 	exit = FALSE;
 	do
 	{
-		uword key, shift_state;
+		word key, shift_state;
 	
 		circle = draw = FALSE;
 		

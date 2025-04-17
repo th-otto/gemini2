@@ -1,0 +1,6 @@
+*.o
+*.app
+*.ttp
+*.pdb
+*.lib
+*.a

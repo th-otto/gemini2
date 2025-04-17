@@ -477,7 +477,7 @@ static int editApplListInternal (ApplInfo *pai)
 	word retcode, draw;
 	word clicks;
 	word edit_object = APBGBOX;
-	uword key;
+	word key;
 	long listresult;
 	
 	if (applList == NULL)

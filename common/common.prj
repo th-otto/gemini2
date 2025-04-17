@@ -1,6 +1,6 @@
 common.lib
 .L[ -J]
-.C[ -P]
+.C[ -P -I..]
 =              ; list of modules follows...
 mediach.s
 charutil.c	(alloc.h, charutil.h)

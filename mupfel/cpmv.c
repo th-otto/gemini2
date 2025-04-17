@@ -971,6 +971,9 @@ m_cp (MGLOBAL *M, int argc, char **argv)
 		return EFILNF;
 	}
 	
+#ifdef __PUREC__
+#pragma warn -aus
+#endif
 	first_is_dir = isDir (&C, argv[G.optind]);
 	if (C.broken)
 		return (int)ioerror(M, argv[0], argv[G.optind], C.broken);

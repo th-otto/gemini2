@@ -1,8 +1,7 @@
 /* GEM Resource C Source */
 
-#include <portab.h>
 #include <aes.h>
-#include "HELLO.H"
+#include "hello.h"
 
 #if !defined(WHITEBAK)
 #define WHITEBAK    0x0040
@@ -432,34 +431,34 @@ OBJECT rs_object[] =
 { 
   /******** Tree 0 HELLOBOX ****************************************************/
         -1, IC_TT           , HELLOVER        , G_BOX             ,   /* Object 0 HTREE */
-  NONE, NORMAL, (LONG)0x00011120L,
+  NONE, NORMAL, (long)0x00011120L,
   0x0000, 0x0000, 0x0019, 0x0007,
   BLINK           ,       -1,       -1, G_ICON            ,   /* Object 1 IC_TT */
-  NONE, NORMAL, (LONG)&rs_iconblk[0],
+  NONE, NORMAL, (long)&rs_iconblk[0],
   0x0005, 0x0001, 0x0008, 0x0802,
   NORM            ,       -1,       -1, G_IMAGE           ,   /* Object 2 BLINK */
-  NONE, NORMAL, (LONG)&rs_bitblk[0],
+  NONE, NORMAL, (long)&rs_bitblk[0],
   0x0005, 0x0001, 0x0004, 0x0001,
   IC_TOWER        ,       -1,       -1, G_IMAGE           ,   /* Object 3 NORM */
-  NONE, NORMAL, (LONG)&rs_bitblk[1],
+  NONE, NORMAL, (long)&rs_bitblk[1],
   0x0005, 0x0001, 0x0004, 0x0001,
   IC_FALCO        ,       -1,       -1, G_ICON            ,   /* Object 4 IC_TOWER */
-  HIDETREE, NORMAL, (LONG)&rs_iconblk[1],
+  HIDETREE, NORMAL, (long)&rs_iconblk[1],
   0x0005, 0x0001, 0x0008, 0x0802,
   IC_MEGA         ,       -1,       -1, G_ICON            ,   /* Object 5 IC_FALCO */
-  HIDETREE, NORMAL, (LONG)&rs_iconblk[2],
+  HIDETREE, NORMAL, (long)&rs_iconblk[2],
   0x000E, 0x0001, 0x0008, 0x0802,
   IC_BOOK         ,       -1,       -1, G_ICON            ,   /* Object 6 IC_MEGA */
-  HIDETREE, NORMAL, (LONG)&rs_iconblk[3],
+  HIDETREE, NORMAL, (long)&rs_iconblk[3],
   0x0005, 0x0003, 0x0008, 0x0802,
          8,       -1,       -1, G_ICON            ,   /* Object 7 IC_BOOK */
-  HIDETREE, NORMAL, (LONG)&rs_iconblk[4],
+  HIDETREE, NORMAL, (long)&rs_iconblk[4],
   0x000E, 0x0003, 0x0008, 0x0802,
   HELLOVER        ,       -1,       -1, G_TEXT            ,   /* Object 8  */
-  NONE, NORMAL, (LONG)&rs_tedinfo[0],
+  NONE, NORMAL, (long)&rs_tedinfo[0],
   0x0002, 0x0005, 0x0015, 0x0001,
   HTREE           ,       -1,       -1, G_TEXT            ,   /* Object 9 HELLOVER */
-  LASTOB, NORMAL, (LONG)&rs_tedinfo[1],
+  LASTOB, NORMAL, (long)&rs_tedinfo[1],
   0x0400, 0x0006, 0x0418, 0x0001
 };
 

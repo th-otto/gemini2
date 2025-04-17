@@ -423,7 +423,7 @@ int domprint (MGLOBAL *M, const char *str, size_t len)
 	{
 		if (nl)
 			*nl = '\0';
-		ConsoleDispString (str);
+		ConsoleDispString ((char *)str); /* FIXME: removing const */
 		if (nl)
 		{
 			*nl = '\n';

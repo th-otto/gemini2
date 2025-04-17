@@ -960,6 +960,9 @@ int CopyArgv (ARGVINFO *A, char *tpath, int move, int rename)
 			drive = strlen (path) == 3 && path[1] == ':'
 				&& path[2] == '\\';
 			
+#ifdef __PUREC__
+#pragma warn -aus
+#endif
 			if (drive || E_OK ==
 				(filestat = GetFileInformation (path, &fsize, &attr, 
 				&date, &time, &broken)))

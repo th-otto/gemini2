@@ -588,7 +588,7 @@ static int infoDriveDialog (IconInfo *pii, word objnr)
 	
 	do
 	{
-		uword shift_state;
+		word shift_state;
 
 		done = TRUE;
 		cycle_obj = -1;
@@ -741,7 +741,7 @@ static int doIconInfo (IconInfo *pii, word objnr)
 	
 	do
 	{
-		uword shift_state;
+		word shift_state;
 	
 		cycle_obj = -1;
 		retcode = 0x7fff & DialXDo (&d, &edit_object, &shift_state,
@@ -837,7 +837,7 @@ static int doSpecialInfo (IconInfo *pii, word objnr)
 	
 	do
 	{
-		uword shift_state;
+		word shift_state;
 	
 		cycle_obj = -1;
 		retcode = 0x7fff & DialXDo (&d, &edit_object, &shift_state,

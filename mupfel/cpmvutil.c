@@ -13,6 +13,7 @@
 #include <nls\nls.h>
 #include <mint\ioctl.h>
 #include <mint\mintbind.h>
+#include <mint\macfs.h>
 
 #include "..\common\alloc.h"
 #include "..\common\strerror.h"

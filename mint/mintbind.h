@@ -111,7 +111,7 @@ long Talarm(long secs);
 void Pause(void);
 long Sysconf(int n);
 long Psigpending(void);
-long Dpathconf(char *name, int n);
+long Dpathconf(const char *name, int n);
 long Fmidipipe(int pid, int in, int out);
 int Prenice(int pid, int delta);
 long Dreaddir(int buflen, long dir, char *buf);

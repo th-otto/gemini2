@@ -208,10 +208,10 @@ wintool.c  (vs.h, wintool.h)
 
 ..\xrsrc\xrsrc.c
 
-..\mint\mintbind.o
+..\mint\mintbind.s
 ..\mupfel\mupfgmni.prj
 
-..\nls\nlslib.lib
+..\nls\nlslib.prj
 flydial.lib
 ..\common\common.prj
 

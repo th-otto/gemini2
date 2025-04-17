@@ -24,6 +24,7 @@
 #include "getopt.h"
 #include "setscrap.h"
 
+#if MERGED
 
 /* internal texts
  */
@@ -172,3 +173,5 @@ int m_setscrap (MGLOBAL *M, int argc, char **argv)
 			return PrintUsage (M, argv[0], NlsStr(OPT_setscrap));
 	}
 }
+
+#endif
