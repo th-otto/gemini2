@@ -215,7 +215,7 @@ wintool.c  (vs.h, wintool.h)
 flydial.lib
 ..\common\common.prj
 
-..\exec_job\exec_job.lib
+..\exec_job\exec_job.c [-G -P-]
 myalloc.c  (myalloc.h, ..\common\alloc.h)
 
 pcstdlib.lib

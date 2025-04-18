@@ -24,16 +24,32 @@
 
 #include <stdlib.h>
 #include <stddef.h>
-#include <tos.h>
 #include <string.h>
+#if defined (__TURBOC__)
 #include <aes.h>
+#include <tos.h>
+#else
+#define __GEMLIB_OLDNAMES /* FIXME later */
+#include <gem.h>
+#include <osbind.h>
+#endif
+
+#ifndef _WORD
+#  ifdef WORD
+#    define _WORD WORD
+#  elif defined(__TURBOC__)
+#    define _WORD int
+#  else
+#    define _WORD short
+#  endif
+#endif
 
 #define KOBOLD_ANSWER 0x2F12 
 /* Antwortnachricht des KOBOLD mit Status in Wort 3. Wird als      */
 /* Message-Event erhalten.                                         */
 
 
-int init_kobold(int own_aes_id, char *path);
+/* _BOOL */ int init_kobold(_WORD own_aes_id, char *path);
 /*******************************************************************/
 /* Initialisiert die KOBOLD-Schnittstelle fÅr eine bevorstehende   */
 /* JobÅbermittlung (Kopieren, Formatieren etc.). Muû vor *jeder*   */
@@ -56,7 +72,7 @@ int init_kobold(int own_aes_id, char *path);
 /*******************************************************************/
 
 
-int perform_kobold_job(char *job);
+/* _BOOL */ int perform_kobold_job(char *job);
 /*******************************************************************/
 /* Sendet den Job an den KOBOLD. Der Job wird zuvor in einen neuen */
 /* Speicherblock umkopiert, kann also auch als Stackvariable Åber- */
