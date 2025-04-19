@@ -1,11 +1,11 @@
 nlscomp.ttp              ; name of executable program is topmost window
 =                  ; list of modules follows...
-PCSTART.O          ; startup code
+pcstart.o          ; startup code
 mainargv.c
-nlscomp.c		(nlsdef.h)
-PCSTDLIB.LIB       ; standard library
-PCEXTLIB.LIB       ; extended library
-PCTOSLIB.LIB       ; TOS library
+nlscomp.c
+pcstdlib.lib       ; standard library
+pcextlib.lib       ; extended library
+pctoslib.lib       ; TOS library
 getopt.c
 getopt1.c
 error.c

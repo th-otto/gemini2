@@ -57,7 +57,7 @@ mit einer Hexzahl \x40 und einer Oktalen \7*/
 
 int main(void)
 {
-	if (NlsInit("NLSTEST.NLS", Malloc, Mfree))
+	if (NlsInit("nlstest.nls", NULL, Malloc, Mfree))
 	{
 		puts("NlsInit erfolgreich!");
 		puts(NlsStr(T_SHAREWARE1));

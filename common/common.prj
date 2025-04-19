@@ -3,17 +3,16 @@ common.lib
 .C[ -P -I..]
 =              ; list of modules follows...
 mediach.s
-charutil.c	(alloc.h, charutil.h)
-cookie.c	(cookie.h)
-fileutil.c	(fileutil.h, charutil.h, strerror.h, alloc.h, cookie.h,
-			walkdir.h, xhdi.h)
-genargv.c	(alloc.h, argvinfo.h, charutil.h, genargv.h)
-memfile.c	(memfile.h, alloc.h, strerror.h)
-walkdir.c	(alloc.h, cookie.h, fileutil.h, walkdir.h)
-wildmat.c	(wildmat.h)
-xbra.c		(xbra.h)
-xhdi.c		(xhdi.h)
+charutil.c
+cookie.c
+fileutil.c
+genargv.c
+memfile.c
+walkdir.c
+wildmat.c
+xbra.c
+xhdi.c
 shelfunc.c
-alloc.c		(alloc.h)
-strerror.c	(strerror.h)
-fncase.c    (fncase.h)
+alloc.c
+strerror.c
+fncase.c

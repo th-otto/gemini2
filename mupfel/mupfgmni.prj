@@ -1,172 +1,73 @@
-mupfgmni.o
+mupfgmni.lib
 .C[-DMERGED=1]
 .C[-P -I..]
 .L[-J]
 =
 mainargv.c
 
-mupfel.c	(..\common\alloc.h, mglob.h, partypes.h, exectree.h, 
-			parsinpt.h, chario.h, shellvar.h, parsutil.h, 
-			..\common\charutil.h, ..\common\fileutil.h, mdef.h, nameutil.h, 
-			instsys.h, 
-			ioutil.h, stand.h, gemutil.h, ..\venus\gemini.h,
-			exec.h, ..\common\argvinfo.h, ..\common\genargv.h)
-
-alias.c		(..\common\alloc.h, mglob.h, alias.h, chario.h, 
-			..\common\charutil.h, ..\common\argvinfo.h, 
-			..\common\genargv.h)
-backup.c	(..\common\alloc.h, mglob.h, chario.h, cpmv.h, ..\common\fileutil.h, 
-			getopt.h, backup.h)
-chario.c	(chario.h, mglob.h, keys.h, redirect.h, 
-			..\common\alloc.h, ..\common\charutil.h, trap.h, stand.h,
-			..\venus\console.h)
-chmod.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, chmod.h, 
-			..\common\fileutil.h, mdef.h)
-cmdcompl.c	(..\common\alloc.h, mglob.h, alias.h, chario.h, cmdcompl.h,
-			mdef.h, nameutil.h, internal.h, locate.h,
-			mlex.h, ..\common\argvinfo.h, ..\common\genargv.h)
-complete.c	(..\common\alloc.h, mglob.h, chario.h, complete.h, ..\common\fileutil.h,
-			mdef.h, nameutil.h, mlex.h, cmdcompl.h, optcompl.h, 
-			..\common\argvinfo.h, ..\common\genargv.h, subst.h)
-cookie.c	(..\common\alloc.h, mglob.h, chario.h, cookie.h, mdef.h, sysvars.h, version.h)
-cpmv.c		(..\common\alloc.h, mglob.h, chario.h, chmod.h, cpmv.h, ..\common\fileutil.h, 
-			getopt.h, mdef.h, mkdir.h, nameutil.h, ..\common\strerror.h,
-			..\common\charutil.h, cpmvutil.h)
-cpmvutil.c	(..\common\alloc.h, mglob.h, chario.h, cpmv.h, cpmvutil.h,
-			mdef.h, ..\common\strerror.h)
-date.c		(..\common\alloc.h, mglob.h, chario.h, date.h, ..\common\fileutil.h, 
-			getopt.h, loctime.h, mdef.h, ..\common\strerror.h, ..\common\charutil.h)
-duptree.c	(..\common\alloc.h, mglob.h, maketree.h, chario.h,
-			..\common\charutil.h, duptree.h)
-exec.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, exec.h, 
-			..\common\fileutil.h, gemutil.h, ioutil.h, mdef.h, names.h,
-			..\common\strerror.h, vt52.h, mcd.h, nameutil.h, stand.h, screen.h)
-exectree.c	(mglob.h, partypes.h, exectree.h, redirect.h, maketree.h,
-			names.h, makeargv.h, ..\common\wildmat.h, subst.h, shellvar.h,
-			chario.h, locate.h, internal.h, ..\common\alloc.h, exec.h,
-			parsutil.h, nameutil.h, mdef.h, trap.h, duptree.h,
-			shelfork.h, ..\common\fileutil.h, stand.h)
-expand.c	(mglob.h, partypes.h, expand.h, makeargv.h, ..\common\charutil.h,
-			..\common\wildmat.h, mdef.h, ..\common\alloc.h, ..\common\fileutil.h)
-fkey.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, fkey.h, 
-			scan.h)
-format.c	(..\common\alloc.h, mglob.h, chario.h, format.h, getopt.h, 
-			init.h, ..\common\strerror.h, vt52.h, ..\common\fileutil.h, stand.h, mupfel.h)
-free.c		(..\common\alloc.h, mglob.h, chario.h, free.h, getopt.h)
-gemutil.c	(..\common\alloc.h, mglob.h, mdef.h, gemutil.h, stand.h,
-			cookie.h)
-getopt.c	(mglob.h, chario.h, getopt.h, ..\common\alloc.h, nameutil.h)
-getopt1.c	(mglob.h, getopt.h, ..\common\alloc.h)
-hash.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, getopt.h,
-			hash.h, locate.h, ..\common\fileutil.h)
-history.c	(..\common\alloc.h, mglob.h, ..\common\charutil.h, history.h, chario.h,
-			getopt.h, nameutil.h, mdef.h, ..\common\fileutil.h, 
-			..\common\memfile.h, ..\common\strerror.h, parsinpt.h)
-init.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\fileutil.h, getopt.h,
-			init.h, label.h, mdef.h, ..\common\strerror.h, mupfel.h)
-instsys.c	(instsys.h, mdef.h, shell.h, sysvars.h, ..\common\xbra.h)
-internal.c	(internal.h, mdef.h, mset.h, chario.h,
-			mglob.h, smallcmd.h, mcd.h, mset.h, ..\common\alloc.h,
-			ls.h, test.h, mkdir.h, read.h, date.h,
-			rmdir.h, rm.h, chmod.h, cpmv.h, backup.h, rename.h,
-			history.h, nameutil.h, names.h, fkey.h, trap.h, hash.h, cookie.h,
-			alias.h, type.h, version.h, makeargv.h, free.h, label.h,
-			times.h, init.h, exectree.h, setscrap.h, stand.h, shrink.h, subst.h,
-			..\common\argvinfo.h, ..\common\genargv.h)
-ioutil.c	(..\common\alloc.h, mglob.h, mdef.h, ioutil.h, ..\common\fileutil.h, names.h)
-label.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\fileutil.h, label.h,
-			mdef.h, ..\common\strerror.h)
-language.c	(language.h, mupfel.h, language.h, mglob.h)
-lineedit.c	(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, 
-			lineedit.h,	mdef.h, scan.h, vt52.h, keys.h, nameutil.h, 
-			history.h, complete.h, redirect.h, fkey.h, makeargv.h,
-			stand.h, ..\venus\gemini.h, ..\venus\console.h, mcd.h, 
-			..\common\argvinfo.h, ..\common\genargv.h)
-locate.c	(locate.h, names.h, ..\common\fileutil.h, chario.h, mglob.h,
-			internal.h, ..\common\alloc.h, nameutil.h, hash.h, makeargv.h,
-			mdef.h, ..\common\strerror.h, ..\common\argvinfo.h, 
-			..\common\genargv.h)
-loctime.c	(mglob.h, loctime.h, chario.h, nameutil.h, 
-			..\common\alloc.h)
-ls.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h,
-			..\common\cookie.h, date.h, 
-			..\common\fileutil.h, getopt.h, locate.h, redirect.h, 
-			ls.h, nameutil.h, ..\common\strerror.h, ..\common\wildmat.h,mdef.h)
-mcd.c		(mcd.h, mglob.h, ..\common\fileutil.h, chario.h, mdef.h, nameutil.h, 
-			..\common\charutil.h, ..\common\alloc.h, ..\common\strerror.h,
-			hash.h)
-mlex.c		(mlex.h, partypes.h, ..\common\charutil.h, subst.h, mdef.h,
-			ioutil.h, chario.h, ..\common\alloc.h, alias.h, 
-			parsinpt.h, maketree.h, mparse.h, ..\common\argvinfo.h,
-			..\common\genargv.h)
-makeargv.c	(partypes.h, makeargv.h, subst.h, ..\common\charutil.h, mglob.h, 
-			expand.h, names.h, ..\common\alloc.h, ..\common\argvinfo.h, 
-			..\common\genargv.h)
-maketree.c	(partypes.h, maketree.h, mglob.h, chario.h, 
-			..\common\alloc.h)
-mglobal.c	(..\common\alloc.h, mglob.h, mcd.h, mdef.h, chario.h, 
-			names.h, mset.h, shellvar.h, redirect.h, ..\common\charutil.h, 
-			history.h, trap.h, hash.h, alias.h, vt52.h, times.h, 
-			internal.h, stand.h, gemutil.h, cookie.h, shrink.h)
-mkdir.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, ..\common\fileutil.h,
-			getopt.h, mkdir.h, ..\common\strerror.h)
-mparse.c	(mglob.h, mparse.h, partypes.h, mlex.h, maketree.h,
-			parsinpt.h, chario.h, ..\common\alloc.h, duptree.h)
-mset.c		(mglob.h, shellvar.h, mset.h, ioutil.h, chario.h,
-			redirect.h, ..\common\alloc.h, nameutil.h, stand.h)
-names.c		(partypes.h, parsinpt.h, mglob.h, maketree.h,
-			names.h, ..\common\charutil.h,
-			chario.h, ..\common\alloc.h, hash.h, ioutil.h, duptree.h)
-nameutil.c	(..\common\alloc.h, mglob.h, names.h, nameutil.h, partypes.h,
-			subst.h, chario.h, makeargv.h, prnttree.h, getopt.h,
-			..\common\argvinfo.h, ..\common\genargv.h)
-parsinpt.c	(mglob.h, parsinpt.h, mglob.h, names.h, loctime.h, vt52.h,
-			..\common\charutil.h, ..\common\alloc.h, ..\common\fileutil.h, lineedit.h, 
-			..\common\memfile.h, subst.h)
-parsutil.c	(..\common\alloc.h, mglob.h, chario.h, mparse.h, parsinpt.h, 
-			parsutil.h, exectree.h, trap.h, exec.h, mdef.h, maketree.h,
-			screen.h, stand.h, ..\venus\gemini.h, ..\common\fileutil.h,
-			..\common\strerror.h)
-prnttree.c	(mglob.h, partypes.h, prnttree.h, chario.h, ..\common\alloc.h)
-puninfo.c	(puninfo.h)
-optcompl.c	(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, ..\common\fileutil.h,
-			makeargv.h, mdef.h, mlex.h, nameutil.h, optcompl.h,
-			..\common\argvinfo.h, ..\common\genargv.h)
-read.c		(..\common\alloc.h, mglob.h, chario.h, names.h, read.h, lineedit.h)
-redirect.c	(partypes.h, redirect.h, mglob.h, mdef.h, subst.h,
-			ioutil.h, chario.h, ..\common\charutil.h, ..\common\alloc.h, 
-			..\common\fileutil.h, stand.h)
-rename.c	(..\common\alloc.h, mglob.h, chario.h, cpmv.h, ..\common\fileutil.h,
-			getopt.h, rename.h)
-rm.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\fileutil.h, getopt.h,
-			mdef.h, rm.h, rmdir.h, ..\common\strerror.h, chmod.h, ..\common\charutil.h)
-rmdir.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, ..\common\fileutil.h,
-			getopt.h, ..\common\strerror.h, rmdir.h, mdef.h)
-screen.c	(..\common\alloc.h, mglob.h, chario.h, gemutil.h, screen.h,
-			vt52.h, stand.h, ..\venus\gemini.h, exec.h, ..\common\cookie.h)
-setscrap.c	(..\common\alloc.h, mglob.h, mdef.h, chario.h, ..\common\charutil.h,
-			..\common\fileutil.h, getopt.h, setscrap.h)
-shelfork.c	(..\common\alloc.h, mglob.h, chario.h, exectree.h, maketree.h,
-			shelfork.h, duptree.h, redirect.h)
-shell.s		(shell.h, sysvars.h)
-shellvar.c	(..\common\alloc.h, mglob.h, shellvar.h, chario.h, ..\common\charutil.h)
-shrink.c	(..\common\alloc.h, mglob.h, chario.h, getopt.h, shrink.h)
-smallcmd.c	(mglob.h, chario.h, getopt.h, mdef.h, smallcmd.h, 
-			..\common\alloc.h, parsinpt.h, parsutil.h, shellvar.h,
-			locate.h, ..\common\strerror.h)
-subst.c		(partypes.h, mglob.h, subst.h, names.h, ..\common\charutil.h,
-			parsinpt.h, mparse.h, exectree.h, redirect.h, mdef.h,
-			shellvar.h, chario.h, ..\common\alloc.h, nameutil.h,
-			maketree.h)
-test.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\fileutil.h, getopt.h, 
-			mdef.h, redirect.h, test.h)
-times.c		(..\common\alloc.h, mglob.h, chario.h, mdef.h, sysvars.h, 
-			times.h, ioutil.h)
-trap.c		(..\common\alloc.h, mglob.h, chario.h, ..\common\charutil.h, trap.h, 
-			parsinpt.h, parsutil.h)
-type.c		(..\common\alloc.h, mglob.h, alias.h, chario.h, locate.h, 
-			type.h, mdef.h)
-version.c	(..\common\alloc.h, mglob.h, chario.h, date.h, getopt.h, mdef.h,
-			puninfo.h, sysvars.h, version.h, ioutil.h,
-			..\common\xhdi.h)
-
+mupfel.c
+alias.c
+backup.c
+chario.c
+chmod.c
+cmdcompl.c
+complete.c
+cookie.c
+cpmv.c
+cpmvutil.c
+date.c
+duptree.c
+exec.c
+exectree.c
+expand.c
+fkey.c
+format.c
+free.c
+gemutil.c
+getopt.c
+getopt1.c
+hash.c
+history.c
+init.c
+instsys.c
+internal.c
+ioutil.c
+label.c
+language.c
+lineedit.c
+locate.c
+loctime.c
+ls.c
+mcd.c
+mlex.c
+makeargv.c
+maketree.c
+mglobal.c
+mkdir.c
+mparse.c
+mset.c
+names.c
+nameutil.c
+parsinpt.c
+parsutil.c
+prnttree.c
+puninfo.c
+optcompl.c
+read.c
+redirect.c
+rename.c
+rm.c
+rmdir.c
+screen.c
+setscrap.c
+shelfork.c
+shell.s
+shellvar.c
+shrink.c
+smallcmd.c
+subst.c
+test.c
+times.c
+trap.c
+type.c
+version.c
