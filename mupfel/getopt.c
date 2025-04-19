@@ -13,8 +13,8 @@
    they can distinguish the relative order of options and other arguments. 
  */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <nls\nls.h>
 

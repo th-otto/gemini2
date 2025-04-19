@@ -7,6 +7,7 @@
  * jr 28.7.94
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>

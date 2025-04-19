@@ -7,7 +7,6 @@
  * jr 26.7.94
  */
 
-#include <vdi.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

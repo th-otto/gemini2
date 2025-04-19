@@ -5,6 +5,7 @@
  * jr 22.4.95
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <flydial\flydial.h>

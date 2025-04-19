@@ -7,8 +7,8 @@
  * jr 970118
  */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <tos.h>
 #include <nls\nls.h>
@@ -428,7 +428,8 @@ m_history (MGLOBAL *M, int argc, char **argv)
 	while ((c = getopt_long (M, &G, argc, argv, "ans:rw", 
 		long_options, &opt_index)) != EOF)
 	{
-		if (!c)			c = long_options[G.option_index].val;
+		if (!c)
+			c = long_options[G.option_index].val;
 
 		switch (c)
 		{
@@ -666,7 +667,8 @@ m_fc (MGLOBAL *M, int argc, char **argv)
 	while ((c = getopt_long (M, &G, argc, argv, "e:lnrs", 
 		long_options, &opt_index)) != EOF)
 	{
-		if (!c)			c = long_options[G.option_index].val;
+		if (!c)
+			c = long_options[G.option_index].val;
 
 		switch (c)
 		{

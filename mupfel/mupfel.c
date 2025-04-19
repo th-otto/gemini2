@@ -5,12 +5,10 @@
  * jr 18.5.96
  */
 
-#include <stddef.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
-#include <aes.h>
-#include <tos.h>
 #include <flydial\flydial.h>
 #include <nls\nls.h>
 

@@ -5,6 +5,7 @@
  * Lexer fr den Mupfel-Parser mit Bourne-Shell-Syntax
  */
 
+#include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
 #include <ctype.h>

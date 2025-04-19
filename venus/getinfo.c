@@ -8,6 +8,7 @@
  * jr 14.11.95
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <flydial\flydial.h>

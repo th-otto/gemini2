@@ -1,0 +1,36 @@
+name: Linux build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SSH keys
+        if: ${{ github.event_name == 'push' }}
+        env:
+          SSH_ID: ${{ secrets.SSH_ID }}
+        run: ./.scripts/install_ssh_id.sh
+      - name: Install packages
+        run: |
+          sudo apt-get update
+      - name: Setup environment
+        run: ./.scripts/setup_env.sh
+      - name: build
+        run: ./.scripts/build.sh
+      - name: Upload binaries into build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist/*
+          name: gemini2
+#      - name: deploy
+#        if: ${{ github.event_name == 'push' }}
+#        env:
+#          COMMITER_NAME: ${{ github.event.commits[0].author.name }}
+#          COMMITER_EMAIL: ${{ github.event.commits[0].author.email }}
+#        run: ./.scripts/deploy.sh

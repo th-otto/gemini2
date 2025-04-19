@@ -8,6 +8,7 @@
  * jr 31.12.1996
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <tos.h> 
